@@ -1,0 +1,37 @@
+{
+  "mode": "yolo",
+  "depth": "comprehensive",
+  "parallelization": true,
+  "commit_docs": true,
+  "model_profile": "quality",
+  "profiles": {
+    "active_profile": "quality",
+    "presets": {
+      "quality": {
+        "planning": "google/gemini-3.1-pro-preview",
+        "execution": "google/antigravity-gemini-3-flash",
+        "verification": "google/gemini-3.1-pro-preview"
+      },
+      "balanced": {
+        "planning": "kilo/z-ai/glm-5:free",
+        "execution": "opencode/minimax-m2.5-free",
+        "verification": "kilo/z-ai/glm-5:free"
+      },
+      "budget": {
+        "planning": "zai-coding-plan/glm-5",
+        "execution": "zai-coding-plan/glm-4.7",
+        "verification": "zai-coding-plan/glm-4.7"
+      }
+    },
+    "custom_overrides": {
+      "quality": {},
+      "balanced": {},
+      "budget": {}
+    }
+  },
+  "workflow": {
+    "research": true,
+    "plan_check": true,
+    "verifier": true
+  }
+}

@@ -1,0 +1,12 @@
+[submodule "backend"]
+	path = backend
+	url = git@github.com:Malaclyde/agent-id-backend.git
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:Malaclyde/agent-id-frontend.git
+[submodule "docs"]
+	path = docs
+	url = git@github.com:Malaclyde/agent-id-developer-documentation.git
+[submodule "test"]
+	path = test
+	url = git@github.com:Malaclyde/agent-id-test.git
