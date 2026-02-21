@@ -10,18 +10,18 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 
 ---
 
-## Current Milestone: v2.0 Shadow Claim Implementation
+## Current Milestone: v2.1 Comprehensive Testing
 
-**Goal:** Implement shadow claim feature allowing agents to be claimed without a real overseer account, using Paddle one-time payments.
+**Goal:** Audit, expand, and formalize test suites across the full stack to cover all flows and edge cases, including real Paddle E2E tests, and identify/discuss bugs before fixing.
 
-**Target Features:**
-- Unify shadow claim with standard claim challenge system
-- Agent confirmation step before payment processing
-- Proper state management (initiated → awaiting-payment → completed)
-- Paddle `transaction.completed` webhook handling for one-time payments
-- Comprehensive test coverage for shadow claim flows
+**Target features:**
+- Codebase and documentation scan for full flow understanding
+- Audit of existing test suites and documentation
+- Research and addition of new test scenarios (unit, integration, E2E)
+- Implementation of comprehensive testing suites (backend, frontend, E2E with real Paddle test connection)
+- Bug identification via test execution and discussion of solutions prior to fixing
 
-**Previous Milestone:** v1.0 Documentation & Testing (22 phases, COMPLETE)
+**Previous Milestone:** v2.0 Shadow Claim Implementation (Complete)
 
 ---
 
@@ -38,38 +38,30 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 - ✓ Paddle payment integration with webhook handling
 - ✓ Shadow overseer cryptographic ID generation
 - ✓ Comprehensive documentation and test suite
+- ✓ Unify shadow claim with standard claim challenge system
+- ✓ Agent confirmation step before payment processing
+- ✓ Proper state management (initiated → awaiting-payment → completed)
+- ✓ Paddle `transaction.completed` webhook handling for one-time payments
+- ✓ Comprehensive test coverage for shadow claim flows
 
 ### Active (This Milestone)
 
-#### Phase 23: Backend Refactoring
-- [ ] Refactor shadow claim to use claim challenges (not payment challenges)
-- [ ] Add `isShadow` flag to claim challenge KV data
-- [ ] Update `/v1/malice/:agentId` to create claim challenges
-- [ ] Remove legacy shadow claim endpoints
+#### Research & Audit
+- [ ] Scan codebase and documentation for flow understanding
+- [ ] Audit existing test suites and test cases in docs
+- [ ] Identify and research missing flows and edge cases
 
-#### Phase 24: Agent Confirmation Flow
-- [ ] Update claim completion endpoint to check for `isShadow` flag
-- [ ] Implement shadow claim confirmation logic
-- [ ] Add agent verification before preparing payment
-- [ ] Update KV with `awaiting-payment` status and Paddle data
+#### Documentation Updates
+- [ ] Document new test scenarios for unit, integration, and E2E
 
-#### Phase 25: Frontend Updates
-- [ ] Update ShadowClaim component for new API flow
-- [ ] Add polling for `awaiting-payment` status
-- [ ] Display instructions for agent confirmation
-- [ ] Update ShadowClaimPayment for Paddle checkout
+#### Test Implementation
+- [ ] Implement backend unit and integration tests
+- [ ] Implement frontend unit and integration tests
+- [ ] Implement E2E tests with real Paddle connection using testuser-N data
 
-#### Phase 26: Webhook Integration
-- [ ] Implement `transaction.completed` webhook handler
-- [ ] Extract agent_id, shadow_overseer_id, challenge_id from custom_data
-- [ ] Handle shadow overseer creation/reuse
-- [ ] Activate oversight and complete claim
-
-#### Phase 27: Testing & Verification
-- [ ] Unit tests for refactored shadow claim logic
-- [ ] Integration tests with Paddle sandbox
-- [ ] End-to-end tests for complete flow
-- [ ] Security tests for agent consent verification
+#### Bug Identification & Resolution
+- [ ] Execute tests to find bugs
+- [ ] Report and discuss bugs with user before attempting fixes
 
 ### Out of Scope
 
@@ -122,4 +114,4 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 | Deprecate payment challenge system | Single system reduces complexity | — Pending |
 
 ---
-*Last updated: 2026-02-20 after milestone initialization*
+*Last updated: 2026-02-21 after milestone initialization*
