@@ -6,7 +6,6 @@
 **Current Focus:** Planning next milestone (v2.3)
 
 ## Current Position
-<<<<<<< HEAD
 - **Phase:** 37-client-demo-oauth
 - **Plan:** Not started
 - **Status:** Milestone v2.2 Complete
@@ -18,12 +17,13 @@
 - **Plan:** 12
 - **Status:** Plan complete
 - **Progress:** [███████████████                                 ] 62% (13/21 Plans Complete)
-=======
 - **Phase:** Phase 30: Frontend Test Implementation
 - **Plan:** 0
 - **Status:** Ready to plan
 - **Progress:** [████████████████                               ] 67% (14/21 Plans Complete)
->>>>>>> 9bf83a4 (docs(29): complete Backend Test Implementation phase)
+- **Plan:** 1
+- **Status:** In progress
+- **Progress:** [█████████████████                            ] 71% (15/21 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -65,6 +65,7 @@
 - **[29-10-D01]** Agent tests refactored to use ephemeral D1; fixed test assertions to match actual API behavior (duplicate key after completion, invalid signature via mock).
 - **[29-11-D01]** Removed ghost tests for functions removed in Phase 21 (incrementOAuthCount, incrementOAuthCountWithLimitCheck, canAgentPerformOAuth); optimized vitest config with 30s timeouts and isolate: true for stability.
 - **[29-12-D01]** Fixed vi.mock limitations in Workers pool; adjusted claiming logic tests to work around chained dependency mocking issues; skipped 3 unit tests requiring subscription mocking (covered by integration tests).
+- **[30-01-D01]** MSW installed for frontend API mocking; server lifecycle managed in setup.ts; tests define their own handlers via server.use()
 
 **Active Blockers:**
 - None.
@@ -91,8 +92,8 @@
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Phase 29 Complete - Backend Test Implementation verified
-**Resume file:** .planning/phases/30-frontend-test-implementation/
+**Stopped at:** Phase 30 Plan 1 Complete - MSW installed and test infrastructure created
+**Resume file:** None (plan complete)
 
 
 ---
