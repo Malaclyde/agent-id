@@ -1,48 +1,59 @@
-# Requirements: Comprehensive Testing Milestone
+# Requirements: Demo Scripts Milestone
 
-**Defined:** 2026-02-21
-**Core Value:** Users can trust that the Agent-ID platform correctly handles authentication, authorization, and subscription management with accurate documentation and comprehensive test coverage.
-**Previous Milestone:** v2.0 Shadow Claim Implementation (COMPLETE)
-
----
-
-## v2.1 Requirements
-
-### Auditing & Documentation (AUDIT)
-
-- [x] **AUDIT-01**: System documents all existing application flows and edge cases based on codebase and current `docs/v1` documentation.
-- [x] **AUDIT-02**: System identifies coverage gaps between current test suites and documented flows in `docs/v1`.
-- [x] **AUDIT-03**: System documents new test scenarios (unit, integration, E2E) to cover identified edge cases and missing flows.
-
-### Backend Testing (BETEST)
-
-- [ ] **BETEST-01**: Testing suite includes utility for dynamic Ed25519 keypair and DPoP signature generation.
-- [ ] **BETEST-02**: Testing suite includes in-memory D1/KV ephemeral database mocking via vitest-pool-workers.
-- [ ] **BETEST-03**: Testing suite includes backend integration tests invoking `app.fetch()` for all API endpoints.
-
-### Frontend Testing (FETEST)
-
-- [ ] **FETEST-01**: Testing suite includes component-level tests for React UI states via Vitest and Testing Library.
-- [ ] **FETEST-02**: Testing suite includes MSW setup to mock backend API responses.
-- [ ] **FETEST-03**: Testing suite covers complex frontend edge cases including polling timeouts and expired tokens.
-
-### End-to-End Testing (E2ETEST)
-
-- [ ] **E2ETEST-01**: Testing suite includes Playwright scaffolding configured for cross-origin iframes and multi-browser contexts.
-- [ ] **E2ETEST-02**: Testing suite executes real Paddle Checkout sandbox flows using specified test data (testuser-N).
-- [ ] **E2ETEST-03**: Testing suite explicitly handles and asserts asynchronous webhook outcomes (using cloudflared/ngrok or polling).
-
-### Bug Resolution (BUGS)
-
-- [ ] **BUGS-01**: Developer executes test suites across full stack to identify application bugs.
-- [ ] **BUGS-02**: Developer reports and discusses identified bugs with the user prior to implementing any code fixes.
+**Defined:** 2026-02-22
+**Core Value:** Users can demonstrate and test all agent and client API capabilities through runnable Python scripts.
+**Previous Milestone:** v2.1 Comprehensive Testing (In Progress)
 
 ---
 
-## v2.2 Requirements (Deferred)
+## v2.2 Requirements
 
-- **TEST-V2-01**: Performance/load testing with tools like K6.
-- **TEST-V2-02**: Fully automated testing in CI/CD pipeline blocking PR merges (out of scope for local testing suite audit).
+### Agent Demo - Configuration (ACONF)
+
+- [ ] **ACONF-01**: User can configure agent demo via .env file with backend URL and Ed25519 keys.
+- [ ] **ACONF-02**: User can generate Ed25519 keypairs and save to .env file.
+- [ ] **ACONF-03**: Script validates public key derives from private key on configuration.
+
+### Agent Demo - Registration & Auth (AAUTH)
+
+- [ ] **AAUTH-01**: User can register an agent with two-step challenge flow (initiate → complete with signature).
+- [ ] **AAUTH-02**: User can log in an agent using DPoP proof authentication.
+- [ ] **AAUTH-03**: User can log out an agent by revoking session.
+- [ ] **AAUTH-04**: User can query current agent info via /agents/me endpoint.
+- [ ] **AAUTH-05**: User can rotate agent keys with dual-signature verification.
+
+### Agent Demo - Queries (AQUERY)
+
+- [ ] **AQUERY-01**: User can query agent's OAuth authorization history.
+- [ ] **AQUERY-02**: User can query agent's current overseer information.
+
+### Agent Demo - Claim & Oversight (ACLAIM)
+
+- [ ] **ACLAIM-01**: User can complete a claim challenge using session or DPoP auth.
+- [ ] **ACLAIM-02**: User can revoke current overseer relationship.
+
+### Agent Demo - OAuth Client (AOAUTH)
+
+- [ ] **AOAUTH-01**: User can register an OAuth client as an agent with key generation or provision options.
+- [ ] **AOAUTH-02**: User can initiate OAuth authorization for a client, receiving authorization code.
+
+### Client Demo - Configuration (CCONF)
+
+- [ ] **CCONF-01**: User can configure client demo via .env file with backend URL, client ID, and Ed25519 keys.
+- [ ] **CCONF-02**: User can generate PKCE code verifier and challenge pair.
+- [ ] **CCONF-03**: User can generate Ed25519 keypairs for client authentication.
+
+### Client Demo - Token Flow (CTOKEN)
+
+- [ ] **CTOKEN-01**: User can perform token exchange with HTTP callback server and client assertion JWT.
+- [ ] **CTOKEN-02**: User can refresh access tokens using refresh token grant.
+- [ ] **CTOKEN-03**: User can revoke access or refresh tokens.
+
+### Client Demo - OAuth Operations (COAUTH)
+
+- [ ] **COAUTH-01**: User can query userinfo endpoint with DPoP-bound access token.
+- [ ] **COAUTH-02**: User can introspect tokens to check status and metadata.
+- [ ] **COAUTH-03**: User can query OpenID discovery endpoint.
 
 ---
 
@@ -50,8 +61,9 @@
 
 | Feature | Reason |
 |---------|--------|
-| Fixing bugs immediately upon discovery | Constraint: Bugs must be discussed before fixes are applied. |
-| Production Database Testing | Constraint: All tests must run on ephemeral test instances or Paddle sandbox. |
+| Security hardening | Constraint: Demo scripts only, not production |
+| Automated tests for demos | Constraint: Out of scope for this milestone |
+| Shadow claim initiation | Constraint: Agent only completes claims, doesn't initiate |
 
 ---
 
@@ -59,25 +71,34 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUDIT-01 | Phase 28 | Complete |
-| AUDIT-02 | Phase 28 | Complete |
-| AUDIT-03 | Phase 28 | Complete |
-| BETEST-01 | Phase 29 | Pending |
-| BETEST-02 | Phase 29 | Pending |
-| BETEST-03 | Phase 29 | Pending |
-| FETEST-01 | Phase 30 | Pending |
-| FETEST-02 | Phase 30 | Pending |
-| FETEST-03 | Phase 30 | Pending |
-| E2ETEST-01 | Phase 31 | Pending |
-| E2ETEST-02 | Phase 31 | Pending |
-| E2ETEST-03 | Phase 31 | Pending |
-| BUGS-01 | Phase 32 | Pending |
-| BUGS-02 | Phase 32 | Pending |
+| ACONF-01 | Phase 33 | Pending |
+| ACONF-02 | Phase 33 | Pending |
+| ACONF-03 | Phase 33 | Pending |
+| AAUTH-01 | Phase 33 | Pending |
+| AAUTH-02 | Phase 33 | Pending |
+| AAUTH-03 | Phase 33 | Pending |
+| AAUTH-04 | Phase 33 | Pending |
+| AAUTH-05 | Phase 34 | Pending |
+| AQUERY-01 | Phase 34 | Pending |
+| AQUERY-02 | Phase 34 | Pending |
+| ACLAIM-01 | Phase 34 | Pending |
+| ACLAIM-02 | Phase 34 | Pending |
+| AOAUTH-01 | Phase 35 | Pending |
+| AOAUTH-02 | Phase 35 | Pending |
+| CCONF-01 | Phase 36 | Pending |
+| CCONF-02 | Phase 36 | Pending |
+| CCONF-03 | Phase 36 | Pending |
+| CTOKEN-01 | Phase 36 | Pending |
+| CTOKEN-02 | Phase 37 | Pending |
+| CTOKEN-03 | Phase 37 | Pending |
+| COAUTH-01 | Phase 37 | Pending |
+| COAUTH-02 | Phase 37 | Pending |
+| COAUTH-03 | Phase 37 | Pending |
 
 **Coverage:**
-- v2.1 requirements: 14 total
-- Mapped to phases: 14 (100%)
+- v2.2 requirements: 22 total
+- Mapped to phases: 22 (100%)
 - Unmapped: 0
 
 ---
-*Requirements defined: 2026-02-21*
+*Requirements defined: 2026-02-22*
