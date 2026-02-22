@@ -41,8 +41,8 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 - [x] 29-08-PLAN.md — Fix Failing Unit Tests (Gap Closure)
 - [x] 29-09-PLAN.md — Fix Overseer API Tests (Gap Closure)
 - [x] 29-10-PLAN.md — Fix Agent API Tests (Gap Closure)
-- [ ] 29-11-PLAN.md — Stability and Test Cleanup (Gap Closure)
-- [ ] 29-12-PLAN.md — Integration Fixes and Logic Regressions (Gap Closure)
+- [ ] 29-11-PLAN.md — Suite Stability & Ghost Test Removal (Gap Closure)
+- [ ] 29-12-PLAN.md — Paddle API Mocks & Logic Regressions (Gap Closure)
 
 - [ ] Phase 38: Security Audit & Hardening
 - [ ] Phase 39: Drizzle ORM Migration
