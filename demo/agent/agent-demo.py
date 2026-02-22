@@ -896,6 +896,40 @@ def cmd_info(args) -> int:
         return 1
 
 
+def cmd_query(args) -> int:
+    """Query OAuth history or overseer information."""
+    try:
+        # Load config
+        config = load_config()
+
+        if not config.get("session_id"):
+            print(
+                "No active session. Run 'python agent-demo.py login' first.",
+                file=sys.stderr,
+            )
+            return 1
+
+        if not config.get("backend_url"):
+            print("No backend_url configured.", file=sys.stderr)
+            return 1
+
+        backend_url = config["backend_url"]
+        session_id = config["session_id"]
+        headers = {"Authorization": f"Bearer {session_id}"}
+
+        if args.target == "history":
+            url = f"{backend_url}/v1/agents/me/oauth-history"
+        else:  # overseers
+            url = f"{backend_url}/v1/agents/me/overseer"
+
+        response = make_request(url, headers)
+        print_output(response)
+        return 0
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
 def cmd_config(args) -> int:
     """Configure the agent demo or display current configuration."""
     try:
@@ -1046,6 +1080,17 @@ Examples:
         help="The base64url-encoded Ed25519 public key",
     )
 
+    # query command
+    parser_query = subparsers.add_parser(
+        "query",
+        help="Query OAuth history or overseer information",
+    )
+    parser_query.add_argument(
+        "target",
+        choices=["history", "overseers"],
+        help="What to query: history (OAuth history) or overseers (overseer info)",
+    )
+
     # Parse arguments
     args = parser.parse_args()
 
@@ -1061,6 +1106,7 @@ Examples:
         "logout": cmd_logout,
         "info": cmd_info,
         "configure": cmd_config,
+        "query": cmd_query,
     }
 
     handler = command_handlers.get(args.command)
