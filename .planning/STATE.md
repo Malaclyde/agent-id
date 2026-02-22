@@ -6,11 +6,11 @@
 **Current Focus:** v2.2 Demo Scripts - Creating Python demo scripts for agent and client operations.
 
 ## Current Position
-- **Phase:** 33-agent-demo-core (Agent Demo - Core)
-- **Plan:** 05 of 05
-- **Status:** Phase complete
-- **Last activity:** 2026-02-22 — Completed 33-05-PLAN.md (CLI implementation and end-to-end verification)
-- **Progress:** [██████████████████████████████] 100% (5 of 5 Phase 33 Plans Complete)
+- **Phase:** 34-agent-demo-extended (Agent Demo - Extended Operations)
+- **Plan:** 01 of 03
+- **Status:** In progress
+- **Last activity:** 2026-02-22 — Completed 34-01-PLAN.md (Query subcommand and fail-fast HTTP wrapper)
+- **Progress:** [██████████░░░░░░░░░░░░░░░░░░░░] 33% (1 of 3 Phase 34 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -25,17 +25,19 @@
 - Using python-dotenv for configuration management.
 - Using urllib.request for HTTP requests (standard library).
 - Using argparse for CLI to minimize external dependencies.
+- Fail-fast HTTP wrapper (make_request) exits via sys.exit(1) on HTTPError, printing raw response body to stderr.
+- Raw JSON output via print_output for all query results (no pagination or truncation).
 
 **Active Blockers:**
 - None.
 
 **Next Steps:**
-- Start Phase 34 (Agent Demo - Extended Operations)
+- Continue with 34-02-PLAN.md (Claim challenges and overseer revocation)
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 33-05-PLAN.md (Phase 33 Complete)
-**Resume file:** .planning/phases/34-agent-demo-extended/34-01-PLAN.md (if it exists)
+**Stopped at:** Completed 34-01-PLAN.md
+**Resume file:** .planning/phases/34-agent-demo-extended/34-02-PLAN.md
 
 
 ---
