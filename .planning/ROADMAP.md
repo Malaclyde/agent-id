@@ -41,8 +41,8 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 - [x] 29-08-PLAN.md — Fix Failing Unit Tests (Gap Closure)
 - [x] 29-09-PLAN.md — Fix Overseer API Tests (Gap Closure)
 - [x] 29-10-PLAN.md — Fix Agent API Tests (Gap Closure)
-- [ ] 29-11-PLAN.md — Suite Stability & Ghost Test Removal (Gap Closure)
-- [ ] 29-12-PLAN.md — Paddle API Mocks & Logic Regressions (Gap Closure)
+- [x] 29-11-PLAN.md — Suite Stability & Ghost Test Removal (Gap Closure)
+- [x] 29-12-PLAN.md — Paddle API Mocks & Logic Regressions (Gap Closure)
 
 - [ ] Phase 38: Security Audit & Hardening
 - [ ] Phase 39: Drizzle ORM Migration
@@ -61,7 +61,7 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 | Phase | Goal | Requirements | Status |
 |-------|------|--------------|--------|
 | 28 - Audit & Test Strategy | System documentation accurately reflects current application flows and outlines a complete testing strategy. | AUDIT-01, AUDIT-02, AUDIT-03 | Complete |
-| 29 - Backend Test Implementation | Backend APIs and cryptographic utilities are fully verifiable in isolated, ephemeral environments. | BETEST-01, BETEST-02, BETEST-03 | Gap Closure |
+| 29 - Backend Test Implementation | Backend APIs and cryptographic utilities are fully verifiable in isolated, ephemeral environments. | BETEST-01, BETEST-02, BETEST-03 | Complete |
 | 30 - Frontend Test Implementation | Frontend React components and edge cases are verifiable without relying on a live backend. | FETEST-01, FETEST-02, FETEST-03 | Pending |
 | 31 - End-to-End Test Implementation | Full application workflows, including real third-party integrations, are automatically verifiable. | E2ETEST-01, E2ETEST-02, E2ETEST-03 | Pending |
 | 32 - Bug Discovery & Reporting | All application bugs are identified and documented for future resolution. | BUGS-01, BUGS-02 | Pending |
