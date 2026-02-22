@@ -1,19 +1,21 @@
 """
-Agent Demo - Core Crypto Utilities
+Agent Demo - Core Crypto Utilities and Configuration Management
 
 Provides base64url encoding/decoding, canonical JSON serialization,
-Ed25519 key management, and DPoP proof construction.
+Ed25519 key management, DPoP proof construction, and .env configuration.
 """
 
 from typing import Optional
 
 import base64
 import json
+import os
 import time
 import uuid
 import hashlib
 from nacl.signing import SigningKey, VerifyKey
 from urllib.parse import urlparse
+from dotenv import load_dotenv, set_key
 
 
 # =============================================================================
@@ -221,3 +223,94 @@ def validate_keys_match(private_b64url: str, public_b64url: str) -> bool:
         return derived_public == public_b64url
     except (ValueError, Exception):
         return False
+
+
+# =============================================================================
+# Configuration Management (.env handling)
+# =============================================================================
+
+
+ENV_FILE = ".env.agent"
+
+# Mapping from internal config keys to environment variable names
+ENV_KEYS = {
+    "backend_url": "AGENT_BACKEND_URL",
+    "private_key": "AGENT_PRIVATE_KEY",
+    "public_key": "AGENT_PUBLIC_KEY",
+    "agent_id": "AGENT_ID",
+    "session_id": "AGENT_SESSION_ID",
+}
+
+
+def load_config(env_file: str = ENV_FILE) -> dict:
+    """
+    Load configuration from .env file.
+
+    Args:
+        env_file: Path to .env file (default: .env.agent)
+
+    Returns:
+        Dict with keys: backend_url, private_key, public_key, agent_id, session_id
+        Values are None if not set in the file.
+    """
+    load_dotenv(env_file)
+    return {
+        "backend_url": os.getenv("AGENT_BACKEND_URL"),
+        "private_key": os.getenv("AGENT_PRIVATE_KEY"),
+        "public_key": os.getenv("AGENT_PUBLIC_KEY"),
+        "agent_id": os.getenv("AGENT_ID"),
+        "session_id": os.getenv("AGENT_SESSION_ID"),
+    }
+
+
+def save_config(config: dict, env_file: str = ENV_FILE) -> None:
+    """
+    Save configuration to .env file.
+
+    Args:
+        config: Dict with internal config keys (not env var names)
+        env_file: Path to .env file (default: .env.agent)
+    """
+    for internal_key, env_value in config.items():
+        if env_value is not None and internal_key in ENV_KEYS:
+            env_var = ENV_KEYS[internal_key]
+            set_key(env_file, env_var, str(env_value))
+
+
+def validate_config(config: dict) -> tuple[bool, str]:
+    """
+    Validate configuration dictionary.
+
+    Checks:
+    - backend_url is set
+    - private_key is set
+    - public_key is set
+    - If both keys present, validates they match (ACONF-03)
+
+    Args:
+        config: Configuration dict from load_config()
+
+    Returns:
+        Tuple of (is_valid, message)
+        - (True, "OK") if valid
+        - (False, "error message") if invalid
+    """
+    # Check required fields
+    if not config.get("backend_url"):
+        return False, "backend_url is required"
+
+    if not config.get("private_key"):
+        return False, "private_key is required"
+
+    if not config.get("public_key"):
+        return False, "public_key is required"
+
+    # Validate key match (ACONF-03)
+    private_key = config.get("private_key")
+    public_key = config.get("public_key")
+
+    if private_key and public_key:
+        if not validate_keys_match(private_key, public_key):
+            return False, "public_key does not derive from private_key"
+
+    return True, "OK"
