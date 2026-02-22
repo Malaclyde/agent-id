@@ -1,10 +1,24 @@
 """
-Agent Demo - Core Crypto Utilities and Configuration Management
+Agent Demo - CLI Interface for Agent Authentication and Configuration
 
-Provides base64url encoding/decoding, canonical JSON serialization,
-Ed25519 key management, DPoP proof construction, and .env configuration.
+This module provides a command-line interface for:
+- Generating Ed25519 keypairs
+- Registering agents with challenge-response flow
+- Authenticating with DPoP proof
+- Querying agent information
+- Managing sessions
+
+Usage:
+    python agent_demo.py generate-keys
+    python agent_demo.py register --name "My Agent" --description "A demo agent"
+    python agent_demo.py login
+    python agent_demo.py info
+    python agent_demo.py logout
+    python agent_demo.py config
 """
 
+import argparse
+import sys
 from typing import Optional
 
 import base64
@@ -631,3 +645,327 @@ def get_agent_info(backend_url: str, session_id: str) -> dict:
         raise AuthenticationError(f"Get agent info failed: {error_msg}")
     except urllib.error.URLError as e:
         raise AuthenticationError(f"Network error: {e.reason}")
+
+
+# =============================================================================
+# CLI Interface
+# =============================================================================
+
+
+def cmd_generate_keys(args) -> int:
+    """Generate new Ed25519 keypair and save to config."""
+    try:
+        private_b64url, public_b64url = generate_keypair()
+
+        # Load existing config or create new
+        config = load_config()
+        config["private_key"] = private_b64url
+        config["public_key"] = public_b64url
+        save_config(config)
+
+        print("Keys generated successfully!")
+        print(f"Public key: {public_b64url}")
+        print(f"Private key: [saved to .env.agent]")
+        return 0
+    except Exception as e:
+        print(f"Error generating keys: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_register(args) -> int:
+    """Register a new agent with the backend."""
+    try:
+        # Load and validate config
+        config = load_config()
+        is_valid, msg = validate_config(config)
+        if not is_valid:
+            print(f"Config validation failed: {msg}", file=sys.stderr)
+            print("Run 'python agent_demo.py generate-keys' first.", file=sys.stderr)
+            return 1
+
+        # Load private key
+        private_key = load_private_key(config["private_key"])
+
+        # Register agent
+        print(f"Registering agent: {args.name}...")
+        result = register_agent(
+            backend_url=config["backend_url"],
+            name=args.name,
+            private_key=private_key,
+            description=args.description,
+        )
+
+        # Save agent_id and session_id
+        agent_id = result["agent"]["id"]
+        session_id = result["session_id"]
+
+        config["agent_id"] = agent_id
+        config["session_id"] = session_id
+        save_config(config)
+
+        print("Agent registered successfully!")
+        print(json.dumps(result, indent=2))
+        return 0
+    except RegistrationError as e:
+        print(f"Registration failed: {e}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_login(args) -> int:
+    """Login with DPoP authentication."""
+    try:
+        # Load and validate config
+        config = load_config()
+        is_valid, msg = validate_config(config)
+        if not is_valid:
+            print(f"Config validation failed: {msg}", file=sys.stderr)
+            return 1
+
+        if not config.get("agent_id"):
+            print(
+                "No agent_id found. Run 'python agent_demo.py register' first.",
+                file=sys.stderr,
+            )
+            return 1
+
+        # Load private key
+        private_key = load_private_key(config["private_key"])
+
+        # Login
+        print("Logging in...")
+        result = login_agent(
+            backend_url=config["backend_url"],
+            agent_id=config["agent_id"],
+            private_key=private_key,
+        )
+
+        # Save session_id
+        session_id = result["session_id"]
+        config["session_id"] = session_id
+        save_config(config)
+
+        expires_in = result.get("expires_in", 1800)
+        expires_minutes = expires_in // 60
+
+        print("Login successful!")
+        print(f"Session ID: {session_id}")
+        print(f"Expires in: {expires_minutes} minutes")
+        return 0
+    except AuthenticationError as e:
+        print(f"Login failed: {e}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_logout(args) -> int:
+    """Logout and revoke session."""
+    try:
+        # Load config
+        config = load_config()
+
+        if not config.get("session_id"):
+            print("No active session. Nothing to logout.", file=sys.stderr)
+            return 1
+
+        if not config.get("backend_url"):
+            print("No backend_url configured.", file=sys.stderr)
+            return 1
+
+        # Logout
+        print("Logging out...")
+        success = logout_agent(
+            backend_url=config["backend_url"],
+            session_id=config["session_id"],
+        )
+
+        if success:
+            # Clear session_id from config
+            config["session_id"] = None
+            save_config(config)
+            print("Logout successful!")
+            return 0
+        else:
+            print("Logout failed.", file=sys.stderr)
+            return 1
+    except AuthenticationError as e:
+        print(f"Logout failed: {e}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_info(args) -> int:
+    """Get and display agent information."""
+    try:
+        # Load config
+        config = load_config()
+
+        if not config.get("session_id"):
+            print(
+                "No active session. Run 'python agent_demo.py login' first.",
+                file=sys.stderr,
+            )
+            return 1
+
+        if not config.get("backend_url"):
+            print("No backend_url configured.", file=sys.stderr)
+            return 1
+
+        # Get agent info
+        result = get_agent_info(
+            backend_url=config["backend_url"],
+            session_id=config["session_id"],
+        )
+
+        agent = result.get("agent", {})
+        print("Agent Information:")
+        print(f"  ID:          {agent.get('id', 'N/A')}")
+        print(f"  Name:        {agent.get('name', 'N/A')}")
+        print(f"  Description: {agent.get('description', 'N/A')}")
+        print(f"  Created at:  {agent.get('created_at', 'N/A')}")
+        if agent.get("public_key"):
+            print(f"  Public key:  {agent.get('public_key', 'N/A')[:32]}...")
+        return 0
+    except AuthenticationError as e:
+        print(f"Failed to get info: {e}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_config(args) -> int:
+    """Display current configuration."""
+    try:
+        config = load_config()
+
+        print("Current Configuration:")
+        print(f"  Backend URL:  {config.get('backend_url') or '(not set)'}")
+        print(f"  Agent ID:     {config.get('agent_id') or '(not set)'}")
+        print(f"  Session ID:   {config.get('session_id') or '(not set)'}")
+
+        private_key = config.get("private_key")
+        public_key = config.get("public_key")
+
+        if private_key:
+            print(f"  Private key: {private_key[:16]}...{private_key[-8:]}")
+        else:
+            print(f"  Private key: (not set)")
+
+        if public_key:
+            print(f"  Public key:  {public_key}")
+        else:
+            print(f"  Public key:  (not set)")
+
+        # Validate and report status
+        if private_key and public_key:
+            is_valid, msg = validate_config(config)
+            if is_valid:
+                print(f"\n  Status: VALID (keys match)")
+            else:
+                print(f"\n  Status: INVALID - {msg}")
+        else:
+            print(f"\n  Status: INCOMPLETE")
+
+        return 0
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def main():
+    """Main CLI entry point."""
+    parser = argparse.ArgumentParser(
+        description="Agent-ID Demo Script",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python agent_demo.py generate-keys
+  python agent_demo.py register --name "My Agent"
+  python agent_demo.py login
+  python agent_demo.py info
+  python agent_demo.py logout
+  python agent_demo.py config
+        """,
+    )
+
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+
+    # generate-keys command
+    parser_generate = subparsers.add_parser(
+        "generate-keys",
+        help="Generate new Ed25519 keypair and save to .env.agent",
+    )
+
+    # register command
+    parser_register = subparsers.add_parser(
+        "register",
+        help="Register a new agent with the backend",
+    )
+    parser_register.add_argument(
+        "--name",
+        required=True,
+        help="Agent name",
+    )
+    parser_register.add_argument(
+        "--description",
+        help="Optional agent description",
+    )
+
+    # login command
+    parser_login = subparsers.add_parser(
+        "login",
+        help="Authenticate with DPoP proof and create session",
+    )
+
+    # logout command
+    parser_logout = subparsers.add_parser(
+        "logout",
+        help="Logout and revoke current session",
+    )
+
+    # info command
+    parser_info = subparsers.add_parser(
+        "info",
+        help="Get and display agent information",
+    )
+
+    # config command
+    parser_config = subparsers.add_parser(
+        "config",
+        help="Display current configuration",
+    )
+
+    # Parse arguments
+    args = parser.parse_args()
+
+    # Dispatch to command handlers
+    if args.command is None:
+        parser.print_help()
+        return 0
+
+    command_handlers = {
+        "generate-keys": cmd_generate_keys,
+        "register": cmd_register,
+        "login": cmd_login,
+        "logout": cmd_logout,
+        "info": cmd_info,
+        "config": cmd_config,
+    }
+
+    handler = command_handlers.get(args.command)
+    if handler:
+        return handler(args)
+    else:
+        print(f"Unknown command: {args.command}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
