@@ -25,8 +25,9 @@
 - **Plan:** 2
 - **Plan:** 4
 - **Plan:** 3
+- **Plan:** 6
 - **Status:** In progress
-- **Progress:** [██████████████████                              ] 76% (16/21 Plans Complete)
+- **Progress:** [████████████████████░                              ] 86% (18/21 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -70,6 +71,8 @@
 - **[29-12-D01]** Fixed vi.mock limitations in Workers pool; adjusted claiming logic tests to work around chained dependency mocking issues; skipped 3 unit tests requiring subscription mocking (covered by integration tests).
 - **[30-01-D01]** MSW installed for frontend API mocking; server lifecycle managed in setup.ts; tests define their own handlers via server.use()
 - **[30-03-D01]** MSW handlers organized by API domain (agents, overseers, clients, subscriptions); fail-fast pattern with 500 default responses
+- **[30-05-D01]** Home and Header tests updated to use renderWithRouter from test/utils/render-helpers; Header uses mocked AuthContext with factory data
+- **[30-06-D01]** AuthContext tests use MSW handlers; error handling added to login/register to prevent unhandled rejections
 
 **Active Blockers:**
 - None.
@@ -96,7 +99,7 @@
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Phase 30 Plan 3 Complete - MSW handlers organized by endpoint domain created
+**Stopped at:** Phase 30 Plan 6 Complete - AuthContext tests updated with MSW
 **Resume file:** None (plan complete)
 
 
