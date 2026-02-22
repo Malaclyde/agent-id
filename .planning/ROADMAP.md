@@ -26,6 +26,17 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 </details>
 
 ### 📋 v2.3 Platform Evolution (Planned)
+### Phase 29: Backend Test Implementation
+**Goal:** Backend APIs and cryptographic utilities are fully verifiable in isolated, ephemeral environments.
+**Dependencies:** Phase 28
+**Requirements:** BETEST-01, BETEST-02, BETEST-03
+**Plans:** 6 plans
+- [ ] 29-01-PLAN.md — Test Infrastructure Setup & DB/KV Helpers
+- [ ] 29-02-PLAN.md — Cryptographic & Data Builder Helpers
+- [ ] 29-03-PLAN.md — Core API & Webhook Integration Tests
+- [ ] 29-04-PLAN.md — Overseers & Agents Integration Tests
+- [ ] 29-05-PLAN.md — Clients & Subscriptions Integration Tests
+- [ ] 29-06-PLAN.md — OAuth API Integration Tests
 
 - [ ] Phase 38: Security Audit & Hardening
 - [ ] Phase 39: Drizzle ORM Migration
