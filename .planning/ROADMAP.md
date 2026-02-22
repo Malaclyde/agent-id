@@ -46,6 +46,62 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 
 - [ ] Phase 38: Security Audit & Hardening
 - [ ] Phase 39: Drizzle ORM Migration
+**Success Criteria:**
+1. Developer can run tests that dynamically generate Ed25519 keypairs and DPoP signatures.
+2. Developer can execute tests against an ephemeral, mocked D1/KV database without network overhead.
+3. Developer can verify all backend API endpoints pass integration tests via `app.fetch()`.
+
+---
+
+### Phase 30: Frontend Test Implementation
+**Goal:** Frontend React components and edge cases are verifiable without relying on a live backend.
+**Dependencies:** Phase 28
+**Requirements:** FETEST-01, FETEST-02, FETEST-03
+**Plans:** 13 plans
+- [ ] 30-01-PLAN.md — MSW Installation & Core Setup
+- [ ] 30-02-PLAN.md — Test Factories & Builders
+- [ ] 30-03-PLAN.md — MSW Handlers by Endpoint
+- [ ] 30-04-PLAN.md — Test Utilities (Auth, Render, Paddle Mocks)
+- [ ] 30-05-PLAN.md — Home & Header Tests (Update Existing)
+- [ ] 30-06-PLAN.md — AuthContext Tests (Update to MSW)
+- [ ] 30-07-PLAN.md — OverseerAuth & Subscription Result Pages
+- [ ] 30-08-PLAN.md — RegisteredClients Tests
+- [ ] 30-09-PLAN.md — OverseerDashboard Tests
+- [ ] 30-10-PLAN.md — AgentDashboard Tests
+- [ ] 30-11-PLAN.md — SubscriptionManagement Tests (Paddle Integration)
+- [ ] 30-12-PLAN.md — ShadowClaim Tests (Polling & Edge Cases)
+- [ ] 30-13-PLAN.md — ShadowClaimPayment Tests
+
+**Success Criteria:**
+1. Developer can run Vitest to verify React component UI states.
+2. Frontend tests successfully intercept and mock API requests using MSW.
+3. Developer can verify complex frontend edge cases like polling timeouts and expired tokens via automated tests.
+
+---
+
+### Phase 31: End-to-End Test Implementation
+**Goal:** Full application workflows, including real third-party integrations, are automatically verifiable.
+**Dependencies:** Phase 29, Phase 30
+**Requirements:** E2ETEST-01, E2ETEST-02, E2ETEST-03
+
+**Success Criteria:**
+1. Developer can run Playwright tests handling cross-origin iframes and multi-browser contexts.
+2. Automated tests successfully complete a real Paddle Checkout sandbox flow using testuser-N data.
+3. Automated tests successfully verify asynchronous webhook outcomes using polling or a tunnel.
+
+---
+
+### Phase 32: Bug Discovery & Reporting
+**Goal:** All application bugs are identified and documented for future resolution.
+**Dependencies:** Phase 29, Phase 30, Phase 31
+**Requirements:** BUGS-01, BUGS-02
+
+**Success Criteria:**
+1. Developer has executed all test suites (Backend, Frontend, E2E) across the full stack.
+2. User can review a comprehensive report of identified bugs.
+3. Developer and user have discussed the bug report prior to implementing fixes.
+
+---
 
 ## Progress
 
