@@ -19,6 +19,8 @@ import json
 import os
 import sys
 import argparse
+import hashlib
+import secrets
 from nacl.signing import SigningKey, VerifyKey
 from dotenv import load_dotenv, set_key
 
@@ -208,6 +210,34 @@ def validate_config(config: dict) -> tuple[bool, str]:
             return False, f"Keys do not match: {msg}"
 
     return True, "OK"
+
+
+# =============================================================================
+# PKCE Generation
+# =============================================================================
+
+
+def generate_pkce_pair() -> tuple[str, str]:
+    """
+    Generate PKCE code verifier and S256 challenge pair.
+
+    Per RFC 7636:
+    - code_verifier: 43-128 characters, cryptographically random
+    - code_challenge: BASE64URL(SHA256(code_verifier))
+    """
+    # Generate 32 bytes of random data
+    random_bytes = secrets.token_bytes(32)
+
+    # Base64url encode without padding to create code_verifier
+    code_verifier = base64url_encode(random_bytes)
+
+    # SHA256 hash the verifier (as UTF-8 bytes)
+    sha256_hash = hashlib.sha256(code_verifier.encode("utf-8")).digest()
+
+    # Base64url encode the hash without padding to create code_challenge
+    code_challenge = base64url_encode(sha256_hash)
+
+    return code_verifier, code_challenge
 
 
 # =============================================================================
