@@ -7,10 +7,10 @@
 
 ## Current Position
 - **Phase:** 34-agent-demo-extended (Agent Demo - Extended Operations)
-- **Plan:** 01 of 03
+- **Plan:** 02 of 03
 - **Status:** In progress
-- **Last activity:** 2026-02-22 — Completed 34-01-PLAN.md (Query subcommand and fail-fast HTTP wrapper)
-- **Progress:** [██████████░░░░░░░░░░░░░░░░░░░░] 33% (1 of 3 Phase 34 Plans Complete)
+- **Last activity:** 2026-02-22 — Completed 34-02-PLAN.md (Claim challenges and overseer revocation)
+- **Progress:** [████████████████████░░░░░░░░░░] 67% (2 of 3 Phase 34 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -27,17 +27,19 @@
 - Using argparse for CLI to minimize external dependencies.
 - Fail-fast HTTP wrapper (make_request) exits via sys.exit(1) on HTTPError, printing raw response body to stderr.
 - Raw JSON output via print_output for all query results (no pagination or truncation).
+- Dual auth pattern: claim subcommand auto-selects Bearer (session) vs DPoP based on config state.
+- No confirmation prompts on destructive actions (revoke-overseer executes immediately).
 
 **Active Blockers:**
 - None.
 
 **Next Steps:**
-- Continue with 34-02-PLAN.md (Claim challenges and overseer revocation)
+- Continue with 34-03-PLAN.md (Key rotation with dual-signature and .env backup)
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 34-01-PLAN.md
-**Resume file:** .planning/phases/34-agent-demo-extended/34-02-PLAN.md
+**Stopped at:** Completed 34-02-PLAN.md
+**Resume file:** .planning/phases/34-agent-demo-extended/34-03-PLAN.md
 
 
 ---
