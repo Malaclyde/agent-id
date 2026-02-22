@@ -225,7 +225,7 @@ def load_public_key(public_b64url: str) -> VerifyKey:
 def validate_keys_match(private_b64url: str, public_b64url: str) -> tuple[bool, str]:
     """
     Validate that public key derives from private key.
-    
+
     Returns:
         tuple: (is_valid, error_message)
     """
@@ -237,7 +237,6 @@ def validate_keys_match(private_b64url: str, public_b64url: str) -> tuple[bool, 
         return False, "Public key does not match private key"
     except Exception as e:
         return False, f"Key validation failed: {str(e)}"
-
 
 
 # =============================================================================
@@ -647,6 +646,60 @@ def get_agent_info(backend_url: str, session_id: str) -> dict:
 
 
 # =============================================================================
+# Fail-Fast HTTP Wrapper
+# =============================================================================
+
+
+def make_request(
+    url: str, headers: dict, data: Optional[bytes] = None, method: Optional[str] = None
+) -> str:
+    """
+    Unified fail-fast HTTP wrapper.
+
+    Executes an HTTP request using urllib.request.urlopen. On HTTPError,
+    prints the raw unadulterated response body to stderr and immediately
+    exits via sys.exit(1).
+
+    Args:
+        url: Full URL to request
+        headers: Dict of HTTP headers
+        data: Optional request body bytes
+        method: HTTP method (GET, POST, etc.). Auto-detected if None.
+
+    Returns:
+        Response body as string
+    """
+    if method is None:
+        method = "POST" if data is not None else "GET"
+
+    req = urllib.request.Request(url, data=data, headers=headers, method=method)
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return resp.read().decode("utf-8")
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode("utf-8")
+        print(error_body, file=sys.stderr)
+        sys.exit(1)
+    except urllib.error.URLError as e:
+        print(f"Network error: {e.reason}", file=sys.stderr)
+        sys.exit(1)
+
+
+def print_output(response_string: str) -> None:
+    """
+    Parse response string into a Python dict and pretty-print as JSON.
+
+    Outputs the full response without pagination or truncation.
+
+    Args:
+        response_string: Raw JSON response string from API
+    """
+    obj = json.loads(response_string)
+    print(json.dumps(obj, indent=2))
+
+
+# =============================================================================
 # CLI Interface
 # =============================================================================
 
@@ -655,8 +708,8 @@ def cmd_generate_keys(args) -> int:
     """Generate new Ed25519 keypair and optionally save to config."""
     try:
         private_b64url, public_b64url = generate_keypair()
-        
-        if getattr(args, 'save', False):
+
+        if getattr(args, "save", False):
             config = load_config()
             config["private_key"] = private_b64url
             config["public_key"] = public_b64url
@@ -847,30 +900,35 @@ def cmd_config(args) -> int:
     """Configure the agent demo or display current configuration."""
     try:
         config = load_config()
-        
+
         # Check if we should update config
         update_made = False
-        
-        if getattr(args, 'backend_url', None):
-            config['backend_url'] = args.backend_url
+
+        if getattr(args, "backend_url", None):
+            config["backend_url"] = args.backend_url
             update_made = True
-            
-        if getattr(args, 'private_key', None) and getattr(args, 'public_key', None):
-            config['private_key'] = args.private_key
-            config['public_key'] = args.public_key
+
+        if getattr(args, "private_key", None) and getattr(args, "public_key", None):
+            config["private_key"] = args.private_key
+            config["public_key"] = args.public_key
             update_made = True
-        elif getattr(args, 'private_key', None) or getattr(args, 'public_key', None):
-            print("Error: Both --private-key and --public-key must be provided together.", file=sys.stderr)
+        elif getattr(args, "private_key", None) or getattr(args, "public_key", None):
+            print(
+                "Error: Both --private-key and --public-key must be provided together.",
+                file=sys.stderr,
+            )
             return 1
-            
+
         if update_made:
             # Validate before saving if we have keys
-            if config.get('private_key') and config.get('public_key'):
-                is_valid, msg = validate_keys_match(config['private_key'], config['public_key'])
+            if config.get("private_key") and config.get("public_key"):
+                is_valid, msg = validate_keys_match(
+                    config["private_key"], config["public_key"]
+                )
                 if not is_valid:
                     print(f"Error: Invalid keys provided - {msg}", file=sys.stderr)
                     return 1
-            
+
             save_config(config)
             print("Configuration updated successfully.\n")
 
