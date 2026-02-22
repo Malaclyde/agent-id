@@ -27,8 +27,9 @@
 - **Plan:** 3
 - **Plan:** 6
 - **Plan:** 7
+- **Plan:** 8
 - **Status:** In progress
-- **Progress:** [████████████████████░                              ] 86% (19/21 Plans Complete)
+- **Progress:** [████████████████████░                              ] 90% (19/21 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -75,6 +76,7 @@
 - **[30-05-D01]** Home and Header tests updated to use renderWithRouter from test/utils/render-helpers; Header uses mocked AuthContext with factory data
 - **[30-06-D01]** AuthContext tests use MSW handlers; error handling added to login/register to prevent unhandled rejections
 - **[30-07-D01]** OverseerAuth tests use getByRole selectors instead of getByLabelText due to missing htmlFor attributes on labels
+- **[30-08-D01]** RegisteredClients tests use vi.mock for API client mocking instead of MSW; use getByPlaceholderText for form fields
 
 **Active Blockers:**
 - None.
@@ -100,8 +102,8 @@
 - Begin Phase 30: Frontend Test Implementation
 
 ## Session Continuity
-**Last session:** 2026-02-22
-**Stopped at:** Phase 30 Plan 7 Complete - OverseerAuth and subscription page tests created
+**Last session:** 2026-02-23
+**Stopped at:** Phase 30 Plan 8 Complete - RegisteredClients page tests created
 **Resume file:** None (plan complete)
 
 
