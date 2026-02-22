@@ -930,6 +930,43 @@ def cmd_query(args) -> int:
         return 1
 
 
+def cmd_claim(args) -> int:
+    """Complete a claim challenge to accept oversight."""
+    config = load_config()
+
+    if not config.get("backend_url"):
+        print("No backend_url configured.", file=sys.stderr)
+        return 1
+
+    has_session = bool(config.get("session_id"))
+    has_keys = bool(config.get("private_key") and config.get("public_key"))
+
+    if not has_session and not has_keys:
+        print(
+            "Authentication required: set session_id or private_key + public_key in .env.",
+            file=sys.stderr,
+        )
+        return 1
+
+    backend_url = config["backend_url"]
+    url = f"{backend_url}/v1/agents/claim/complete/{args.challenge_id}"
+    body = {"overseer_id": args.overseer_id}
+    encoded_body = json.dumps(body).encode("utf-8")
+
+    headers = {"Content-Type": "application/json"}
+
+    if has_session:
+        headers["Authorization"] = f"Bearer {config['session_id']}"
+    else:
+        private_key = load_private_key(config["private_key"])
+        dpop_proof = create_dpop_proof(private_key, "POST", url)
+        headers["DPoP"] = dpop_proof
+
+    response = make_request(url, headers, data=encoded_body, method="POST")
+    print_output(response)
+    return 0
+
+
 def cmd_config(args) -> int:
     """Configure the agent demo or display current configuration."""
     try:
@@ -1080,6 +1117,22 @@ Examples:
         help="The base64url-encoded Ed25519 public key",
     )
 
+    # claim command
+    parser_claim = subparsers.add_parser(
+        "claim",
+        help="Complete a claim challenge to accept oversight",
+    )
+    parser_claim.add_argument(
+        "--challenge-id",
+        required=True,
+        help="The claim challenge ID to complete",
+    )
+    parser_claim.add_argument(
+        "--overseer-id",
+        required=True,
+        help="The overseer ID initiating the claim",
+    )
+
     # query command
     parser_query = subparsers.add_parser(
         "query",
@@ -1107,6 +1160,7 @@ Examples:
         "info": cmd_info,
         "configure": cmd_config,
         "query": cmd_query,
+        "claim": cmd_claim,
     }
 
     handler = command_handlers.get(args.command)
