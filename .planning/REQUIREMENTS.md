@@ -65,9 +65,9 @@
 | BETEST-01 | Phase 29 | Complete |
 | BETEST-02 | Phase 29 | Complete |
 | BETEST-03 | Phase 29 | Complete |
-| FETEST-01 | Phase 30 | Pending |
-| FETEST-02 | Phase 30 | Pending |
-| FETEST-03 | Phase 30 | Pending |
+| FETEST-01 | Phase 30 | Complete |
+| FETEST-02 | Phase 30 | Complete |
+| FETEST-03 | Phase 30 | Complete |
 | E2ETEST-01 | Phase 31 | Pending |
 | E2ETEST-02 | Phase 31 | Pending |
 | E2ETEST-03 | Phase 31 | Pending |
