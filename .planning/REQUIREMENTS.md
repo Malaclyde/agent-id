@@ -59,25 +59,25 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUDIT-01 | TBD | Pending |
-| AUDIT-02 | TBD | Pending |
-| AUDIT-03 | TBD | Pending |
-| BETEST-01 | TBD | Pending |
-| BETEST-02 | TBD | Pending |
-| BETEST-03 | TBD | Pending |
-| FETEST-01 | TBD | Pending |
-| FETEST-02 | TBD | Pending |
-| FETEST-03 | TBD | Pending |
-| E2ETEST-01 | TBD | Pending |
-| E2ETEST-02 | TBD | Pending |
-| E2ETEST-03 | TBD | Pending |
-| BUGS-01 | TBD | Pending |
-| BUGS-02 | TBD | Pending |
+| AUDIT-01 | Phase 28 | Pending |
+| AUDIT-02 | Phase 28 | Pending |
+| AUDIT-03 | Phase 28 | Pending |
+| BETEST-01 | Phase 29 | Pending |
+| BETEST-02 | Phase 29 | Pending |
+| BETEST-03 | Phase 29 | Pending |
+| FETEST-01 | Phase 30 | Pending |
+| FETEST-02 | Phase 30 | Pending |
+| FETEST-03 | Phase 30 | Pending |
+| E2ETEST-01 | Phase 31 | Pending |
+| E2ETEST-02 | Phase 31 | Pending |
+| E2ETEST-03 | Phase 31 | Pending |
+| BUGS-01 | Phase 32 | Pending |
+| BUGS-02 | Phase 32 | Pending |
 
 **Coverage:**
 - v2.1 requirements: 14 total
-- Mapped to phases: 0 (0%)
-- Unmapped: 14
+- Mapped to phases: 14 (100%)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-21*
