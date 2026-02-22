@@ -24,6 +24,8 @@ import argparse
 import hashlib
 import secrets
 import urllib.parse
+import urllib.request
+import urllib.error
 from typing import Optional
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from nacl.signing import SigningKey, VerifyKey
@@ -372,6 +374,252 @@ def start_callback_server(hostname: str, port: int) -> Optional[dict]:
 
 
 # =============================================================================
+# Fail-Fast HTTP Wrapper
+# =============================================================================
+
+
+def make_request(
+    url: str, headers: dict, data: Optional[bytes] = None, method: Optional[str] = None
+) -> str:
+    """
+    Unified fail-fast HTTP wrapper.
+
+    Executes an HTTP request using urllib.request.urlopen. On HTTPError,
+    prints the raw unadulterated response body to stderr and immediately
+    exits via sys.exit(1).
+
+    Args:
+        url: Full URL to request
+        headers: Dict of HTTP headers
+        data: Optional request body bytes
+        method: HTTP method (GET, POST, etc.). Auto-detected if None.
+
+    Returns:
+        Response body as string
+    """
+    if method is None:
+        method = "POST" if data is not None else "GET"
+
+    req = urllib.request.Request(url, data=data, headers=headers, method=method)
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return resp.read().decode("utf-8")
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode("utf-8")
+        print(error_body, file=sys.stderr)
+        sys.exit(1)
+    except urllib.error.URLError as e:
+        print(f"Network error: {e.reason}", file=sys.stderr)
+        sys.exit(1)
+
+
+def print_output(response_string: str) -> None:
+    """
+    Parse response string into a Python dict and pretty-print as JSON.
+
+    Outputs the full response without pagination or truncation.
+
+    Args:
+        response_string: Raw JSON response string from API
+    """
+    obj = json.loads(response_string)
+    print(json.dumps(obj, indent=2))
+
+
+# =============================================================================
+# Command Handlers
+# =============================================================================
+
+
+def cmd_generate_keys(args) -> int:
+    """Generate new Ed25519 keypair and optionally save to config."""
+    try:
+        private_b64url, public_b64url = generate_keypair()
+
+        if getattr(args, "save", False):
+            config = load_config()
+            config["private_key"] = private_b64url
+            config["public_key"] = public_b64url
+            save_config(config)
+            print("Keys generated and saved successfully!")
+            print(f"Public key: {public_b64url}")
+            print("Private key: [saved to .env]")
+        else:
+            print(
+                json.dumps(
+                    {"private_key": private_b64url, "public_key": public_b64url},
+                    indent=2,
+                )
+            )
+            print("\nNote: Keys were NOT saved. Use --save to save them to .env")
+        return 0
+    except Exception as e:
+        print(f"Error generating keys: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_generate_verifier(args) -> int:
+    """Generate PKCE verifier/challenge pair."""
+    try:
+        code_verifier, code_challenge = generate_pkce_pair()
+
+        result = {
+            "code_verifier": code_verifier,
+            "code_challenge": code_challenge,
+            "code_challenge_method": "S256",
+        }
+
+        print_output(json.dumps(result))
+        return 0
+    except Exception as e:
+        print(f"Error generating verifier: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_token_exchange(args) -> int:
+    """Exchange authorization code for tokens."""
+    try:
+        # Load and validate config
+        config = load_config()
+        if not config.get("backend_url"):
+            print("Error: backend_url not configured", file=sys.stderr)
+            return 1
+        if not config.get("client_id"):
+            print("Error: client_id not configured", file=sys.stderr)
+            return 1
+        if not config.get("private_key"):
+            print("Error: client private_key not configured", file=sys.stderr)
+            return 1
+
+        # Build callback URL (redirect_uri)
+        client_url = config.get("client_url", "localhost")
+        client_port = config.get("client_port", "8790")
+        redirect_uri = f"http://{client_url}:{client_port}/callback"
+
+        # Build token endpoint
+        backend_url = config["backend_url"]
+        token_endpoint = f"{backend_url}/v1/oauth/token"
+
+        # Load private key and create client assertion
+        private_key = load_private_key(config["private_key"])
+        client_assertion = create_client_assertion(
+            private_key, config["client_id"], token_endpoint
+        )
+
+        # Prepare request body
+        body_fields = {
+            "grant_type": "authorization_code",
+            "code": args.token,
+            "redirect_uri": redirect_uri,
+            "client_id": config["client_id"],
+            "client_assertion": client_assertion,
+            "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+            "code_verifier": args.code_verifier,
+        }
+        body_bytes = urllib.parse.urlencode(body_fields).encode("utf-8")
+
+        # Make token exchange request
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        response_string = make_request(token_endpoint, headers, data=body_bytes)
+
+        # Print output
+        print_output(response_string)
+
+        # Extract tokens and save to .env
+        result = json.loads(response_string)
+        access_token = result.get("access_token")
+        refresh_token = result.get("refresh_token")
+
+        if access_token:
+            set_key(ENV_FILE, f"AGENT_{args.agent_id}_ACCESS_TOKEN", access_token)
+        if refresh_token:
+            set_key(ENV_FILE, f"AGENT_{args.agent_id}_REFRESH_TOKEN", refresh_token)
+
+        return 0
+    except Exception as e:
+        print(f"Error during token exchange: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_config(args) -> int:
+    """Configure the client demo or display current configuration."""
+    try:
+        config = load_config()
+
+        # Check if we should update config
+        update_made = False
+
+        if getattr(args, "backend_url", None):
+            config["backend_url"] = args.backend_url
+            update_made = True
+
+        if getattr(args, "client_id", None):
+            config["client_id"] = args.client_id
+            update_made = True
+
+        if getattr(args, "private_key", None) and getattr(args, "public_key", None):
+            config["private_key"] = args.private_key
+            config["public_key"] = args.public_key
+            update_made = True
+        elif getattr(args, "private_key", None) or getattr(args, "public_key", None):
+            print(
+                "Error: Both --private-key and --public-key must be provided together.",
+                file=sys.stderr,
+            )
+            return 1
+
+        if getattr(args, "client_url", None):
+            config["client_url"] = args.client_url
+            update_made = True
+
+        if getattr(args, "client_port", None):
+            config["client_port"] = args.client_port
+            update_made = True
+
+        if update_made:
+            # Validate before saving
+            is_valid, msg = validate_config(config)
+            if not is_valid:
+                print(f"Error: Invalid configuration - {msg}", file=sys.stderr)
+                return 1
+
+            save_config(config)
+            print("Configuration updated successfully.\n")
+
+        print("Current Configuration:")
+        print(f"  Backend URL: {config.get('backend_url') or '(not set)'}")
+        print(f"  Client ID:   {config.get('client_id') or '(not set)'}")
+        print(f"  Client URL:  {config.get('client_url') or '(not set)'}")
+        print(f"  Client Port: {config.get('client_port') or '(not set)'}")
+
+        private_key = config.get("private_key")
+        public_key = config.get("public_key")
+
+        if private_key:
+            print(f"  Private key: {private_key[:4]}***{private_key[-4:]}")
+        else:
+            print(f"  Private key: (not set)")
+
+        if public_key:
+            print(f"  Public key:  {public_key}")
+        else:
+            print(f"  Public key:  (not set)")
+
+        # Validate and report status
+        is_valid, msg = validate_config(config)
+        if is_valid:
+            print("\n  Status: VALID")
+        else:
+            print(f"\n  Status: INVALID - {msg}")
+
+        return 0
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+# =============================================================================
 # CLI Interface
 # =============================================================================
 
@@ -379,32 +627,79 @@ def start_callback_server(hostname: str, port: int) -> Optional[dict]:
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
-        description="Client Demo - CLI Interface for OAuth Client Operations",
+        description="Client-ID Demo Script",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
-    # generate-verifier command (placeholder)
+    # generate-keys command
+    parser_generate_keys = subparsers.add_parser(
+        "generate-keys",
+        help="Generate new Ed25519 keypair and optionally save to .env",
+    )
+    parser_generate_keys.add_argument(
+        "--save",
+        action="store_true",
+        help="Save generated keys to .env file",
+    )
+
+    # generate-verifier command
     subparsers.add_parser(
         "generate-verifier",
         help="Generate PKCE verifier and challenge pair",
     )
 
-    # generate-keys command (placeholder)
-    subparsers.add_parser(
-        "generate-keys",
-        help="Generate new Ed25519 keypair",
+    # token-exchange command
+    parser_token_exchange = subparsers.add_parser(
+        "token-exchange",
+        help="Exchange authorization code for tokens",
     )
+    parser_token_exchange.add_argument(
+        "--token", required=True, help="Authorization code"
+    )
+    parser_token_exchange.add_argument(
+        "--code-verifier", required=True, help="PKCE code verifier"
+    )
+    parser_token_exchange.add_argument(
+        "--agent-id", required=True, help="Agent ID for token storage"
+    )
+
+    # config command
+    parser_config = subparsers.add_parser(
+        "config",
+        help="Configure the client demo or display current configuration",
+    )
+    parser_config.add_argument("--backend-url", help="Backend API URL")
+    parser_config.add_argument("--client-id", help="OAuth client ID")
+    parser_config.add_argument("--private-key", help="Client private key (base64url)")
+    parser_config.add_argument("--public-key", help="Client public key (base64url)")
+    parser_config.add_argument(
+        "--client-url", help="Callback server URL (e.g. localhost)"
+    )
+    parser_config.add_argument("--client-port", help="Callback server port (e.g. 8790)")
 
     # Parse arguments
     args = parser.parse_args()
 
     if args.command is None:
         parser.print_help()
-        return 0
+        return 1
 
-    return 0
+    # Dispatch to command handlers
+    command_handlers = {
+        "generate-keys": cmd_generate_keys,
+        "generate-verifier": cmd_generate_verifier,
+        "token-exchange": cmd_token_exchange,
+        "config": cmd_config,
+    }
+
+    handler = command_handlers.get(args.command)
+    if handler:
+        return handler(args)
+    else:
+        print(f"Unknown command: {args.command}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":
