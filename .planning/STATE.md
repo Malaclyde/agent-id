@@ -14,9 +14,9 @@
 ## Progress
 [████████████████████████████████] 100% (v2.2 Complete)
 - **Phase:** Phase 29: Backend Test Implementation
-- **Plan:** 09
+- **Plan:** 10
 - **Status:** Plan complete
-- **Progress:** [██████████                                  ] 52% (11/21 Plans Complete)
+- **Progress:** [████████████                                    ] 52% (11/21 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -55,11 +55,13 @@
 - **[29-08-D01]** Fixed unit tests: getSubscriptionTier and isSubscriptionActive expect customerId not subscriptionId, handleTierUpdate uses getSubscriptionByCustomer not getSubscriptionTier.
 - **[29-06-D01]** OAuth tests use placeholder DPoP tokens with mocked validation to work around Node.js WebCrypto Ed25519 limitations.
 - **[29-09-D01]** Overseer tests refactored to use ephemeral D1 via setupTestDB/teardownTestDB helpers; inline vi.mock for Drizzle removed.
+- **[29-10-D01]** Agent tests refactored to use ephemeral D1; fixed test assertions to match actual API behavior (duplicate key after completion, invalid signature via mock).
 
 **Active Blockers:**
 - None.
 
 **Next Steps:**
+<<<<<<< HEAD
 - Proceed to Phase 37 (Client Demo - OAuth Operations) for token refresh, userinfo, and revocation
 
 ## Session Continuity
@@ -74,11 +76,14 @@
 - Continue Phase 29: Backend Test Implementation (Plan 08: Fix Failing Unit Tests)
 - Continue Phase 29: Backend Test Implementation (Plan 09: Fix Overseer API Tests)
 - Continue Phase 29: Backend Test Implementation (Plan 10: Fix Agent API Tests)
+=======
+- Continue Phase 29: Backend Test Implementation (Plan 11: Client & Subscription API Tests)
+>>>>>>> 9cd61b7 (docs(29-10): complete Fix Agent API Tests plan)
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 29-09-PLAN.md (Fix Overseer API Tests)
-**Resume file:** .planning/phases/29-backend-test-implementation/29-10-PLAN.md
+**Stopped at:** Completed 29-10-PLAN.md (Fix Agent API Tests)
+**Resume file:** .planning/phases/29-backend-test-implementation/29-11-PLAN.md
 
 
 ---
