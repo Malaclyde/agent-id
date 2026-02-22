@@ -14,9 +14,9 @@
 ## Progress
 [████████████████████████████████] 100% (v2.2 Complete)
 - **Phase:** Phase 29: Backend Test Implementation
-- **Plan:** 02
+- **Plan:** 03
 - **Status:** Plan complete
-- **Progress:** [████░                                   ] 24% (5/21 Plans Complete)
+- **Progress:** [█████░                                   ] 29% (6/21 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -50,6 +50,8 @@
 - **[29-01-D01]** Test infrastructure uses vitest-pool-workers@0.12.14 with vitest@3.2.x for Cloudflare Workers compatibility.
 - **[29-02-D01]** Dynamic Ed25519 keypairs and DPoP tokens generated per test using Web Crypto API for runtime parity.
 - **[29-02-D02]** TestDataBuilder provides fluent API for constructing Agent/Overseer relationships in ephemeral D1.
+- **[29-03-D01]** Integration tests use mocked KV/D1 environment for tests that don't require full database.
+- **[29-03-D02]** Changed vitest pool to 'forks' due to cloudflare-pool-workers compatibility issue with vitest 3.x.
 
 **Active Blockers:**
 - None.
@@ -63,11 +65,12 @@
 **Resume file:** None
 - Continue Phase 29: Backend Test Implementation (Plan 02: Cryptographic & Data Builder Helpers)
 - Continue Phase 29: Backend Test Implementation (Plan 03: Core API & Webhook Integration Tests)
+- Continue Phase 29: Backend Test Implementation (Plan 04: Overseers & Agents Integration Tests)
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 29-02-PLAN.md (Cryptographic & Data Builder Helpers)
-**Resume file:** .planning/phases/29-backend-test-implementation/29-03-PLAN.md
+**Stopped at:** Completed 29-03-PLAN.md (Core API & Webhook Integration Tests)
+**Resume file:** .planning/phases/29-backend-test-implementation/29-04-PLAN.md
 
 
 ---
