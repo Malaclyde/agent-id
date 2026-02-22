@@ -18,9 +18,14 @@ import base64
 import json
 import os
 import sys
+import time
+import uuid
 import argparse
 import hashlib
 import secrets
+import urllib.parse
+from typing import Optional
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from nacl.signing import SigningKey, VerifyKey
 from dotenv import load_dotenv, set_key
 
@@ -238,6 +243,132 @@ def generate_pkce_pair() -> tuple[str, str]:
     code_challenge = base64url_encode(sha256_hash)
 
     return code_verifier, code_challenge
+
+
+# =============================================================================
+# Client Assertion JWT Construction
+# =============================================================================
+
+
+def create_client_assertion(
+    private_key: SigningKey, client_id: str, token_endpoint: str
+) -> str:
+    """
+    Create JWT client assertion for token endpoint authentication.
+
+    Args:
+        private_key: Ed25519 private key for signing
+        client_id: OAuth client ID
+        token_endpoint: Full URL of token endpoint (audience)
+
+    Returns:
+        JWT string (header.payload.signature)
+    """
+    # JWT Header
+    header = {"alg": "EdDSA", "typ": "JWT"}
+
+    # JWT Payload
+    now = int(time.time())
+    payload = {
+        "iss": client_id,  # Issuer = client_id
+        "sub": client_id,  # Subject = client_id
+        "aud": token_endpoint,  # Audience = token endpoint URL
+        "iat": now,  # Issued at
+        "exp": now + 60,  # Expire (short-lived, 60 seconds)
+        "jti": str(uuid.uuid4()),  # Unique JWT ID
+    }
+
+    # Build signing input (base64url-encoded header.payload)
+    encoded_header = base64url_encode_json(header)
+    encoded_payload = base64url_encode_json(payload)
+    signing_input = f"{encoded_header}.{encoded_payload}".encode("utf-8")
+
+    # Sign with Ed25519
+    signed = private_key.sign(signing_input)
+    signature = signed.signature
+    encoded_signature = base64url_encode(signature)
+
+    # Return complete JWT
+    return f"{encoded_header}.{encoded_payload}.{encoded_signature}"
+
+
+# =============================================================================
+# HTTP Callback Server
+# =============================================================================
+
+
+class CallbackHandler(BaseHTTPRequestHandler):
+    """
+    HTTP request handler for OAuth callback.
+    Captures tokens from GET or POST requests.
+    """
+
+    tokens = None
+
+    def do_GET(self):
+        """Handle GET callback (query parameters)."""
+        parsed_path = urllib.parse.urlparse(self.path)
+        query = urllib.parse.parse_qs(parsed_path.query)
+
+        # Extract tokens
+        access_token = query.get("access_token", [None])[0]
+        refresh_token = query.get("refresh_token", [None])[0]
+
+        CallbackHandler.tokens = {
+            "access_token": access_token,
+            "refresh_token": refresh_token,
+        }
+
+        self.send_response(200)
+        self.send_header("Content-type", "text/plain")
+        self.end_headers()
+        self.wfile.write(b"Success: tokens received. You can close this window.")
+
+    def do_POST(self):
+        """Handle POST callback (JSON body)."""
+        content_length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_length)
+
+        try:
+            data = json.loads(body.decode("utf-8"))
+            CallbackHandler.tokens = {
+                "access_token": data.get("access_token"),
+                "refresh_token": data.get("refresh_token"),
+            }
+
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "success"}).encode("utf-8"))
+        except Exception as e:
+            self.send_response(400)
+            self.end_headers()
+            self.wfile.write(f"Error: {str(e)}".encode("utf-8"))
+
+    def log_message(self, format, *args):
+        """Suppress default logging."""
+        pass
+
+
+def start_callback_server(hostname: str, port: int) -> Optional[dict]:
+    """
+    Start a blocking HTTP server to receive one callback request.
+    """
+    CallbackHandler.tokens = None
+    server_address = (hostname, port)
+    httpd = HTTPServer(server_address, CallbackHandler)
+
+    print(f"Waiting for callback at http://{hostname}:{port}/callback...")
+    print("Press Ctrl+C to cancel.")
+
+    try:
+        httpd.handle_request()  # Handle only one request
+    except KeyboardInterrupt:
+        print("\nCancelled.")
+    finally:
+        httpd.server_close()
+
+    return CallbackHandler.tokens
 
 
 # =============================================================================
