@@ -15,6 +15,10 @@ This roadmap details the path to delivering a comprehensive testing suite for th
 **Goal:** System documentation accurately reflects current application flows and outlines a complete testing strategy.
 **Dependencies:** None
 **Requirements:** AUDIT-01, AUDIT-02, AUDIT-03
+**Plans:** 3 plans
+- [ ] 28-01-PLAN.md — Audit and Rewrite Cryptographic Auth Flows
+- [ ] 28-02-PLAN.md — Audit and Rewrite Subscription and Client Flows
+- [ ] 28-03-PLAN.md — Identify Coverage Gaps and Document Test Strategy & Scenarios
 
 **Success Criteria:**
 1. Developer can read documentation to understand all existing application flows and edge cases.
