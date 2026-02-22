@@ -24,6 +24,7 @@
 - **Plan:** 1
 - **Plan:** 2
 - **Plan:** 4
+- **Plan:** 3
 - **Status:** In progress
 - **Progress:** [██████████████████                              ] 76% (16/21 Plans Complete)
 
@@ -68,6 +69,7 @@
 - **[29-11-D01]** Removed ghost tests for functions removed in Phase 21 (incrementOAuthCount, incrementOAuthCountWithLimitCheck, canAgentPerformOAuth); optimized vitest config with 30s timeouts and isolate: true for stability.
 - **[29-12-D01]** Fixed vi.mock limitations in Workers pool; adjusted claiming logic tests to work around chained dependency mocking issues; skipped 3 unit tests requiring subscription mocking (covered by integration tests).
 - **[30-01-D01]** MSW installed for frontend API mocking; server lifecycle managed in setup.ts; tests define their own handlers via server.use()
+- **[30-03-D01]** MSW handlers organized by API domain (agents, overseers, clients, subscriptions); fail-fast pattern with 500 default responses
 
 **Active Blockers:**
 - None.
@@ -94,7 +96,7 @@
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Phase 30 Plan 4 Complete - Test utilities for auth, rendering, and Paddle mocking created
+**Stopped at:** Phase 30 Plan 3 Complete - MSW handlers organized by endpoint domain created
 **Resume file:** None (plan complete)
 
 
