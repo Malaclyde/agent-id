@@ -72,12 +72,19 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 **Goal:** Client demo script handles configuration, PKCE, key generation, and token exchange.
 **Dependencies:** None
 **Requirements:** CCONF-01, CCONF-02, CCONF-03, CTOKEN-01
+**Plans:** 4 plans
 
 **Success Criteria:**
 1. User can configure .env file with client credentials.
 2. User can generate PKCE verifier/challenge pairs.
 3. User can generate Ed25519 keypairs for client auth.
 4. User can perform token exchange with blocking HTTP callback server.
+
+**Plan List:**
+- [ ] 36-01-PLAN.md — Core utilities and Ed25519 key management
+- [ ] 36-02-PLAN.md — Configuration management and PKCE generation
+- [ ] 36-03-PLAN.md — Client assertion JWT and HTTP callback server
+- [ ] 36-04-PLAN.md — Token exchange and CLI implementation
 
 ---
 
@@ -102,5 +109,5 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 | 33 - Agent Demo Core | Agent demo script handles configuration, key generation, registration, and basic authentication. | ACONF-01, ACONF-02, ACONF-03, AAUTH-01, AAUTH-02, AAUTH-03, AAUTH-04 | Complete |
 | 34 - Agent Demo Extended | Agent demo script handles queries, claims, oversight, and key rotation. | AAUTH-05, AQUERY-01, AQUERY-02, ACLAIM-01, ACLAIM-02 | Complete |
 | 35 - Agent Demo OAuth | Agent demo script handles OAuth client registration and authorization. | AOAUTH-01, AOAUTH-02 | Complete |
-| 36 - Client Demo Core | Client demo script handles configuration, PKCE, key generation, and token exchange. | CCONF-01, CCONF-02, CCONF-03, CTOKEN-01 | Pending |
+| 36 - Client Demo Core | Client demo script handles configuration, PKCE, key generation, and token exchange. | CCONF-01, CCONF-02, CCONF-03, CTOKEN-01 | In Progress |
 | 37 - Client Demo OAuth | Client demo script handles token refresh, userinfo, revocation, and introspection. | CTOKEN-02, CTOKEN-03, COAUTH-01, COAUTH-02, COAUTH-03 | Pending |
