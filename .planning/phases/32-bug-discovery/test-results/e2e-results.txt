@@ -1,0 +1,1104 @@
+Setting up E2E test environment...
+Cleaning up local D1 database...
+Running D1 migrations for E2E tests...
+
+> agent-id@1.0.0 db:migrate:test
+> cd backend && npm run db:migrate:test
+
+
+> agent-id-backend@1.0.0 db:migrate:test
+> wrangler d1 execute agent-id-db --local --persist-to ../test/e2e/.wrangler-state --file=./migrations/0001_initial.sql && wrangler d1 execute agent-id-db --local --persist-to ../test/e2e/.wrangler-state --file=./migrations/0005_create_subscription_tiers.sql
+
+
+ ⛅️ wrangler 4.67.0 (update available 4.69.0)
+─────────────────────────────────────────────
+Resource location: local 
+
+Use --remote if you want to access the remote instance.
+
+🌀 Executing on local database agent-id-db (local-dev-db) from ../test/e2e/.wrangler-state/v3/d1:
+🌀 To execute on your remote database, add a --remote flag to your wrangler command.
+🚣 35 commands executed successfully.
+[
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  }
+]
+
+ ⛅️ wrangler 4.67.0 (update available 4.69.0)
+─────────────────────────────────────────────
+Resource location: local 
+
+Use --remote if you want to access the remote instance.
+
+🌀 Executing on local database agent-id-db (local-dev-db) from ../test/e2e/.wrangler-state/v3/d1:
+🌀 To execute on your remote database, add a --remote flag to your wrangler command.
+🚣 2 commands executed successfully.
+[
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  }
+]
+E2E test environment ready.
+
+Running 42 tests using 1 worker
+
+OVERSEER CONSOLE: [vite] connecting...
+OVERSEER CONSOLE: [vite] connected.
+OVERSEER CONSOLE: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+OVERSEER CONSOLE: Initializing Paddle with token: undefined...
+OVERSEER CONSOLE: Paddle environment: sandbox
+OVERSEER CONSOLE: VITE_PADDLE_TOKEN is not defined
+OVERSEER CONSOLE: [vite] connecting...
+OVERSEER CONSOLE: [vite] connected.
+OVERSEER CONSOLE: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+OVERSEER CONSOLE: Initializing Paddle with token: undefined...
+OVERSEER CONSOLE: Paddle environment: sandbox
+OVERSEER CONSOLE: VITE_PADDLE_TOKEN is not defined
+AGENT CONSOLE: [vite] connecting...
+AGENT CONSOLE: [vite] connected.
+AGENT CONSOLE: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+AGENT CONSOLE: Initializing Paddle with token: undefined...
+AGENT CONSOLE: Paddle environment: sandbox
+AGENT CONSOLE: VITE_PADDLE_TOKEN is not defined
+AGENT SESSION CHECK VIA TEST UTILS: {"error":"Not found"}
+AGENT CONSOLE: [vite] connecting...
+AGENT CONSOLE: [vite] connected.
+AGENT CONSOLE: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+AGENT CONSOLE: Initializing Paddle with token: undefined...
+AGENT CONSOLE: Paddle environment: sandbox
+AGENT CONSOLE: VITE_PADDLE_TOKEN is not defined
+AGENT CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+AGENT CONSOLE: Failed to load subscription
+AGENT CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+AGENT CONSOLE: Failed to load subscription
+  ✘   1 [chromium] › test/e2e/multi-actor.spec.ts:35:3 › Multi-Actor Workflows › overseer and agent: full oauth authorization flow (21.1s)
+  ✓   2 [chromium] › test/e2e/oauth-flow.spec.ts:50:3 › OAuth Flow E2E › register OAuth client: navigate to clients, create new client (5.6s)
+No clients found - empty state shown
+  ✓   3 [chromium] › test/e2e/oauth-flow.spec.ts:106:3 › OAuth Flow E2E › view client details: shows client_id, redirect_uri (5.5s)
+  ✓   4 [chromium] › test/e2e/oauth-flow.spec.ts:135:3 › OAuth Flow E2E › initiate OAuth authorization: generates correct authorization URL (5.5s)
+  ✓   5 [chromium] › test/e2e/oauth-flow.spec.ts:162:3 › OAuth Flow E2E › complete OAuth flow: with valid authorization code (8.5s)
+  ✓   6 [chromium] › test/e2e/oauth-flow.spec.ts:213:3 › OAuth Flow E2E › view registered clients: lists all client's OAuth clients (5.4s)
+  ✘   7 [chromium] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success (5.5s)
+  ✘   8 [chromium] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials (10.5s)
+  ✘   9 [chromium] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh (5.5s)
+  ✓  10 [chromium] › test/e2e/registration-flow.spec.ts:102:3 › Registration Flow E2E › logout: clears session correctly (510ms)
+  ✘  11 [chromium] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment (94ms)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: [vite] connected.
+BROWSER LOG: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+  ✘  12 [chromium] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade (10.6s)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: [vite] connected.
+BROWSER LOG: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+  ✘  13 [chromium] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard (10.6s)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: [vite] connected.
+BROWSER LOG: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+  ✘  14 [chromium] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics (10.6s)
+OVERSEER CONSOLE: [vite] connecting...
+OVERSEER CONSOLE: Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+OVERSEER CONSOLE: Initializing Paddle with token: undefined...
+OVERSEER CONSOLE: Paddle environment: sandbox
+OVERSEER CONSOLE: VITE_PADDLE_TOKEN is not defined
+OVERSEER CONSOLE: [vite] connected.
+OVERSEER CONSOLE: [vite] connecting...
+OVERSEER CONSOLE: [vite] connected.
+OVERSEER CONSOLE: Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+OVERSEER CONSOLE: Initializing Paddle with token: undefined...
+OVERSEER CONSOLE: Paddle environment: sandbox
+OVERSEER CONSOLE: VITE_PADDLE_TOKEN is not defined
+AGENT CONSOLE: [vite] connecting...
+AGENT CONSOLE: Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+AGENT CONSOLE: Initializing Paddle with token: undefined...
+AGENT CONSOLE: Paddle environment: sandbox
+AGENT CONSOLE: VITE_PADDLE_TOKEN is not defined
+AGENT CONSOLE: [vite] connected.
+AGENT CONSOLE: [JavaScript Warning: "downloadable font: Glyph bbox was incorrect (glyph ids 1 2 3 4 5 8 9 10 11 12 13 14 16 17 19 22 24 28 32 34 35 38 39 40 43 44 45 46 47 50 51 52 53 55 56 58 60 61 62 64 67 68 70 71 72 73 74 78 79 80 81 83 90 96 101 103 104 105 108 109 115 116 117 118 120 123 125 135 138 139 140 142 143 144 145 146 148 149 154 155 157 161 162 163 164 165 169 170 171 173 179 181 193 195 203 207 208 210 211 214 218 219 223 225 227 228 229 230 235 236 237 238 239 240 245 246 247 248 249 250 251 252 253 254 255 256 257 263 264 266 268 271 275 278 279 280 281 282 283 284 285 286 287 288 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 321 335 338 339 340 342 344 345 346 353 354 356 357 358 359 362 363 365 366 371 373 374 379 381 382 383 386 389 390 391 393 394 406 407 412 413 418 419 420 424 432 433 439 448 449 450 451 454 455 456 457 472 479 480 481 482 485 486 490 491 493 499 500 501 503 508 509 513 515 516 525 527 528 532 535 541 542 543 549 550 551 552 554 555 556 558 560 569 571 593 602 603 604 607 608 609 614 615 617 618 623 626 627 643 644 645 647 650 651 654 655 656 657 662 663 664 665 670 671 672 674 675 679 680 681 682 683 698 699 708 712 714 717 718 729 730 732 735 736 739 746 747 752 761 762 767 774 776 777 778 779 788 789 790 794 796 798 799 800 801 803 804 806 826 828 829 831 835 836 838 839 840 841 842 843 844 845 848 849 856 857 861 862 863 871 873 874 880 882 892 895 900 908 911 913 925 928 929 930 933 936 937 938 941 942 943 944 945 948 949 950 952 958 960 961 962 964 966 967 969 973 974 978 979 980 981 982 989 998 1000 1001 1005 1006 1008 1009 1011 1012 1013 1016 1020 1026 1027 1031 1036 1037 1042 1045 1048 1050 1052 1053 1057 1058 1060 1063 1072 1073 1076 1084 1087 1099 1104 1110 1111 1112 1116 1117 1121 1122 1124 1131 1136 1140 1141 1142 1147 1148 1151 1157 1163 1167 1168 1170 1177 1186 1187 1193 1196 1199 1200 1201 1204 1205 1208 1211 1212 1217 1218 1220 1224 1226 1228 1230 1231 1232 1233 1235 1236 1237 1238 1243 1246 1247 1249 1251 1256 1258 1259 1260 1261 1265 1268 1269 1271 1272 1273 1275 1276 1279 1285 1289 1290 1291 1292 1296 1297 1303 1304 1305 1309 1310 1311 1312 1317 1319 1320 1324 1325 1328 1329 1330 1331 1334 1335 1337 1339 1341 1343 1356 1357 1363 1369 1371 1372 1375 1376 1377 1382 1384 1387) (font-family: "Font Awesome 6 Free" style:normal weight:900 stretch:100 src index:0) source: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-solid-900.woff2"]
+AGENT SESSION CHECK VIA TEST UTILS: {"error":"Not found"}
+AGENT CONSOLE: [vite] connecting...
+AGENT CONSOLE: [vite] connected.
+AGENT CONSOLE: Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+AGENT CONSOLE: Initializing Paddle with token: undefined...
+AGENT CONSOLE: Paddle environment: sandbox
+AGENT CONSOLE: VITE_PADDLE_TOKEN is not defined
+AGENT CONSOLE: Failed to load subscription
+AGENT CONSOLE: Failed to load subscription
+  ✘  15 [firefox] › test/e2e/multi-actor.spec.ts:35:3 › Multi-Actor Workflows › overseer and agent: full oauth authorization flow (22.3s)
+  ✓  16 [firefox] › test/e2e/oauth-flow.spec.ts:50:3 › OAuth Flow E2E › register OAuth client: navigate to clients, create new client (6.1s)
+No clients found - empty state shown
+  ✓  17 [firefox] › test/e2e/oauth-flow.spec.ts:106:3 › OAuth Flow E2E › view client details: shows client_id, redirect_uri (6.0s)
+  ✓  18 [firefox] › test/e2e/oauth-flow.spec.ts:135:3 › OAuth Flow E2E › initiate OAuth authorization: generates correct authorization URL (5.8s)
+  ✓  19 [firefox] › test/e2e/oauth-flow.spec.ts:162:3 › OAuth Flow E2E › complete OAuth flow: with valid authorization code (8.9s)
+  ✓  20 [firefox] › test/e2e/oauth-flow.spec.ts:213:3 › OAuth Flow E2E › view registered clients: lists all client's OAuth clients (6.2s)
+  ✘  21 [firefox] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success (6.2s)
+  ✘  22 [firefox] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials (11.6s)
+  ✘  23 [firefox] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh (7.3s)
+  ✓  24 [firefox] › test/e2e/registration-flow.spec.ts:102:3 › Registration Flow E2E › logout: clears session correctly (1.5s)
+  ✘  25 [firefox] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment (176ms)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+BROWSER LOG: [vite] connected.
+  ✘  26 [firefox] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade (11.0s)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+BROWSER LOG: [vite] connected.
+  ✘  27 [firefox] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard (11.0s)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+BROWSER LOG: [vite] connected.
+  ✘  28 [firefox] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics (11.0s)
+  -  29 [webkit] › test/e2e/multi-actor.spec.ts:35:3 › Multi-Actor Workflows › overseer and agent: full oauth authorization flow
+  ✓  30 [webkit] › test/e2e/oauth-flow.spec.ts:50:3 › OAuth Flow E2E › register OAuth client: navigate to clients, create new client (6.0s)
+No clients found - empty state shown
+  ✓  31 [webkit] › test/e2e/oauth-flow.spec.ts:106:3 › OAuth Flow E2E › view client details: shows client_id, redirect_uri (5.9s)
+  ✓  32 [webkit] › test/e2e/oauth-flow.spec.ts:135:3 › OAuth Flow E2E › initiate OAuth authorization: generates correct authorization URL (5.9s)
+  ✓  33 [webkit] › test/e2e/oauth-flow.spec.ts:162:3 › OAuth Flow E2E › complete OAuth flow: with valid authorization code (9.0s)
+  ✓  34 [webkit] › test/e2e/oauth-flow.spec.ts:213:3 › OAuth Flow E2E › view registered clients: lists all client's OAuth clients (5.9s)
+  ✘  35 [webkit] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success (5.9s)
+  ✘  36 [webkit] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials (11.1s)
+  ✘  37 [webkit] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh (6.1s)
+  ✓  38 [webkit] › test/e2e/registration-flow.spec.ts:102:3 › Registration Flow E2E › logout: clears session correctly (1.0s)
+  ✘  39 [webkit] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment (225ms)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: [vite] connected.
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+  ✘  40 [webkit] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade (11.1s)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: [vite] connected.
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+  ✘  41 [webkit] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard (11.0s)
+BROWSER LOG: [vite] connecting...
+BROWSER LOG: [vite] connected.
+BROWSER LOG: Initializing Paddle with token: undefined...
+BROWSER LOG: Paddle environment: sandbox
+BROWSER ERROR: VITE_PADDLE_TOKEN is not defined
+  ✘  42 [webkit] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics (11.2s)
+
+
+  1) [chromium] › test/e2e/multi-actor.spec.ts:35:3 › Multi-Actor Workflows › overseer and agent: full oauth authorization flow 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Agent-1772201513610')
+    Expected: visible
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 20000ms[22m
+    [2m  - waiting for getByText('Agent-1772201513610')[22m
+    [2m    - waiting for navigation to finish...[22m
+    [2m    - navigated to "http://localhost:3000/agent/dashboard"[22m
+
+
+      127 |
+      128 |     // Verify Agent is logged in
+    > 129 |     await expect(agentPage.getByText(agentName)).toBeVisible({ timeout: 20000 });
+          |                                                  ^
+      130 |
+      131 |     // 4. Overseer Claims Agent
+      132 |     await overseerPage.goto('/overseer/dashboard');
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/multi-actor.spec.ts:129:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/multi-actor-Multi-Actor-Wo-e9efc-ll-oauth-authorization-flow-chromium/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/multi-actor-Multi-Actor-Wo-e9efc-ll-oauth-authorization-flow-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/multi-actor-Multi-Actor-Wo-e9efc-ll-oauth-authorization-flow-chromium/error-context.md
+
+  2) [chromium] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Test Overseer')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Test Overseer')[22m
+
+
+      39 |     // Verify we're on the dashboard page (logged in)
+      40 |     await expect(page).toHaveURL(/overseer\/dashboard/, { timeout: 10000 });
+    > 41 |     await expect(page.getByText('Test Overseer')).toBeVisible();
+         |                                                   ^
+      42 |   });
+      43 |
+      44 |   test('overseer login: with newly registered credentials', async ({ overseerPage: page }) => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:41:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-bb142-rm-submits-receives-success-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-bb142-rm-submits-receives-success-chromium/error-context.md
+
+  3) [chromium] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials 
+
+    TimeoutError: locator.click: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Email' })[22m
+
+
+      65 |     
+      66 |     // Fill in login form
+    > 67 |     await page.getByRole('button', { name: 'Email' }).click();
+         |                                                       ^
+      68 |     await page.locator('div.form-group:has-text("Email") input').fill(email);
+      69 |     await page.locator('div.form-group:has-text("Password") input').fill('password123');
+      70 |     
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:67:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-dc477-ewly-registered-credentials-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-dc477-ewly-registered-credentials-chromium/error-context.md
+
+  4) [chromium] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Session Test')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Session Test')[22m
+
+
+       97 |     // Verify we're still logged in (should be on dashboard)
+       98 |     await expect(page).toHaveURL(/overseer\/dashboard/);
+    >  99 |     await expect(page.getByText('Session Test')).toBeVisible();
+          |                                                  ^
+      100 |   });
+      101 |
+      102 |   test('logout: clears session correctly', async ({ overseerPage: page }) => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:99:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-010c6-s-logged-in-on-page-refresh-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-010c6-s-logged-in-on-page-refresh-chromium/error-context.md
+
+  5) [chromium] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment › Create Test Agent 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      38 |         }
+      39 |       });
+    > 40 |       expect(response.ok()).toBeTruthy();
+         |                             ^
+      41 |     });
+      42 |
+      43 |     await test.step('Initiate Shadow Claim', async () => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/shadow-claim.spec.ts:40:29
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/shadow-claim.spec.ts:32:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/shadow-claim-Shadow-Claim--5d7e4--claim-via-one-time-payment-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/shadow-claim-Shadow-Claim--5d7e4--claim-via-one-time-payment-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:65:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-chromium/error-context.md
+
+  7) [chromium] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:104:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-chromium/error-context.md
+
+  8) [chromium] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:114:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-chromium/error-context.md
+
+  9) [firefox] › test/e2e/multi-actor.spec.ts:35:3 › Multi-Actor Workflows › overseer and agent: full oauth authorization flow 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Agent-1772201628970')
+    Expected: visible
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 20000ms[22m
+    [2m  - waiting for getByText('Agent-1772201628970')[22m
+    [2m    - waiting for navigation to finish...[22m
+    [2m    - navigated to "http://localhost:3000/agent/dashboard"[22m
+
+
+      127 |
+      128 |     // Verify Agent is logged in
+    > 129 |     await expect(agentPage.getByText(agentName)).toBeVisible({ timeout: 20000 });
+          |                                                  ^
+      130 |
+      131 |     // 4. Overseer Claims Agent
+      132 |     await overseerPage.goto('/overseer/dashboard');
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/multi-actor.spec.ts:129:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/multi-actor-Multi-Actor-Wo-e9efc-ll-oauth-authorization-flow-firefox/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/multi-actor-Multi-Actor-Wo-e9efc-ll-oauth-authorization-flow-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/multi-actor-Multi-Actor-Wo-e9efc-ll-oauth-authorization-flow-firefox/error-context.md
+
+  10) [firefox] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Test Overseer')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Test Overseer')[22m
+
+
+      39 |     // Verify we're on the dashboard page (logged in)
+      40 |     await expect(page).toHaveURL(/overseer\/dashboard/, { timeout: 10000 });
+    > 41 |     await expect(page.getByText('Test Overseer')).toBeVisible();
+         |                                                   ^
+      42 |   });
+      43 |
+      44 |   test('overseer login: with newly registered credentials', async ({ overseerPage: page }) => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:41:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-bb142-rm-submits-receives-success-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-bb142-rm-submits-receives-success-firefox/error-context.md
+
+  11) [firefox] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials 
+
+    TimeoutError: locator.click: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Email' })[22m
+
+
+      65 |     
+      66 |     // Fill in login form
+    > 67 |     await page.getByRole('button', { name: 'Email' }).click();
+         |                                                       ^
+      68 |     await page.locator('div.form-group:has-text("Email") input').fill(email);
+      69 |     await page.locator('div.form-group:has-text("Password") input').fill('password123');
+      70 |     
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:67:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-dc477-ewly-registered-credentials-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-dc477-ewly-registered-credentials-firefox/error-context.md
+
+  12) [firefox] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Session Test')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Session Test')[22m
+
+
+       97 |     // Verify we're still logged in (should be on dashboard)
+       98 |     await expect(page).toHaveURL(/overseer\/dashboard/);
+    >  99 |     await expect(page.getByText('Session Test')).toBeVisible();
+          |                                                  ^
+      100 |   });
+      101 |
+      102 |   test('logout: clears session correctly', async ({ overseerPage: page }) => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:99:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-010c6-s-logged-in-on-page-refresh-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-010c6-s-logged-in-on-page-refresh-firefox/error-context.md
+
+  13) [firefox] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment › Create Test Agent 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      38 |         }
+      39 |       });
+    > 40 |       expect(response.ok()).toBeTruthy();
+         |                             ^
+      41 |     });
+      42 |
+      43 |     await test.step('Initiate Shadow Claim', async () => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/shadow-claim.spec.ts:40:29
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/shadow-claim.spec.ts:32:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/shadow-claim-Shadow-Claim--5d7e4--claim-via-one-time-payment-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/shadow-claim-Shadow-Claim--5d7e4--claim-via-one-time-payment-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [firefox] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:65:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-firefox/error-context.md
+
+  15) [firefox] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:104:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-firefox/error-context.md
+
+  16) [firefox] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:114:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-firefox/error-context.md
+
+  17) [webkit] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Test Overseer')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Test Overseer')[22m
+
+
+      39 |     // Verify we're on the dashboard page (logged in)
+      40 |     await expect(page).toHaveURL(/overseer\/dashboard/, { timeout: 10000 });
+    > 41 |     await expect(page.getByText('Test Overseer')).toBeVisible();
+         |                                                   ^
+      42 |   });
+      43 |
+      44 |   test('overseer login: with newly registered credentials', async ({ overseerPage: page }) => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:41:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-bb142-rm-submits-receives-success-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-bb142-rm-submits-receives-success-webkit/error-context.md
+
+  18) [webkit] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials 
+
+    TimeoutError: locator.click: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Email' })[22m
+
+
+      65 |     
+      66 |     // Fill in login form
+    > 67 |     await page.getByRole('button', { name: 'Email' }).click();
+         |                                                       ^
+      68 |     await page.locator('div.form-group:has-text("Email") input').fill(email);
+      69 |     await page.locator('div.form-group:has-text("Password") input').fill('password123');
+      70 |     
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:67:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-dc477-ewly-registered-credentials-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-dc477-ewly-registered-credentials-webkit/error-context.md
+
+  19) [webkit] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Session Test')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Session Test')[22m
+
+
+       97 |     // Verify we're still logged in (should be on dashboard)
+       98 |     await expect(page).toHaveURL(/overseer\/dashboard/);
+    >  99 |     await expect(page.getByText('Session Test')).toBeVisible();
+          |                                                  ^
+      100 |   });
+      101 |
+      102 |   test('logout: clears session correctly', async ({ overseerPage: page }) => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/registration-flow.spec.ts:99:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/registration-flow-Registra-010c6-s-logged-in-on-page-refresh-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/registration-flow-Registra-010c6-s-logged-in-on-page-refresh-webkit/error-context.md
+
+  20) [webkit] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment › Create Test Agent 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      38 |         }
+      39 |       });
+    > 40 |       expect(response.ok()).toBeTruthy();
+         |                             ^
+      41 |     });
+      42 |
+      43 |     await test.step('Initiate Shadow Claim', async () => {
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/shadow-claim.spec.ts:40:29
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/shadow-claim.spec.ts:32:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/shadow-claim-Shadow-Claim--5d7e4--claim-via-one-time-payment-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/shadow-claim-Shadow-Claim--5d7e4--claim-via-one-time-payment-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [webkit] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:65:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-8075a--sandbox-and-verify-upgrade-webkit/error-context.md
+
+  22) [webkit] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:104:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-12d5c-ription-status-on-dashboard-webkit/error-context.md
+
+  23) [webkit] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics 
+
+    TimeoutError: locator.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Your Full Name')[22m
+
+
+      43 |     
+      44 |     // Fill in registration form
+    > 45 |     await page.getByPlaceholder('Your Full Name').fill('Subscription Test');
+         |                                                   ^
+      46 |     await page.getByPlaceholder('name@example.com').fill(email);
+      47 |     await page.getByPlaceholder('••••••••').fill('password123');
+      48 |     await page.getByRole('button', { name: 'Register with Email' }).click();
+        at login (/Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:45:51)
+        at /Users/brotholomew/workdir/llms/agent-id/test/e2e/subscription-flow.spec.ts:114:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test/e2e/test-results/subscription-flow-Subscrip-7a212-w-E2E-view-usage-statistics-webkit/error-context.md
+
+  23 failed
+    [chromium] › test/e2e/multi-actor.spec.ts:35:3 › Multi-Actor Workflows › overseer and agent: full oauth authorization flow 
+    [chromium] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success 
+    [chromium] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials 
+    [chromium] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh 
+    [chromium] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment 
+    [chromium] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade 
+    [chromium] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard 
+    [chromium] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics 
+    [firefox] › test/e2e/multi-actor.spec.ts:35:3 › Multi-Actor Workflows › overseer and agent: full oauth authorization flow 
+    [firefox] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success 
+    [firefox] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials 
+    [firefox] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh 
+    [firefox] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment 
+    [firefox] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade 
+    [firefox] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard 
+    [firefox] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics 
+    [webkit] › test/e2e/registration-flow.spec.ts:17:3 › Registration Flow E2E › overseer registration: fills form, submits, receives success 
+    [webkit] › test/e2e/registration-flow.spec.ts:44:3 › Registration Flow E2E › overseer login: with newly registered credentials 
+    [webkit] › test/e2e/registration-flow.spec.ts:79:3 › Registration Flow E2E › session persistence: stays logged in on page refresh 
+    [webkit] › test/e2e/shadow-claim.spec.ts:27:3 › Shadow Claim Flow E2E › complete shadow claim via one-time payment 
+    [webkit] › test/e2e/subscription-flow.spec.ts:63:3 › Subscription Flow E2E › complete Paddle checkout in sandbox and verify upgrade 
+    [webkit] › test/e2e/subscription-flow.spec.ts:103:3 › Subscription Flow E2E › view subscription status on dashboard 
+    [webkit] › test/e2e/subscription-flow.spec.ts:113:3 › Subscription Flow E2E › view usage statistics 
+  1 skipped
+  18 passed (5.6m)

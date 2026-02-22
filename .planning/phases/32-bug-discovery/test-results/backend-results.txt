@@ -1,0 +1,1936 @@
+
+ RUN  v3.2.4 /Users/brotholomew/workdir/llms/agent-id/backend
+      Running tests with seed "1772201456466"
+
+Using vars defined in .dev.vars
+[vpw:debug] Adding `enable_nodejs_tty_module` compatibility flag during tests as this feature is needed to support the Vitest runner.
+[vpw:debug] Adding `enable_nodejs_fs_module` compatibility flag during tests as this feature is needed to support the Vitest runner.
+[vpw:debug] Adding `enable_nodejs_http_modules` compatibility flag during tests as this feature is needed to support the Vitest runner.
+[vpw:debug] Adding `enable_nodejs_perf_hooks_module` compatibility flag during tests as this feature is needed to support the Vitest runner.
+[vpw:info] Starting single runtime for vitest.config.ts...
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should return usage statistics
+<-- GET /v1/subscriptions/usage
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should return usage statistics
+AuthMiddleware: sessionId from header: session-a5bbb7f5-c37e-4a76-bbb3-c49683cf20a2
+Getting session with key: session:session-a5bbb7f5-c37e-4a76-bbb3-c49683cf20a2
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should return usage statistics
+AuthMiddleware: session found: true
+
+stderr | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should return usage statistics
+Usage fetch error: TypeError: agentIdsResult.map is not a function
+    at getOauthUsageCount (/Users/brotholomew/workdir/llms/agent-id/backend/src/routes/subscriptions.ts:54:35)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/subscriptions.ts:250:24
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at logger2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/logger/index.js:38:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/index.ts:20:3
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should return usage statistics
+--> GET /v1/subscriptions/usage [31m500[0m 4ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should reject unauthenticated requests
+<-- GET /v1/subscriptions/usage
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should reject unauthenticated requests
+--> GET /v1/subscriptions/usage [33m401[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject invalid tier
+<-- POST /v1/subscriptions/upgrade
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject invalid tier
+AuthMiddleware: sessionId from header: session-1cf7e69c-e8c5-40a3-90e9-66426e52b28b
+Getting session with key: session:session-1cf7e69c-e8c5-40a3-90e9-66426e52b28b
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject invalid tier
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject invalid tier
+--> POST /v1/subscriptions/upgrade [33m400[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject missing target_tier
+<-- POST /v1/subscriptions/upgrade
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject missing target_tier
+AuthMiddleware: sessionId from header: session-40efd517-ef68-44f1-a3d4-e71bc1925998
+Getting session with key: session:session-40efd517-ef68-44f1-a3d4-e71bc1925998
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject missing target_tier
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject missing target_tier
+--> POST /v1/subscriptions/upgrade [33m400[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should initiate upgrade for valid tier
+<-- POST /v1/subscriptions/upgrade
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should initiate upgrade for valid tier
+AuthMiddleware: sessionId from header: session-96049b94-5a06-45f4-a190-9692d060732f
+Getting session with key: session:session-96049b94-5a06-45f4-a190-9692d060732f
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should initiate upgrade for valid tier
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should initiate upgrade for valid tier
+{"action":"upgrade_initiated","entity_type":"overseer","entity_id":"6a4b***e8cb","timestamp":"2026-02-27T14:10:58.246Z","target_tier":"PRO","price":15}
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should initiate upgrade for valid tier
+--> POST /v1/subscriptions/upgrade [32m200[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject SHADOW tier
+<-- POST /v1/subscriptions/upgrade
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject SHADOW tier
+AuthMiddleware: sessionId from header: session-57967adf-eea2-4f7d-bb05-c547761c522b
+Getting session with key: session:session-57967adf-eea2-4f7d-bb05-c547761c522b
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject SHADOW tier
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject SHADOW tier
+--> POST /v1/subscriptions/upgrade [33m400[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return active subscription details when subscription exists
+<-- GET /v1/subscriptions/me
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return active subscription details when subscription exists
+AuthMiddleware: sessionId from header: session-3bd7c17b-b573-4880-ad2b-42719f4c192c
+Getting session with key: session:session-3bd7c17b-b573-4880-ad2b-42719f4c192c
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return active subscription details when subscription exists
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return active subscription details when subscription exists
+--> GET /v1/subscriptions/me [32m200[0m 1ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return past_due status for past due subscription
+<-- GET /v1/subscriptions/me
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return past_due status for past due subscription
+AuthMiddleware: sessionId from header: session-a07e9553-8cbc-4277-b9b4-800ba110bb4f
+Getting session with key: session:session-a07e9553-8cbc-4277-b9b4-800ba110bb4f
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return past_due status for past due subscription
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return past_due status for past due subscription
+--> GET /v1/subscriptions/me [32m200[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return FREE tier for overseer without subscription
+<-- GET /v1/subscriptions/me
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return FREE tier for overseer without subscription
+AuthMiddleware: sessionId from header: session-92a758e9-5b0a-427c-a623-f97782cfb483
+Getting session with key: session:session-92a758e9-5b0a-427c-a623-f97782cfb483
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return FREE tier for overseer without subscription
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return FREE tier for overseer without subscription
+--> GET /v1/subscriptions/me [32m200[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should reject unauthenticated requests
+<-- GET /v1/subscriptions/me
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should reject unauthenticated requests
+--> GET /v1/subscriptions/me [33m401[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/tiers > should return all public subscription tiers
+<-- GET /v1/subscriptions/tiers
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/tiers > should return all public subscription tiers
+--> GET /v1/subscriptions/tiers [32m200[0m 1ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/tiers > should return tier configuration with limits
+<-- GET /v1/subscriptions/tiers
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/tiers > should return tier configuration with limits
+--> GET /v1/subscriptions/tiers [32m200[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return BASIC tier limits
+<-- GET /v1/subscriptions/me
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return BASIC tier limits
+AuthMiddleware: sessionId from header: session-0ee9a81b-10a0-42de-aa3f-f5051197b01c
+Getting session with key: session:session-0ee9a81b-10a0-42de-aa3f-f5051197b01c
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return BASIC tier limits
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return BASIC tier limits
+--> GET /v1/subscriptions/me [32m200[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return FREE tier limits
+<-- GET /v1/subscriptions/me
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return FREE tier limits
+AuthMiddleware: sessionId from header: session-b87a1bb5-8231-44e4-aa70-80c66419dc96
+Getting session with key: session:session-b87a1bb5-8231-44e4-aa70-80c66419dc96
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return FREE tier limits
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return FREE tier limits
+--> GET /v1/subscriptions/me [32m200[0m 0ms
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return PREMIUM tier limits
+<-- GET /v1/subscriptions/me
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return PREMIUM tier limits
+AuthMiddleware: sessionId from header: session-10468491-f519-432e-b868-2b86e455153a
+Getting session with key: session:session-10468491-f519-432e-b868-2b86e455153a
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return PREMIUM tier limits
+AuthMiddleware: session found: true
+
+stdout | test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return PREMIUM tier limits
+--> GET /v1/subscriptions/me [32m200[0m 0ms
+
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should return usage statistics 12ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/usage > should reject unauthenticated requests 3ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject invalid tier 4ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject missing target_tier 4ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should initiate upgrade for valid tier 3ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > POST /v1/subscriptions/upgrade > should reject SHADOW tier 2ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return active subscription details when subscription exists 12ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return past_due status for past due subscription 6ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should return FREE tier for overseer without subscription 5ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/me > should reject unauthenticated requests 5ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/tiers > should return all public subscription tiers 4ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > GET /v1/subscriptions/tiers > should return tier configuration with limits 4ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return BASIC tier limits 4ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return FREE tier limits 5ms
+ ✓ test/api/subscriptions.test.ts > Subscriptions API > Subscription Tier Limits > should correctly return PREMIUM tier limits 5ms
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an expired timestamp
+<-- POST /v1/webhooks/paddle
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an expired timestamp
+{"action":"paddle_timestamp_invalid","webhook_type":"paddle","request_id":"***","timestamp":"1772200858","age_seconds":600.4849998950958}
+
+stderr | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an expired timestamp
+Invalid Paddle signature received: { hasSignature: true, hasSecret: true }
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an expired timestamp
+--> POST /v1/webhooks/paddle [33m401[0m 1ms
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should gracefully handle missing fields in custom_data
+<-- POST /v1/webhooks/paddle
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should gracefully handle missing fields in custom_data
+--> POST /v1/webhooks/paddle [32m200[0m 0ms
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should accept a valid Paddle webhook with valid signature
+<-- POST /v1/webhooks/paddle
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should accept a valid Paddle webhook with valid signature
+{"action":"shadow_claim_expired_not_claimed","subscription_id":"***","timestamp":"2026-02-27T14:10:58.492Z","agent_id":"agent-123","reason":"Challenge expired but agent not claimed"}
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should accept a valid Paddle webhook with valid signature
+--> POST /v1/webhooks/paddle [32m200[0m 0ms
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an invalid signature
+<-- POST /v1/webhooks/paddle
+
+stderr | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an invalid signature
+Invalid Paddle signature received: { hasSignature: true, hasSecret: true }
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an invalid signature
+--> POST /v1/webhooks/paddle [33m401[0m 0ms
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should ignore transaction.completed if is_shadow_claim is false
+<-- POST /v1/webhooks/paddle
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should ignore transaction.completed if is_shadow_claim is false
+Transaction completed (non-shadow): txn_456
+
+stdout | test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should ignore transaction.completed if is_shadow_claim is false
+--> POST /v1/webhooks/paddle [32m200[0m 1ms
+
+ ✓ test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an expired timestamp 5ms
+ ✓ test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should gracefully handle missing fields in custom_data 3ms
+ ✓ test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should accept a valid Paddle webhook with valid signature 3ms
+ ✓ test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should reject a webhook with an invalid signature 3ms
+ ✓ test/integration/shadow-claim-paddle.test.ts > Shadow Claim Paddle Webhook Integration > should ignore transaction.completed if is_shadow_claim is false 4ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > initiateShadowClaim > should set challenge TTL to 60 minutes (handled by getExpirationTime) 3ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > initiateShadowClaim > should throw a 409 conflict error if agent already claimed by real overseer 2ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > initiateShadowClaim > should create a challenge in KV with isShadow: true 3ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > initiateShadowClaim > should contain a generated shadow_overseer_id 3ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > initiateShadowClaim > should allow renewal if agent already claimed by shadow overseer 2ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > completeShadowClaim > should throw a 401/403 equivalent if authenticated agent does not match challenge 3ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > completeShadowClaim > should throw a 404 if challenge is expired 2ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > completeShadowClaim > should confirm challenge and update status to awaiting-payment 3ms
+ ✓ test/unit/shadow-claim-service.test.ts > Shadow Claim Service > completeShadowClaim > should throw a 409 if agent is already claimed by real overseer during completion 2ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > createOversight > should create oversight with valid data 25ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > createOversight > should set timestamps correctly 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > deactivateOversight > should return null when oversight not found 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > deactivateOversight > should deactivate existing oversight 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > deactivateOversight > should set updated_at timestamp 4ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > countActiveAgentsByOverseer > should return count of active agents 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > countActiveAgentsByOverseer > should return 0 when no active agents 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > markOversightForCancellation > should mark oversight for cancellation 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > markOversightForCancellation > should return null when oversight not found 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOverseerActiveAgents > should return only active agents 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOverseerActiveAgents > should return empty array when no active agents 2ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOversightById > should return oversight by ID 2ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOversightById > should return null when oversight not found 3ms
+stderr | test/unit/oversights.test.ts > Oversights Service > getOversightForAgent > should order by created_at desc to get most recent
+[getOversightForAgent] Agent agent-1 has 2 active oversights. Using most recent by updated_at.
+
+ ✓ test/unit/oversights.test.ts > Oversights Service > getActiveOversight > should return null when no active oversight exists 4ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getActiveOversight > should return active oversight for agent 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getActiveOversight > should return most recently created oversight 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > isAgentUnderActiveOversight > should return true when agent has active oversight 4ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > isAgentUnderActiveOversight > should return false when agent has no active oversight 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > isAgentOversightedBy > should return false when no oversight exists 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > isAgentOversightedBy > should return true when overseer has active oversight over agent 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > isAgentOversightedBy > should return false when oversight is inactive 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getAgentsMarkedForCancellation > should return agents marked for cancellation 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getAgentsMarkedForCancellation > should return empty array when no agents marked 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > unmarkOversightForCancellation > should unmark oversight for cancellation 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > unmarkOversightForCancellation > should return null when oversight not found 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > countAgentsByOverseer > should return count of all agents for overseer 2ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > countAgentsByOverseer > should return 0 when no agents 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOverseerAgents > should return empty array when overseer has no agents 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOverseerAgents > should return all agents for overseer (active and inactive) 4ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOverseerAgents > should return results ordered by created_at 4ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOversightForAgent > should return null when no oversight exists 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOversightForAgent > should return most recent oversight even if inactive 3ms
+ ✓ test/unit/oversights.test.ts > Oversights Service > getOversightForAgent > should order by created_at desc to get most recent 3ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > hexToBytes > should handle uppercase hex 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > hexToBytes > should return empty array for empty string 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > hexToBytes > should convert hex string to bytes 3ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > hexToBytes > should handle all zeros 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > isValidEd25519PublicKey > should return false for key that is too short 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > isValidEd25519PublicKey > should return false for key that is too long 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > isValidEd25519PublicKey > should return false for keys that do not decode to 32 bytes 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > isValidEd25519PublicKey > should return false for invalid base64url string 3ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > isValidEd25519PublicKey > should return false for empty string 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > base64UrlToBytes > should handle standard base64 with + and / 3ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > base64UrlToBytes > should handle padding 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > base64UrlToBytes > should convert base64url string to bytes 3ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > base64UrlToBytes > should handle strings with special characters 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > bytesToBase64Url > should replace + with - and / with _ 3ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > bytesToBase64Url > should remove padding 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > bytesToBase64Url > should convert bytes to base64url string 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > bytesToBase64Url > should be reversible with base64UrlToBytes 3ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > verifyEd25519Signature > should return false for invalid base64url public key 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > verifyEd25519Signature > should return false for invalid base64url signature 2ms
+ ✓ test/unit/crypto.test.ts > Crypto Utility > verifyEd25519Signature > should return false for malformed message 3ms
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 400 when paddle-signature header is missing
+<-- POST /v1/webhooks/paddle
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 400 when paddle-signature header is missing
+--> POST /v1/webhooks/paddle [33m400[0m 0ms
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 200 for valid signature with current timestamp
+<-- POST /v1/webhooks/paddle
+
+stderr | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 200 for valid signature with current timestamp
+Paddle webhook error: Error: Missing overseer_id in custom_data
+    at handlePaymentSuccess (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/webhook-handler.ts:170:11)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/webhooks.ts:158:15
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at validateWebhook (/Users/brotholomew/workdir/llms/agent-id/backend/src/routes/webhooks.ts:85:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at logger2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/logger/index.js:38:5)
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 200 for valid signature with current timestamp
+--> POST /v1/webhooks/paddle [31m500[0m 1ms
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should process webhook events with valid signature
+<-- POST /v1/webhooks/paddle
+
+stderr | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should process webhook events with valid signature
+Paddle webhook error: Error: Missing overseer_id in custom_data
+    at handlePaymentSuccess (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/webhook-handler.ts:170:11)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/webhooks.ts:158:15
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at validateWebhook (/Users/brotholomew/workdir/llms/agent-id/backend/src/routes/webhooks.ts:85:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at logger2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/logger/index.js:38:5)
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should process webhook events with valid signature
+--> POST /v1/webhooks/paddle [31m500[0m 0ms
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should process webhook events with valid signature
+<-- POST /v1/webhooks/paddle
+
+stderr | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should process webhook events with valid signature
+Paddle webhook error: Error: Missing overseer_id in custom_data
+    at handlePaymentSuccess (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/webhook-handler.ts:170:11)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/webhooks.ts:158:15
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at validateWebhook (/Users/brotholomew/workdir/llms/agent-id/backend/src/routes/webhooks.ts:85:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at logger2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/logger/index.js:38:5)
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should process webhook events with valid signature
+--> POST /v1/webhooks/paddle [31m500[0m 1ms
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature is completely invalid
+<-- POST /v1/webhooks/paddle
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature is completely invalid
+{"action":"paddle_timestamp_invalid","webhook_type":"paddle","request_id":"***","timestamp":"1234567890","age_seconds":537633568.9489999}
+
+stderr | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature is completely invalid
+Invalid Paddle signature received: { hasSignature: true, hasSecret: true }
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature is completely invalid
+--> POST /v1/webhooks/paddle [33m401[0m 0ms
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should reject webhook with old timestamp using fake timers
+<-- POST /v1/webhooks/paddle
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should reject webhook with old timestamp using fake timers
+{"action":"paddle_timestamp_invalid","webhook_type":"paddle","request_id":"***","timestamp":"1772200858","age_seconds":600.9519999027252}
+
+stderr | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should reject webhook with old timestamp using fake timers
+Invalid Paddle signature received: { hasSignature: true, hasSecret: true }
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should reject webhook with old timestamp using fake timers
+--> POST /v1/webhooks/paddle [33m401[0m 0ms
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature header is malformed
+<-- POST /v1/webhooks/paddle
+
+stderr | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature header is malformed
+Invalid Paddle signature received: { hasSignature: true, hasSecret: true }
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature header is malformed
+--> POST /v1/webhooks/paddle [33m401[0m 0ms
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should accept webhook with recent timestamp
+<-- POST /v1/webhooks/paddle
+
+stderr | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should accept webhook with recent timestamp
+Paddle webhook error: Error: Missing overseer_id in custom_data
+    at handlePaymentSuccess (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/webhook-handler.ts:170:11)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/webhooks.ts:158:15
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at validateWebhook (/Users/brotholomew/workdir/llms/agent-id/backend/src/routes/webhooks.ts:85:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at logger2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/logger/index.js:38:5)
+
+stdout | test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should accept webhook with recent timestamp
+--> POST /v1/webhooks/paddle [31m500[0m 0ms
+
+ ✓ test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 400 when paddle-signature header is missing 4ms
+ ✓ test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 200 for valid signature with current timestamp 4ms
+ ✓ test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should process webhook events with valid signature 3ms
+ ✓ test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature is completely invalid 3ms
+ ✓ test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should reject webhook with old timestamp using fake timers 4ms
+ ✓ test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should return 401 when signature header is malformed 3ms
+ ✓ test/api/webhooks.test.ts > Webhook API Endpoints > POST /v1/webhooks/paddle - Security > should accept webhook with recent timestamp 3ms
+ ✓ test/unit/dpop.test.ts > DPoP Service > DPoP Proof Validation > should reject proof with wrong number of parts 4ms
+ ✓ test/unit/dpop.test.ts > DPoP Service > DPoP Proof Generation > should include correct headers in proof 3ms
+ ✓ test/unit/dpop.test.ts > DPoP Service > DPoP Proof Generation > should include method and URI in payload 3ms
+ ✓ test/unit/dpop.test.ts > DPoP Service > DPoP Proof Generation > should generate valid DPoP proof 4ms
+ ✓ test/unit/dpop.test.ts > DPoP Service > DPoP Proof Generation > should include jti in payload 2ms
+ ✓ test/unit/dpop.test.ts > DPoP Service > JTI Replay Detection > should return false for new jti 3ms
+ ✓ test/unit/dpop.test.ts > DPoP Service > JTI Replay Detection > should return true for replayed jti 3ms
+ ✓ test/unit/password.test.ts > Password Utility > hashPassword > should produce different hashes for different passwords 2ms
+ ✓ test/unit/password.test.ts > Password Utility > hashPassword > should hash a password and return a hex string 2ms
+ ✓ test/unit/password.test.ts > Password Utility > hashPassword > should handle empty string password 3ms
+ ✓ test/unit/password.test.ts > Password Utility > hashPassword > should handle unicode passwords 3ms
+ ✓ test/unit/password.test.ts > Password Utility > hashPassword > should produce consistent hashes for the same password 2ms
+ ✓ test/unit/password.test.ts > Password Utility > hashPassword > should handle very long passwords 2ms
+ ✓ test/unit/password.test.ts > Password Utility > verifyPassword > should return false for empty password when hash is non-empty 2ms
+ ✓ test/unit/password.test.ts > Password Utility > verifyPassword > should return false when password is correct but hash is wrong format 2ms
+ ✓ test/unit/password.test.ts > Password Utility > verifyPassword > should return true for correct password 2ms
+ ✓ test/unit/password.test.ts > Password Utility > verifyPassword > should return false for incorrect password 2ms
+ ✓ test/unit/password.test.ts > Password Utility > verifyPassword > should be case-sensitive 2ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > getAgentById > should return agent when found 24ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > getAgentById > should return null when agent not found 3ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > createAgent > should throw error for invalid public key 4ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > createAgent > should create agent successfully with valid data 2ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > createAgent > should handle empty description 3ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > createAgent > should throw error for empty name 2ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > createAgent > should throw error for duplicate public key 3ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > createAgent > should throw error for whitespace-only name 2ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > getAgentByPublicKey > should return agent when found by public key 3ms
+ ✓ test/unit/agent-expanded.test.ts > Agent Service - Unit Tests > getAgentByPublicKey > should return null when public key not found 2ms
+stderr | test/unit/paddle.test.ts > Paddle Service > getPaddleCustomer > should return null when customer not found
+Failed to fetch customer from Paddle: Error: Paddle API error: 404 Not Found - Not found
+    at paddleAPIRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:89:11)
+    at getPaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:303:22)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:724:22
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+stderr | test/unit/paddle.test.ts > Paddle Service > getPaddleCustomer > should return null on network error
+Failed to fetch customer from Paddle: Error: Network error
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:730:53
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)
+    at runTest (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)
+    at runSuite (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)
+    at runSuite (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)
+    at runSuite (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)
+
+stderr | test/unit/paddle.test.ts > Paddle Service > paddleAPIRequest (internal) > should handle missing API key gracefully
+Failed to fetch subscription from Paddle: Error: PADDLE_API_KEY not configured
+    at paddleAPIRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:73:11)
+    at getSubscriptionFromPaddle (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:110:28)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:65:28
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+stderr | test/unit/paddle.test.ts > Paddle Service > paddleAPIRequest (internal) > should throw error on 4xx response
+Failed to fetch subscription from Paddle: Error: Paddle API error: 404 Not Found - Subscription not found
+    at paddleAPIRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:89:11)
+    at getSubscriptionFromPaddle (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:110:22)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:78:22
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+stderr | test/unit/paddle.test.ts > Paddle Service > paddleAPIRequest (internal) > should throw error on 5xx response
+Failed to fetch subscription from Paddle: Error: Paddle API error: 500 Internal Server Error - Server error
+    at paddleAPIRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:89:11)
+    at getSubscriptionFromPaddle (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:110:22)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:93:22
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+stderr | test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should handle network errors gracefully
+Failed to fetch subscription from Paddle: Error: Network error
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:160:53
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)
+    at runTest (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)
+    at runSuite (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)
+    at runSuite (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)
+    at runSuite (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)
+
+stderr | test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should return null for 404 response
+Failed to fetch subscription from Paddle: Error: Paddle API error: 404 Not Found - Not found
+    at paddleAPIRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:89:11)
+    at getSubscriptionFromPaddle (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:110:22)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:154:22
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+stderr | test/unit/paddle.test.ts > Paddle Service > createPaddleCustomer > should throw error on creation failure
+Failed to create Paddle customer: Error: Paddle API error: 400 Bad Request - Invalid email
+    at paddleAPIRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:89:11)
+    at createPaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:341:22)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:783:7
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+stderr | test/unit/paddle.test.ts > Paddle Service > getCustomerTransactions > should return empty array on error
+Failed to fetch transactions from Paddle: Error: Paddle API error: 500 Error - Server error
+    at paddleAPIRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:89:11)
+    at getCustomerTransactions (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:242:22)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:542:22
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddleCustomer > should return null when customer not found 5ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddleCustomer > should return customer details 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddleCustomer > should return null on network error 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isShadowPaymentValid > should return false for payment older than 30 days 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isShadowPaymentValid > should return false when no transactions exist 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isShadowPaymentValid > should return true for payment within 30 days 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isShadowPaymentValid > should use most recent payment when multiple exist 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > paddleAPIRequest (internal) > should handle missing API key gracefully 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > paddleAPIRequest (internal) > should throw error on 4xx response 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > paddleAPIRequest (internal) > should make request with proper headers 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > paddleAPIRequest (internal) > should throw error on 5xx response 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should return subscription with mapped tier 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should map PRO tier correctly 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should map PREMIUM tier correctly 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should handle network errors gracefully 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should return UNKNOWN tier for unrecognized price ID 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should return null for 404 response 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionFromPaddle > should return FREE tier when no price ID 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isSubscriptionActive > should return true for past_due status 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isSubscriptionActive > should return true for active status 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isSubscriptionActive > should return false for cancelled status 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isSubscriptionActive > should return false when subscription not found 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isSubscriptionActive > should return true for trialing status 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > isSubscriptionActive > should return false for paused status 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > createPaddleCustomer > should create customer and return ID 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > createPaddleCustomer > should throw error on creation failure 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getCustomerTransactions > should return empty array when no transactions 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getCustomerTransactions > should return empty array on error 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getCustomerTransactions > should return array of transactions sorted by date 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getCustomerTransactions > should handle transaction without subscription_id 2ms
+stderr | test/unit/paddle.test.ts > Paddle Service > createPaddleCheckout > should throw error on checkout creation failure
+Failed to create Paddle checkout: Error: Paddle API error: 400 Bad Request - Invalid price ID
+    at paddleAPIRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:89:11)
+    at createPaddleCheckout (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle.ts:374:22)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/paddle.test.ts:830:7
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+ ✓ test/unit/paddle.test.ts > Paddle Service > createPaddleCheckout > should throw error on checkout creation failure 4ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > createPaddleCheckout > should create checkout and return URL 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > createPaddleCheckout > should work without optional customer details 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionTier > should return tier ID from subscription 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getSubscriptionTier > should return null when subscription not found 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddlePriceId > should return BASIC price ID 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddlePriceId > should return SHADOW price ID 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddlePriceId > should throw error for unknown tier 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddlePriceId > should return PREMIUM price ID 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddlePriceId > should throw error when price ID not configured 3ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddlePriceId > should return PRO price ID 2ms
+ ✓ test/unit/paddle.test.ts > Paddle Service > getPaddlePriceId > should throw error for empty tier 3ms
+ ✓ test/unit/shadow-claim-race.test.ts > Shadow Claim Race Condition Tests > should handle concurrent confirmation requests for the same agent 2ms
+ ✓ test/unit/shadow-claim-race.test.ts > Shadow Claim Race Condition Tests > should handle concurrent initiation requests safely 2ms
+ ✓ test/unit/shadow-claim-race.test.ts > Shadow Claim Race Condition Tests > should reject confirmation if a real oversight was created between checks 2ms
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with invalid email
+<-- POST /v1/overseers/login
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with invalid email
+--> POST /v1/overseers/login [33m401[0m 2ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+Registering overseer with email: wrongpass@example.com
+Checking if overseer exists: wrongpass@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+Failed to query Paddle customer by email: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at listCustomers (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:346:10)
+    at getPaddleCustomerByEmail (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:56:26)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:125:36)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:32)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+Creating new Paddle customer for wrongpass@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+Overseer created: 8f80941f-df7e-480b-b642-df60236b01b2
+Creating session with key: session:b8aed6aa-102e-4a70-8ed8-5a9a256330a0
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+Session created: b8aed6aa-102e-4a70-8ed8-5a9a256330a0
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+--> POST /v1/overseers/register [32m201[0m 8ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+<-- POST /v1/overseers/login
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password
+--> POST /v1/overseers/login [33m401[0m 1ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Registering overseer with email: login@example.com
+Checking if overseer exists: login@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Failed to query Paddle customer by email: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at listCustomers (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:346:10)
+    at getPaddleCustomerByEmail (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:56:26)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:125:36)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:32)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Creating new Paddle customer for login@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Overseer created: 001050d0-1dd8-4986-a53c-b449dfeda1d2
+Creating session with key: session:71126d6c-bf1f-4760-8e54-b6eecdca0d7d
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Session created: 71126d6c-bf1f-4760-8e54-b6eecdca0d7d
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+--> POST /v1/overseers/register [32m201[0m 2ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+<-- POST /v1/overseers/login
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+Creating session with key: session:88a70d3f-c6eb-47b5-bcc6-4794b75531bf
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session
+--> POST /v1/overseers/login [32m200[0m 0ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with missing credentials
+<-- POST /v1/overseers/login
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with missing credentials
+--> POST /v1/overseers/login [33m400[0m 0ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return 401 when not authenticated
+<-- GET /v1/overseers/me
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return 401 when not authenticated
+--> GET /v1/overseers/me [33m401[0m 0ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+Registering overseer with email: me@example.com
+Checking if overseer exists: me@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+Failed to query Paddle customer by email: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at listCustomers (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:346:10)
+    at getPaddleCustomerByEmail (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:56:26)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:125:36)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:32)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+Creating new Paddle customer for me@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+Overseer created: b0a77922-267a-4fcd-b6f0-e51496272b40
+Creating session with key: session:2d3c6964-6420-42f3-be5e-91cffaff3686
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+Session created: 2d3c6964-6420-42f3-be5e-91cffaff3686
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+--> POST /v1/overseers/register [32m201[0m 2ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+<-- GET /v1/overseers/me
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+AuthMiddleware: sessionId from header: 2d3c6964-6420-42f3-be5e-91cffaff3686
+Getting session with key: session:2d3c6964-6420-42f3-be5e-91cffaff3686
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+AuthMiddleware: session found: true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session
+--> GET /v1/overseers/me [32m200[0m 2ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return 401 with invalid session
+<-- GET /v1/overseers/me
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return 401 with invalid session
+AuthMiddleware: sessionId from header: invalid-session-id
+Getting session with key: session:invalid-session-id
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return 401 with invalid session
+AuthMiddleware: session found: false
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return 401 with invalid session
+--> GET /v1/overseers/me [33m401[0m 0ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with invalid email
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with invalid email
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with invalid email
+Registering overseer with email: invalid-email
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with invalid email
+--> POST /v1/overseers/register [33m400[0m 0ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with short password
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with short password
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with short password
+Registering overseer with email: test@example.com
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with short password
+--> POST /v1/overseers/register [33m400[0m 0ms
+
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with invalid email 13ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with wrong password 19ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should login with valid credentials and return session 13ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/login > should reject login with missing credentials 8ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return 401 when not authenticated 7ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return overseer data when authenticated with valid session 13ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > GET /v1/overseers/me > should return 401 with invalid session 8ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with invalid email 8ms
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+Registering overseer with email: test@example.com
+Checking if overseer exists: test@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+Failed to query Paddle customer by email: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at listCustomers (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:346:10)
+    at getPaddleCustomerByEmail (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:56:26)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:125:36)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:32)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+Creating new Paddle customer for test@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+Overseer created: 12a0f32b-71a2-4bf1-bdea-1693f9e99ecf
+Creating session with key: session:c49b5b42-9b7f-40d9-8e0e-a4feb1af3487
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+Session created: c49b5b42-9b7f-40d9-8e0e-a4feb1af3487
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials
+--> POST /v1/overseers/register [32m201[0m 2ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with missing name
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with missing name
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with missing name
+Registering overseer with email: test@example.com
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with missing name
+--> POST /v1/overseers/register [33m400[0m 0ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Registering overseer with email: duplicate@example.com
+Checking if overseer exists: duplicate@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Failed to query Paddle customer by email: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at listCustomers (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:346:10)
+    at getPaddleCustomerByEmail (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:56:26)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:125:36)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:32)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Creating new Paddle customer for duplicate@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Overseer created: c1873851-4830-4e2f-bd9b-dbfa906eb959
+Creating session with key: session:ddbc873a-bcbe-4cf6-a849-9599b470d3e8
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Session created: ddbc873a-bcbe-4cf6-a849-9599b470d3e8
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+--> POST /v1/overseers/register [32m201[0m 10ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+Registering overseer with email: duplicate@example.com
+Checking if overseer exists: duplicate@example.com
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration
+--> POST /v1/overseers/register [33m400[0m 1ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+<-- POST /v1/overseers/register
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+Overseer Register: SESSIONS defined? true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+Registering overseer with email: logout@example.com
+Checking if overseer exists: logout@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+Failed to query Paddle customer by email: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at listCustomers (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:346:10)
+    at getPaddleCustomerByEmail (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:56:26)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:125:36)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:32)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+Creating new Paddle customer for logout@example.com
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stderr | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+Failed to create Paddle customer: Error: PADDLE_API_KEY not configured
+    at paddleRequest (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:140:11)
+    at createCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-api.ts:284:24)
+    at getOrCreatePaddleCustomer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/paddle-customer.ts:138:31)
+    at createOverseer (/Users/brotholomew/workdir/llms/agent-id/backend/src/services/overseer.ts:57:26)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/routes/overseers.ts:43:22
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at /Users/brotholomew/workdir/llms/agent-id/backend/src/middleware/auth.ts:55:3
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+    at cors2 (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/middleware/cors/index.js:79:5)
+    at dispatch (Users/brotholomew/workdir/llms/agent-id/backend/node_modules/hono/dist/compose.js:22:17)
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+Overseer created: 063c1136-1c95-4454-80b8-3fba9a1d7a77
+Creating session with key: session:500660f9-9ce2-41c4-bb1f-8762c3617e7e
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+Session created: 500660f9-9ce2-41c4-bb1f-8762c3617e7e
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+--> POST /v1/overseers/register [32m201[0m 2ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+<-- POST /v1/overseers/logout
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+AuthMiddleware: sessionId from header: 500660f9-9ce2-41c4-bb1f-8762c3617e7e
+Getting session with key: session:500660f9-9ce2-41c4-bb1f-8762c3617e7e
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+AuthMiddleware: session found: true
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+--> POST /v1/overseers/logout [32m200[0m 0ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+<-- GET /v1/overseers/me
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+AuthMiddleware: sessionId from header: 500660f9-9ce2-41c4-bb1f-8762c3617e7e
+Getting session with key: session:500660f9-9ce2-41c4-bb1f-8762c3617e7e
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+AuthMiddleware: session found: false
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session
+--> GET /v1/overseers/me [33m401[0m 1ms
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should return 401 without authorization header
+<-- POST /v1/overseers/logout
+
+stdout | test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should return 401 without authorization header
+--> POST /v1/overseers/logout [33m401[0m 0ms
+
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with short password 9ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should register a new overseer with valid credentials 10ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject registration with missing name 9ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/register > should reject duplicate email registration 19ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should logout successfully with valid session 11ms
+ ✓ test/api/overseers.test.ts > Overseer API Endpoints > POST /v1/overseers/logout > should return 401 without authorization header 9ms
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login without DPoP proof
+<-- POST /v1/agents/register/initiate
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login without DPoP proof
+--> POST /v1/agents/register/initiate [32m202[0m 1ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login without DPoP proof
+<-- POST /v1/agents/register/complete/007fec3b-a05e-4ead-b9c7-48999adaf518
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login without DPoP proof
+Creating session with key: session:e221862e-9524-41dc-a4ef-6d6d2f3e12f3
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login without DPoP proof
+--> POST /v1/agents/register/complete/007fec3b-a05e-4ead-b9c7-48999adaf518 [32m201[0m 2ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login without DPoP proof
+<-- POST /v1/agents/login
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login without DPoP proof
+--> POST /v1/agents/login [33m401[0m 0ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login with invalid agent ID
+<-- POST /v1/agents/login
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login with invalid agent ID
+--> POST /v1/agents/login [33m404[0m 1ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > Agent Session Authentication > should create session after successful registration
+<-- POST /v1/agents/register/initiate
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > Agent Session Authentication > should create session after successful registration
+--> POST /v1/agents/register/initiate [32m202[0m 0ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > Agent Session Authentication > should create session after successful registration
+<-- POST /v1/agents/register/complete/e287b796-4648-43bc-b0f3-ff57fb2d422f
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > Agent Session Authentication > should create session after successful registration
+Creating session with key: session:f1ac23fc-5a5c-4c3e-bae1-abffe02ea8e2
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > Agent Session Authentication > should create session after successful registration
+--> POST /v1/agents/register/complete/e287b796-4648-43bc-b0f3-ff57fb2d422f [32m201[0m 1ms
+
+ ✓ test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login without DPoP proof 12ms
+ ✓ test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/login > should reject login with invalid agent ID 8ms
+ ✓ test/api/agents.test.ts > Agent API Endpoints > Agent Session Authentication > should create session after successful registration 10ms
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject registration with invalid public key format
+<-- POST /v1/agents/register/initiate
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject registration with invalid public key format
+--> POST /v1/agents/register/initiate [33m400[0m 0ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should initiate agent registration and return challenge
+<-- POST /v1/agents/register/initiate
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should initiate agent registration and return challenge
+--> POST /v1/agents/register/initiate [32m202[0m 0ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject duplicate public key
+<-- POST /v1/agents/register/initiate
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject duplicate public key
+--> POST /v1/agents/register/initiate [32m202[0m 0ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject duplicate public key
+<-- POST /v1/agents/register/complete/a0bc1df9-ae5e-4edc-82dc-44485e10e6bd
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject duplicate public key
+Creating session with key: session:ed9c4d8a-7be6-46b8-b42a-0ab44f5973dc
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject duplicate public key
+--> POST /v1/agents/register/complete/a0bc1df9-ae5e-4edc-82dc-44485e10e6bd [32m201[0m 1ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject duplicate public key
+<-- POST /v1/agents/register/initiate
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject duplicate public key
+--> POST /v1/agents/register/initiate [33m409[0m 0ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should reject with invalid signature
+<-- POST /v1/agents/register/initiate
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should reject with invalid signature
+--> POST /v1/agents/register/initiate [32m202[0m 1ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should reject with invalid signature
+<-- POST /v1/agents/register/complete/49960bc6-058b-4ef8-906a-545aee9cf1c6
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should reject with invalid signature
+--> POST /v1/agents/register/complete/49960bc6-058b-4ef8-906a-545aee9cf1c6 [33m401[0m 1ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should complete agent registration with valid signature
+<-- POST /v1/agents/register/initiate
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should complete agent registration with valid signature
+--> POST /v1/agents/register/initiate [32m202[0m 0ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should complete agent registration with valid signature
+<-- POST /v1/agents/register/complete/0c584d39-b43e-4a49-a415-d31343fe3000
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should complete agent registration with valid signature
+Creating session with key: session:bdd9f4a2-7417-42b6-b6a2-b6439181ff2b
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should complete agent registration with valid signature
+--> POST /v1/agents/register/complete/0c584d39-b43e-4a49-a415-d31343fe3000 [32m201[0m 1ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should reject non-existent challenge
+<-- POST /v1/agents/register/complete/nonexistent-challenge
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should reject non-existent challenge
+--> POST /v1/agents/register/complete/nonexistent-challenge [33m404[0m 0ms
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > Data Isolation > should not see agents from previous tests
+<-- GET /v1/agents
+
+stdout | test/api/agents.test.ts > Agent API Endpoints > Data Isolation > should not see agents from previous tests
+--> GET /v1/agents [33m404[0m 1ms
+
+ ✓ test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject registration with invalid public key format 7ms
+ ✓ test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should initiate agent registration and return challenge 9ms
+ ✓ test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/initiate > should reject duplicate public key 11ms
+ ✓ test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should reject with invalid signature 9ms
+ ✓ test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should complete agent registration with valid signature 11ms
+ ✓ test/api/agents.test.ts > Agent API Endpoints > POST /v1/agents/register/complete/:challengeId > should reject non-existent challenge 9ms
+ ✓ test/api/agents.test.ts > Agent API Endpoints > Data Isolation > should not see agents from previous tests 8ms
+stdout | test/api/core.test.ts > Core API Endpoints > GET / > should return service information with available endpoints
+<-- GET /
+
+stdout | test/api/core.test.ts > Core API Endpoints > GET / > should return service information with available endpoints
+--> GET / [32m200[0m 0ms
+
+stdout | test/api/core.test.ts > Core API Endpoints > GET / > should return correct API version format
+<-- GET /
+
+stdout | test/api/core.test.ts > Core API Endpoints > GET / > should return correct API version format
+--> GET / [32m200[0m 0ms
+
+stdout | test/api/core.test.ts > Core API Endpoints > GET /health > should return 200 OK with valid JSON structure
+<-- GET /health
+
+stdout | test/api/core.test.ts > Core API Endpoints > GET /health > should return 200 OK with valid JSON structure
+--> GET /health [32m200[0m 0ms
+
+stdout | test/api/core.test.ts > Core API Endpoints > GET /health > should return health status in correct format
+<-- GET /health
+
+stdout | test/api/core.test.ts > Core API Endpoints > GET /health > should return health status in correct format
+--> GET /health [32m200[0m 0ms
+
+stdout | test/api/core.test.ts > Core API Endpoints > Error Handling > should return 404 for unknown routes
+<-- GET /unknown-route
+
+stdout | test/api/core.test.ts > Core API Endpoints > Error Handling > should return 404 for unknown routes
+--> GET /unknown-route [33m404[0m 0ms
+
+stdout | test/api/core.test.ts > Core API Endpoints > Error Handling > should handle invalid methods correctly
+<-- DELETE /health
+
+stdout | test/api/core.test.ts > Core API Endpoints > Error Handling > should handle invalid methods correctly
+--> DELETE /health [33m404[0m 0ms
+
+ ✓ test/api/core.test.ts > Core API Endpoints > GET / > should return service information with available endpoints 3ms
+ ✓ test/api/core.test.ts > Core API Endpoints > GET / > should return correct API version format 3ms
+ ✓ test/api/core.test.ts > Core API Endpoints > GET /health > should return 200 OK with valid JSON structure 2ms
+ ✓ test/api/core.test.ts > Core API Endpoints > GET /health > should return health status in correct format 3ms
+ ✓ test/api/core.test.ts > Core API Endpoints > Error Handling > should return 404 for unknown routes 2ms
+ ✓ test/api/core.test.ts > Core API Endpoints > Error Handling > should handle invalid methods correctly 2ms
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject expired authorization code
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject expired authorization code
+--> POST /v1/oauth/authorize [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject expired authorization code
+<-- POST /v1/oauth/token
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject expired authorization code
+eyJ0eXAiOiJqd3QiLCJhbGciOiJFZERTQSJ9.eyJpc3MiOiJjbGllbnQtMDgyMjlmYmItZjE2Ny00YjRlLTg1MmYtN2ZlMTdiNjYyYTkwIiwic3ViIjoiY2xpZW50LTA4MjI5ZmJiLWYxNjctNGI0ZS04NTJmLTdmZTE3YjY2MmE5MCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QvdjEvb2F1dGgvdG9rZW4iLCJpYXQiOjE3NzIyMDE0NjAsImV4cCI6MTc3MjIwMTUyMCwianRpIjoiZmU5MDU0OGQtMTM2ZS00OGNmLWFiZDUtOWI1Zjk1ZDg2MDRiIn0.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject expired authorization code
+--> POST /v1/oauth/token [33m400[0m 1ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should exchange authorization code for tokens
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should exchange authorization code for tokens
+--> POST /v1/oauth/authorize [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should exchange authorization code for tokens
+<-- POST /v1/oauth/token
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should exchange authorization code for tokens
+eyJ0eXAiOiJqd3QiLCJhbGciOiJFZERTQSJ9.eyJpc3MiOiJjbGllbnQtMDgyMjlmYmItZjE2Ny00YjRlLTg1MmYtN2ZlMTdiNjYyYTkwIiwic3ViIjoiY2xpZW50LTA4MjI5ZmJiLWYxNjctNGI0ZS04NTJmLTdmZTE3YjY2MmE5MCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QvdjEvb2F1dGgvdG9rZW4iLCJpYXQiOjE3NzIyMDE0NjAsImV4cCI6MTc3MjIwMTUyMCwianRpIjoiMWYxYTRlY2UtYjNiMi00ZDFkLWI0NjMtZmUxOGMxZTNjYTUwIn0.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should exchange authorization code for tokens
+--> POST /v1/oauth/token [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid code verifier (PKCE)
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid code verifier (PKCE)
+--> POST /v1/oauth/authorize [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid code verifier (PKCE)
+<-- POST /v1/oauth/token
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid code verifier (PKCE)
+eyJ0eXAiOiJqd3QiLCJhbGciOiJFZERTQSJ9.eyJpc3MiOiJjbGllbnQtMDgyMjlmYmItZjE2Ny00YjRlLTg1MmYtN2ZlMTdiNjYyYTkwIiwic3ViIjoiY2xpZW50LTA4MjI5ZmJiLWYxNjctNGI0ZS04NTJmLTdmZTE3YjY2MmE5MCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QvdjEvb2F1dGgvdG9rZW4iLCJpYXQiOjE3NzIyMDE0NjAsImV4cCI6MTc3MjIwMTUyMCwianRpIjoiMGUxOTYyMmQtMmE0MS00MGU1LTgwMzMtMTMxMzg1MzkwYTRkIn0.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid code verifier (PKCE)
+--> POST /v1/oauth/token [33m400[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid client assertion
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid client assertion
+--> POST /v1/oauth/authorize [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid client assertion
+<-- POST /v1/oauth/token
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid client assertion
+--> POST /v1/oauth/token [33m401[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid authorization code
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid authorization code
+--> POST /v1/oauth/authorize [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid authorization code
+<-- POST /v1/oauth/token
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid authorization code
+eyJ0eXAiOiJqd3QiLCJhbGciOiJFZERTQSJ9.eyJpc3MiOiJjbGllbnQtMDgyMjlmYmItZjE2Ny00YjRlLTg1MmYtN2ZlMTdiNjYyYTkwIiwic3ViIjoiY2xpZW50LTA4MjI5ZmJiLWYxNjctNGI0ZS04NTJmLTdmZTE3YjY2MmE5MCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QvdjEvb2F1dGgvdG9rZW4iLCJpYXQiOjE3NzIyMDE0NjAsImV4cCI6MTc3MjIwMTUyMCwianRpIjoiN2I5ZWMxMjctYzZmNi00OWY2LTg4ZGItZmMxYmRjNWQ5MzYzIn0.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid authorization code
+--> POST /v1/oauth/token [33m400[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject client_id mismatch in code
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject client_id mismatch in code
+--> POST /v1/oauth/authorize [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject client_id mismatch in code
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject client_id mismatch in code
+--> POST /v1/oauth/authorize [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject client_id mismatch in code
+<-- POST /v1/oauth/token
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject client_id mismatch in code
+eyJ0eXAiOiJqd3QiLCJhbGciOiJFZERTQSJ9.eyJpc3MiOiJjbGllbnQtMDgyMjlmYmItZjE2Ny00YjRlLTg1MmYtN2ZlMTdiNjYyYTkwIiwic3ViIjoiY2xpZW50LTA4MjI5ZmJiLWYxNjctNGI0ZS04NTJmLTdmZTE3YjY2MmE5MCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QvdjEvb2F1dGgvdG9rZW4iLCJpYXQiOjE3NzIyMDE0NjAsImV4cCI6MTc3MjIwMTUyMCwianRpIjoiNTM4YTM5MzEtMDQxMS00ZmZhLWExOWYtYjVkMWJmNjM0MDY2In0.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject client_id mismatch in code
+--> POST /v1/oauth/token [33m400[0m 1ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid redirect_uri
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid redirect_uri
+--> POST /v1/oauth/authorize [33m400[0m 1ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid PKCE method
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid PKCE method
+--> POST /v1/oauth/authorize [33m400[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should generate authorization code with valid DPoP authentication
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should generate authorization code with valid DPoP authentication
+--> POST /v1/oauth/authorize [32m200[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid client_id
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid client_id
+--> POST /v1/oauth/authorize [33m400[0m 1ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request without DPoP or session
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request without DPoP or session
+--> POST /v1/oauth/authorize [33m401[0m 0ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > Full OAuth Flow > should complete full authorization code flow with DPoP
+<-- POST /v1/oauth/authorize
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > Full OAuth Flow > should complete full authorization code flow with DPoP
+--> POST /v1/oauth/authorize [32m200[0m 1ms
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > Full OAuth Flow > should complete full authorization code flow with DPoP
+<-- POST /v1/oauth/token
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > Full OAuth Flow > should complete full authorization code flow with DPoP
+eyJ0eXAiOiJqd3QiLCJhbGciOiJFZERTQSJ9.eyJpc3MiOiJjbGllbnQtMDgyMjlmYmItZjE2Ny00YjRlLTg1MmYtN2ZlMTdiNjYyYTkwIiwic3ViIjoiY2xpZW50LTA4MjI5ZmJiLWYxNjctNGI0ZS04NTJmLTdmZTE3YjY2MmE5MCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QvdjEvb2F1dGgvdG9rZW4iLCJpYXQiOjE3NzIyMDE0NjAsImV4cCI6MTc3MjIwMTUyMCwianRpIjoiYjk3ZjJkODMtYzBiOS00MDUyLThkNTUtMmZjNzdmZmFiZWE2In0.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+stdout | test/api/oauth.test.ts > OAuth API Integration Tests > Full OAuth Flow > should complete full authorization code flow with DPoP
+--> POST /v1/oauth/token [32m200[0m 0ms
+
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject expired authorization code 3ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should exchange authorization code for tokens 4ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid code verifier (PKCE) 3ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid client assertion 3ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject invalid authorization code 3ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/token > should reject client_id mismatch in code 4ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid redirect_uri 3ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid PKCE method 2ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should generate authorization code with valid DPoP authentication 3ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request with invalid client_id 3ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > POST /v1/oauth/authorize > should reject request without DPoP or session 2ms
+ ✓ test/api/oauth.test.ts > OAuth API Integration Tests > Full OAuth Flow > should complete full authorization code flow with DPoP 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Shadow Overseer ID Generation > should generate valid shadow overseer ID 26ms
+stdout | test/unit/ownership.test.ts > Ownership Service > Revoke Overseer > should revoke and delete shadow overseer record
+{"action":"shadow_overseer_deleted","subscription_id":"9f70***e536","timestamp":"2026-02-27T14:11:00.128Z","agent_id":"agent-1","reason":"Agent renounced shadow overseer"}
+
+stdout | test/unit/ownership.test.ts > Ownership Service > Validate Overseer ID > should return true for valid shadow overseer
+Shadow overseer verified
+
+stdout | test/unit/ownership.test.ts > Ownership Service > Claim Agent > should claim agent that was shadow-claimed
+{"action":"shadow_overseer_deleted","subscription_id":"9f70***0a4c","timestamp":"2026-02-27T14:11:00.204Z","agent_id":"agent-1","reason":"Agent claimed by real overseer"}
+
+ ✓ test/unit/ownership.test.ts > Ownership Service > Shadow Overseer ID Generation > should generate unique IDs 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Is Agent Claimed > should return false when agent has no oversight 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Is Agent Claimed > should return true when agent has active oversight 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Revoke Overseer > should throw error when no active oversight 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Revoke Overseer > should successfully revoke oversight for regular overseer 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Revoke Overseer > should throw error when agent not found 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Revoke Overseer > should revoke and delete shadow overseer record 4ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Shadow Overseer Validation > should return false for regular overseer ID 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Shadow Overseer Validation > should validate shadow overseer signature 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Shadow Overseer Validation > should return false for invalid UUID 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Shadow Overseer Validation > should return false for wrong secret 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Get Overseer Agents > should return empty array when overseer has no agents 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Get Overseer Agents > should return agents for overseer with multiple agents 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Get Overseer Agents > should skip agents that are not found 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Validate Overseer ID > should return true for valid shadow overseer 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Validate Overseer ID > should return false for invalid overseer ID 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Validate Overseer ID > should return true when overseer exists in database 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Validate Overseer ID > should return false when shadow overseer without env 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Is Agent Owned By > should return true when overseer owns agent 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Is Agent Owned By > should return false when overseer does not own agent 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Get Agent Overseer ID > should return null when agent has no oversight 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Get Agent Overseer ID > should return overseer ID when agent has oversight 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Count Agents By Overseer > should return count of active agents 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Count Agents By Overseer > should return 0 when no agents 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Claim Agent > should throw error when FREE tier tries to claim 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Claim Agent > should throw error when agent not found 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Claim Agent > should throw error when agent limit reached 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Claim Agent > should allow claim when limit is -1 (unlimited) 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Claim Agent > should successfully claim an unclaimed agent 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Claim Agent > should claim agent that was shadow-claimed 4ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Claim Agent > should throw error when env not provided 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Claim Agent > should throw error for invalid overseer ID 3ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Mark Agent For Cancellation > should return true when oversight exists 2ms
+ ✓ test/unit/ownership.test.ts > Ownership Service > Mark Agent For Cancellation > should return false when no oversight exists 3ms
+stdout | test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-006: Shadow-Claimed Agent Gets Claimed by Human > should delete shadow overseer when real overseer claims
+{"action":"shadow_overseer_deleted","subscription_id":"9f70***ef09","timestamp":"2026-02-27T14:11:00.283Z","agent_id":"agent-006","reason":"Agent claimed by real overseer"}
+
+stdout | test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-005: Shadow-Claimed Agent Gets Shadow Claimed Again > should deactivate old shadow oversight and create new one
+{"action":"shadow_overseer_deleted","subscription_id":"9f70***412e","timestamp":"2026-02-27T14:11:00.290Z","agent_id":"agent-005","reason":"Agent claimed by real overseer"}
+
+stdout | test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-005: Shadow-Claimed Agent Gets Shadow Claimed Again > should deactivate old shadow oversight and create new one
+Shadow overseer verified
+
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-001: Overseer Claims Unclaimed Agent > should successfully claim an unclaimed agent 27ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-002: Agent Renounces Overseer > should allow agent to revoke oversight 4ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-008: Agent Does Not Respond to Claim Procedure > should handle claim status check for pending claim 3ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-006: Shadow-Claimed Agent Gets Claimed by Human > should delete shadow overseer when real overseer claims 4ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-005: Shadow-Claimed Agent Gets Shadow Claimed Again > should deactivate old shadow oversight and create new one 5ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-009: Overseer Without Subscription Attempts to Claim > should handle claim when overseer has FREE tier 3ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-003: Overseer Ends Oversight > should allow overseer to end oversight relationship 4ms
+stdout | test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-004: Unclaimed Agent Gets Shadow Claimed > should allow shadow claim of unclaimed agent
+Shadow overseer verified
+
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-010: Invalid Claim Challenge ID > should reject claim with invalid overseer ID 4ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-011: Overseer Checks Claim Status (Pending) > should return active oversight status 4ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-012: Overseer Checks Claim Status (Expired) > should return inactive when oversight is deactivated 3ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-007: Overseer Attempts to Claim Already Claimed Agent > should deactivate old oversight and create new one when claiming claimed agent 4ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-014: Overseer Tries to Check Another Overseer Claim > should return false when checking claim for another overseer 2ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-004: Unclaimed Agent Gets Shadow Claimed > should allow shadow claim of unclaimed agent 4ms
+ ✓ test/unit/claim-scenarios.test.ts > Claim Test Scenarios (TS-001 to TS-014) > TS-013: Agent Approves Wrong Overseer in Claim > should not allow ownership check to pass for wrong overseer 3ms
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should reject key rotation without public_key
+<-- PUT /v1/clients/853cb138-2c86-4294-be2f-6301758e5bed/key
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should reject key rotation without public_key
+AuthMiddleware: sessionId from header: session-286d339d-7d3b-47de-8f36-f4a27bf512ee
+Getting session with key: session:session-286d339d-7d3b-47de-8f36-f4a27bf512ee
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should reject key rotation without public_key
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should reject key rotation without public_key
+--> PUT /v1/clients/853cb138-2c86-4294-be2f-6301758e5bed/key [33m400[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should rotate client public key
+<-- PUT /v1/clients/cde7994d-6332-47b3-95da-4f76553b1a5d/key
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should rotate client public key
+AuthMiddleware: sessionId from header: session-4cbcd62d-d7b5-4e0f-a1bd-67cd2ac7ef97
+Getting session with key: session:session-4cbcd62d-d7b5-4e0f-a1bd-67cd2ac7ef97
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should rotate client public key
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should rotate client public key
+--> PUT /v1/clients/cde7994d-6332-47b3-95da-4f76553b1a5d/key [32m200[0m 1ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should return 404 for non-existent client
+<-- PUT /v1/clients/non-existent-id/key
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should return 404 for non-existent client
+AuthMiddleware: sessionId from header: session-60784936-c78a-4403-96d3-ef6b45f77bb6
+Getting session with key: session:session-60784936-c78a-4403-96d3-ef6b45f77bb6
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should return 404 for non-existent client
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should return 404 for non-existent client
+--> PUT /v1/clients/non-existent-id/key [33m404[0m 1ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should delete OAuth client
+<-- DELETE /v1/clients/2a1789a6-242a-485c-8d3e-b3e9843627bb
+
+stdout | test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should delete OAuth client
+AuthMiddleware: sessionId from header: session-5e39ecce-9259-4c51-b5a1-1bc579e4953a
+Getting session with key: session:session-5e39ecce-9259-4c51-b5a1-1bc579e4953a
+
+stdout | test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should delete OAuth client
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should delete OAuth client
+--> DELETE /v1/clients/2a1789a6-242a-485c-8d3e-b3e9843627bb [32m200[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should return 404 for non-existent client
+<-- DELETE /v1/clients/non-existent-id
+
+stdout | test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should return 404 for non-existent client
+AuthMiddleware: sessionId from header: session-564cee86-c586-4e33-9292-3860943820c0
+Getting session with key: session:session-564cee86-c586-4e33-9292-3860943820c0
+
+stdout | test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should return 404 for non-existent client
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should return 404 for non-existent client
+--> DELETE /v1/clients/non-existent-id [33m404[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject unauthenticated requests
+<-- POST /v1/clients/register/overseer
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject unauthenticated requests
+--> POST /v1/clients/register/overseer [33m401[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject invalid owner_type
+<-- POST /v1/clients/register/invalid
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject invalid owner_type
+AuthMiddleware: sessionId from header: session-60a89082-5851-4a68-8d83-470f5a1497af
+Getting session with key: session:session-60a89082-5851-4a68-8d83-470f5a1497af
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject invalid owner_type
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject invalid owner_type
+--> POST /v1/clients/register/invalid [33m400[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should create OAuth client for authenticated overseer
+<-- POST /v1/clients/register/overseer
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should create OAuth client for authenticated overseer
+AuthMiddleware: sessionId from header: session-3a8edd1d-ea50-47de-9363-77f525419e2d
+Getting session with key: session:session-3a8edd1d-ea50-47de-9363-77f525419e2d
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should create OAuth client for authenticated overseer
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should create OAuth client for authenticated overseer
+--> POST /v1/clients/register/overseer [32m201[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject when client limit reached
+<-- POST /v1/clients/register/overseer
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject when client limit reached
+AuthMiddleware: sessionId from header: session-4e202a6d-af9a-4275-b6e2-eb309737add6
+Getting session with key: session:session-4e202a6d-af9a-4275-b6e2-eb309737add6
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject when client limit reached
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject when client limit reached
+--> POST /v1/clients/register/overseer [33m400[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should return empty array when no clients exist
+<-- GET /v1/clients/list/overseer
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should return empty array when no clients exist
+AuthMiddleware: sessionId from header: session-f059a0d2-c9b8-4f1b-89bb-ae69b01e7245
+Getting session with key: session:session-f059a0d2-c9b8-4f1b-89bb-ae69b01e7245
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should return empty array when no clients exist
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should return empty array when no clients exist
+--> GET /v1/clients/list/overseer [32m200[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should list OAuth clients for authenticated overseer
+<-- GET /v1/clients/list/overseer
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should list OAuth clients for authenticated overseer
+AuthMiddleware: sessionId from header: session-908d0f5f-9766-4e6c-a0ae-accfc75efb5a
+Getting session with key: session:session-908d0f5f-9766-4e6c-a0ae-accfc75efb5a
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should list OAuth clients for authenticated overseer
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should list OAuth clients for authenticated overseer
+--> GET /v1/clients/list/overseer [32m200[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should reject unauthenticated requests
+<-- GET /v1/clients/list/overseer
+
+stdout | test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should reject unauthenticated requests
+--> GET /v1/clients/list/overseer [33m401[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should create OAuth client for agent
+<-- POST /v1/clients/register/agent
+
+stdout | test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should create OAuth client for agent
+AuthMiddleware: sessionId from header: session-ad8b402e-a33b-457c-b020-d759ea22a424
+Getting session with key: session:session-ad8b402e-a33b-457c-b020-d759ea22a424
+
+stdout | test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should create OAuth client for agent
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should create OAuth client for agent
+--> POST /v1/clients/register/agent [32m201[0m 0ms
+
+stdout | test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should list OAuth clients for agent
+<-- GET /v1/clients/list/agent
+
+stdout | test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should list OAuth clients for agent
+AuthMiddleware: sessionId from header: session-38b4c4e2-0851-442d-8c22-d0bb576e88cd
+Getting session with key: session:session-38b4c4e2-0851-442d-8c22-d0bb576e88cd
+
+stdout | test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should list OAuth clients for agent
+AuthMiddleware: session found: true
+
+stdout | test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should list OAuth clients for agent
+--> GET /v1/clients/list/agent [32m200[0m 0ms
+
+ ✓ test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should reject key rotation without public_key 3ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should rotate client public key 4ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > PUT /v1/clients/:client_id/key > should return 404 for non-existent client 3ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should delete OAuth client 3ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > DELETE /v1/clients/:client_id > should return 404 for non-existent client 2ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject unauthenticated requests 5ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject invalid owner_type 3ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should create OAuth client for authenticated overseer 2ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > POST /v1/clients/register/overseer > should reject when client limit reached 3ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should return empty array when no clients exist 2ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should list OAuth clients for authenticated overseer 3ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > GET /v1/clients/list/overseer > should reject unauthenticated requests 2ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should create OAuth client for agent 3ms
+ ✓ test/api/clients.test.ts > OAuth Clients API > Agent OAuth Clients > should list OAuth clients for agent 2ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > authenticateOverseer > should return null for invalid email 25ms
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should create overseer with valid data
+Checking if overseer exists: test@example.com
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should hash password before storing
+Checking if overseer exists: test@example.com
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should continue without Paddle customer on error
+Checking if overseer exists: test@example.com
+
+stderr | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should continue without Paddle customer on error
+Failed to create Paddle customer: Error: Paddle API error
+    at /Users/brotholomew/workdir/llms/agent-id/backend/test/unit/overseer-expanded.test.ts:173:66
+    at Users/brotholomew/workdir/llms/agent-id/backend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should throw on duplicate email
+Checking if overseer exists: test@example.com
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should normalize email to lowercase
+Checking if overseer exists: test@example.com
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should create Paddle customer when env provided
+Checking if overseer exists: test@example.com
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should handle null env gracefully
+Checking if overseer exists: test@example.com
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > Email Validation > should accept valid email formats
+Checking if overseer exists: test@example.com
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > Email Validation > should accept valid email formats
+Checking if overseer exists: user.name@domain.co.uk
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > Email Validation > should accept valid email formats
+Checking if overseer exists: user+tag@example.org
+
+stdout | test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > Email Validation > should accept valid email formats
+Checking if overseer exists: first.last@sub.domain.com
+
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > authenticateOverseer > should return null for invalid password 4ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > authenticateOverseer > should return overseer with valid credentials 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > authenticateOverseer > should handle email case-insensitively 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > getOverseerById > should return null when overseer not found 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > getOverseerById > should return overseer when found 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > getOverseerById > should return overseer with all fields 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should throw on short password 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should throw on invalid email format 2ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should create overseer with valid data 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should hash password before storing 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should continue without Paddle customer on error 5ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should throw on missing name 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should throw on duplicate email 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should normalize email to lowercase 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should create Paddle customer when env provided 5ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > createOverseer > should handle null env gracefully 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > Email Validation > should reject invalid email formats 3ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > Email Validation > should accept valid email formats 4ms
+ ✓ test/unit/overseer-expanded.test.ts > Overseer Service - Expanded Tests > Email Validation > should reject missing email 3ms
+stdout | test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should not set variables for invalid session
+AuthMiddleware: sessionId from header: invalid-session
+
+stdout | test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should not set variables for invalid session
+AuthMiddleware: session found: false
+
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > requireAgent > should call next when agentId is set 3ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > requireAgent > should return 401 when agentId is not set 3ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should not set variables for invalid session 2ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should not set any variables when no auth header present 3ms
+stdout | test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should set overseerId and sessionType for overseer session
+AuthMiddleware: sessionId from header: overseer-session-456
+
+stdout | test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should set overseerId and sessionType for overseer session
+AuthMiddleware: session found: true
+
+stdout | test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should set agentId and sessionType for agent session
+AuthMiddleware: sessionId from header: agent-session-123
+
+stdout | test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should set agentId and sessionType for agent session
+AuthMiddleware: session found: true
+
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should handle Bearer token with non-Bearer prefix 3ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should call next without setting agent when DPoP header is missing jwk 3ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should set overseerId and sessionType for overseer session 2ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should not set agent for invalid DPoP header 2ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should set agentId and sessionType for agent session 2ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > authMiddleware > should handle malformed DPoP JSON gracefully 2ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > requireOverseer > should call next when overseerId is set 2ms
+ ✓ test/unit/auth-middleware.test.ts > Auth Middleware > requireOverseer > should return 401 when overseerId is not set 2ms
+ ✓ test/unit/auth.test.ts > Overseer Service > createOverseer validation > should throw error for invalid email 23ms
+ ✓ test/unit/auth.test.ts > Overseer Service > createOverseer validation > should throw error for empty name 3ms
+ ✓ test/unit/auth.test.ts > Overseer Service > createOverseer validation > should throw error for short password 2ms
+ ✓ test/unit/auth.test.ts > Agent Service > createAgent validation > should throw error for empty name 6ms
+ ✓ test/unit/auth.test.ts > Agent Service > createAgent validation > should throw error for invalid public key 3ms
+ ✓ test/unit/oauth-flow.test.ts > OAuth Flow Service > Token Generation > should generate refresh token 5ms
+ ✓ test/unit/oauth-flow.test.ts > OAuth Flow Service > Token Generation > should verify valid access token 3ms
+ ✓ test/unit/oauth-flow.test.ts > OAuth Flow Service > Token Generation > should generate access token 3ms
+ ✓ test/unit/oauth-flow.test.ts > OAuth Flow Service > Token Generation > should return null for invalid token 4ms
+ ✓ test/unit/oauth-flow.test.ts > OAuth Flow Service > Authorization Code Functions > should create authorization code 3ms
+ ✓ test/unit/oauth-flow.test.ts > OAuth Flow Service > Authorization Code Functions > should reject invalid PKCE method 4ms
+ ✓ test/unit/oauth-flow.test.ts > OAuth Flow Service > Token Revocation > should check if token is revoked 4ms
+ ✓ test/unit/oauth-flow.test.ts > OAuth Flow Service > Token Revocation > should return true for revoked token 3ms
+ ✓ test/integration/paddle-api.test.ts > Paddle API Module Structure > should export required type definitions 3ms
+ ✓ test/integration/paddle-api.test.ts > Paddle API Module Structure > should export all required functions 2ms
+ ✓ test/integration/paddle-api.test.ts > Paddle API Module Structure > should have correct function signatures 3ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleShadowClaimPayment > should create new shadow overseer when agent has no existing shadow 3ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleShadowClaimPayment > should reactivate existing shadow oversight when payment renewed 3ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleCustomerCreated > should link customer to overseer when overseer_id is in custom_data 3ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleCustomerCreated > should handle customer created without overseer_id 3ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleSubscriptionRenewal > should log renewal and find overseer by subscription_id 3ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleSubscriptionRenewal > should throw error when overseer not found 7ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleSubscriptionCancellation > should clear subscription ID and deactivate oversights 2ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleSubscriptionCancellation > should throw error when overseer not found 3ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handlePaymentSuccess > should throw error when overseer_id is missing 2ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handlePaymentSuccess > should update overseer with subscription and customer IDs 2ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handlePaymentSuccess > should throw error when custom_data is missing 2ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleTierUpdate > should log tier update and fetch new tier from Paddle 3ms
+ ✓ test/unit/webhook-handler.test.ts > Webhook Handler > handleTierUpdate > should throw error when overseer not found 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Shadow Claim Payment Handler Logic > should handle new shadow claim without existing overseer 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Shadow Claim Payment Handler Logic > should handle renewal with existing shadow overseer 3ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Shadow Claim Payment Handler Logic > should validate shadow claim payload structure 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Shadow Claim Payment Handler Logic > should include amount for logging 3ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Customer Created Handler Logic > should prepare customer created payload without overseer_id 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Customer Created Handler Logic > should prepare customer created payload with overseer_id 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Customer Created Handler Logic > should prepare customer created payload with email for lookup 3ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Subscription Renewal Handler Logic > should require subscription_id for renewal 3ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Error Cases > should handle null custom_data 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Error Cases > should handle missing custom_data 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Error Cases > should handle empty subscription_id 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Payload Validation > should validate payment success payload 3ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Payload Validation > should validate cancellation payload 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Payload Validation > should validate customer.created payload 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Payload Validation > should validate tier update payload 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Tier Update Handler Logic > should include update_reason in tier update 3ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Tier Update Handler Logic > should allow null update_reason 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Payment Success Handler Logic > should reject payment without overseer_id 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Payment Success Handler Logic > should require overseer_id in payment payload 3ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Payment Success Handler Logic > should validate subscription_id is present 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Subscription Cancellation Handler Logic > should require subscription_id for cancellation 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Subscription Cancellation Handler Logic > should include status in cancellation payload 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Event Type Handling > should map subscription.cancelled to cancellation handler 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Event Type Handling > should map subscription.updated to tier update handler 2ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Event Type Handling > should map subscription.activated to payment handler 3ms
+ ✓ test/integration/webhook-events.test.ts > Webhook Event Handler Logic Tests > Event Type Handling > should map customer.created to customer handler 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > generateUUID > should generate a valid UUID v4 3ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > generateUUID > should generate unique UUIDs 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > isExpired > should return false for future dates 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > isExpired > should return true for past dates 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > isExpired > should return false for current time (edge case) 1ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > getNextBillingPeriod > should return a date approximately one month in the future 1ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > getNextBillingPeriod > should return valid ISO string 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > getExpirationTime > should handle different minute values 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > getExpirationTime > should return ISO string in the future 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > getExpirationTime > should handle zero minutes 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should sort keys alphabetically 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should handle nested objects 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should handle number values 3ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should handle null values 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should handle arrays 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should escape special characters in strings 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should escape quotes in strings 1ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should handle boolean values 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should handle empty objects 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should handle string values 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > canonicalize > should produce deterministic output 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > generateChallengeId > should generate a 32-character hex string 1ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > generateChallengeId > should generate unique challenge IDs 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > validateEd25519PublicKey > should return false for key that is too short 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > validateEd25519PublicKey > should return false for key that is too long 2ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > validateEd25519PublicKey > should return false for keys that do not decode to 32 bytes 3ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > validateEd25519PublicKey > should return false for invalid base64url string 1ms
+ ✓ test/unit/helpers.test.ts > Helpers Utility > validateEd25519PublicKey > should return false for empty string 2ms
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+<-- POST /v1/agents/malice/agent-123
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+[AgentsRoute] malice/:agentId env keys: [
+  'DB',
+  'CHALLENGES',
+  'SESSIONS',
+  'RATE_LIMITS',
+  'SHADOW_CLAIMS',
+  'ENVIRONMENT',
+  'JWT_SECRET',
+  'PADDLE_WEBHOOK_SECRET',
+  'PADDLE_PRICE_ID_SHADOW'
+]
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+--> POST /v1/agents/malice/agent-123 [32m200[0m 0ms
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+<-- POST /v1/agents/claim/complete/add190e0-e3ec-4db4-a22e-86a524f80d21
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+AuthMiddleware: sessionId from header: agent-session-123
+Getting session with key: session:agent-session-123
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+AuthMiddleware: session found: true
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+--> POST /v1/agents/claim/complete/add190e0-e3ec-4db4-a22e-86a524f80d21 [32m200[0m 0ms
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+<-- POST /v1/webhooks/paddle
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+{"action":"shadow_claim_overseer_created","subscription_id":"add1***0d21","timestamp":"2026-02-27T14:11:01.127Z","agent_id":"agent-123","shadow_overseer_id":"shadow-overseer-123","customer_id":"cus_123"}
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+{"action":"shadow_claim_activated","subscription_id":"add1***0d21","timestamp":"2026-02-27T14:11:01.127Z","agent_id":"agent-123","shadow_overseer_id":"shadow-overseer-123","customer_id":"cus_123","customer_email":"shadow-user@example.com","is_new_overseer":true}
+
+stdout | test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully
+--> POST /v1/webhooks/paddle [32m200[0m 0ms
+
+ ✓ test/integration/shadow-claim-flow.test.ts > Shadow Claim Full Lifecycle Integration > should complete the full shadow claim lifecycle successfully 5ms
+ ✓ test/unit/client-limits.test.ts > Client Limits Service > canRegisterClient > should return not allowed for FREE tier 20ms
+ ✓ test/unit/client-limits.test.ts > Client Limits Service > canRegisterClient > should return allowed for unlimited tier 3ms
+ ✓ test/unit/client-limits.test.ts > Client Limits Service > enforceClientLimitsForOverseer > should return null for FREE tier 3ms
+ ✓ test/unit/client-limits.test.ts > Client Limits Service > enforceClientLimitsForOverseer > should return enforced: false for unlimited tier 2ms
+ ✓ test/unit/subscription.test.ts > Subscription Service > getAgentSubscription > should return FREE tier when agent has no oversight 22ms
+ ✓ test/unit/subscription.test.ts > Subscription Service > Tier Limits > FREE tier should have correct limits 2ms
+ ✓ test/unit/subscription.test.ts > Subscription Service > getActiveSubscription > should return FREE tier when overseer not found 3ms
+ ✓ test/unit/subscription.test.ts > Subscription Service > getActiveSubscription > should return FREE tier when overseer has no subscription 2ms
+ ✓ test/unit/subscription.test.ts > Subscription Service > sanitizeSubscriptionForAPI > should convert SHADOW to PAID 2ms
+ ✓ test/unit/subscription.test.ts > Subscription Service > sanitizeSubscriptionForAPI > should not modify non-SHADOW tiers 2ms
+ ✓ test/infrastructure/pool-verification.test.ts > Cloudflare Workers Pool Verification > should create overseer via TestDataBuilder 6ms
+ ✓ test/infrastructure/pool-verification.test.ts > Cloudflare Workers Pool Verification > should have access to cloudflare:test env 7ms
+ ✓ test/infrastructure/pool-verification.test.ts > Cloudflare Workers Pool Verification > should create agent and link to overseer 8ms
+ ✓ test/unit/shadow-claim-webhook.test.ts > Shadow Claim Webhook Unit Tests > should deactivate existing real oversight if agent chose shadow claim 3ms
+ ✓ test/unit/shadow-claim-webhook.test.ts > Shadow Claim Webhook Unit Tests > should successfully activate a new shadow claim 2ms
+ ✓ test/unit/shadow-claim-webhook.test.ts > Shadow Claim Webhook Unit Tests > should be idempotent and skip if challenge is already completed 2ms
+ ✓ test/unit/shadow-claim-webhook.test.ts > Shadow Claim Webhook Unit Tests > should handle late payment by skipping if agent is already claimed 2ms
+ ✓ test/unit/shadow-claim-webhook.test.ts > Shadow Claim Webhook Unit Tests > should reuse existing shadow overseer on renewal 2ms
+ ✓ test/unit/shadow-claim-webhook.test.ts > Shadow Claim Webhook Unit Tests > should activate even if expired if agent is not claimed (available) 2ms
+
+ Test Files  31 passed (31)
+      Tests  402 passed (402)
+   Start at  15:10:56
+   Duration  4.94s (transform 313ms, setup 0ms, collect 1.52s, tests 1.88s, environment 0ms, prepare 94ms)
+
+[vpw:debug] Shutting down runtimes...
