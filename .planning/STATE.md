@@ -28,6 +28,7 @@
 - **Plan:** 6
 - **Plan:** 7
 - **Plan:** 8
+- **Plan:** 10
 - **Status:** In progress
 - **Progress:** [████████████████████░                              ] 90% (19/21 Plans Complete)
 
@@ -77,6 +78,7 @@
 - **[30-06-D01]** AuthContext tests use MSW handlers; error handling added to login/register to prevent unhandled rejections
 - **[30-07-D01]** OverseerAuth tests use getByRole selectors instead of getByLabelText due to missing htmlFor attributes on labels
 - **[30-08-D01]** RegisteredClients tests use vi.mock for API client mocking instead of MSW; use getByPlaceholderText for form fields
+- **[30-10-D01]** AgentDashboard tests use vi.mock for AuthContext; MSW for API mocking via server.use()
 
 **Active Blockers:**
 - None.
@@ -103,7 +105,7 @@
 
 ## Session Continuity
 **Last session:** 2026-02-23
-**Stopped at:** Phase 30 Plan 8 Complete - RegisteredClients page tests created
+**Stopped at:** Phase 30 Plan 10 Complete - AgentDashboard page tests created
 **Resume file:** None (plan complete)
 
 
