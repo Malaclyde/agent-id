@@ -31,6 +31,9 @@
 - No confirmation prompts on destructive actions (revoke-overseer executes immediately).
 - Dual-signature key rotation: DPoP proof with old key + body signature with new key, no Bearer on complete step.
 - Atomic .env backup via shutil.copy2 before save_config for recoverability.
+- OAuth client key storage: CLIENT_<client-id>_* namespace for multi-client support.
+- PKCE code challenge: Client app generates challenge, agent script receives via --code-challenge flag (S256 hardcoded).
+- Authorization code output: print to stdout only, no redirect/file save (user copies to client app).
 
 **Active Blockers:**
 - None.
