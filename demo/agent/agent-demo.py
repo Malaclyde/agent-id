@@ -18,6 +18,7 @@ Usage:
 """
 
 import argparse
+import shutil
 import sys
 from typing import Optional
 
@@ -992,6 +993,80 @@ def cmd_revoke_overseer(args) -> int:
     return 0
 
 
+def cmd_rotate_keys(args) -> int:
+    """Rotate agent Ed25519 keypair with dual-signature verification."""
+    # Step 1: Load and validate config
+    config = load_config()
+
+    required = ["backend_url", "session_id", "private_key", "public_key"]
+    missing = [k for k in required if not config.get(k)]
+    if missing:
+        print(
+            f"Missing required config: {', '.join(missing)}. "
+            "Ensure .env has BACKEND_URL, AGENT_SESSION_ID, AGENT_PRIVATE_KEY, and AGENT_PUBLIC_KEY.",
+            file=sys.stderr,
+        )
+        return 1
+
+    backend_url = config["backend_url"]
+    session_id = config["session_id"]
+    old_private_key = load_private_key(config["private_key"])
+
+    # Step 2: Generate new keypair
+    new_private_b64url, new_public_b64url = generate_keypair()
+    new_private_key = load_private_key(new_private_b64url)
+
+    # Step 3: Initiate rotation
+    initiate_url = f"{backend_url}/v1/agents/rotate-key/initiate"
+    initiate_headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {session_id}",
+    }
+    initiate_body = json.dumps({"new_public_key": new_public_b64url}).encode("utf-8")
+
+    initiate_response = make_request(
+        initiate_url, initiate_headers, data=initiate_body, method="POST"
+    )
+    initiate_data = json.loads(initiate_response)
+    challenge_id = initiate_data["challenge_id"]
+    challenge_data = initiate_data["challenge_data"]
+
+    # Step 4: Sign challenge_data with NEW key
+    signed = new_private_key.sign(challenge_data.encode("utf-8"))
+    signature_b64url = base64url_encode(signed.signature)
+
+    # Step 5: Complete rotation
+    complete_url = f"{backend_url}/v1/agents/rotate-key/complete/{challenge_id}"
+    dpop_proof = create_dpop_proof(old_private_key, "POST", complete_url)
+    complete_headers = {
+        "Content-Type": "application/json",
+        "DPoP": dpop_proof,
+    }
+    complete_body = json.dumps({"signature": signature_b64url}).encode("utf-8")
+
+    complete_response = make_request(
+        complete_url, complete_headers, data=complete_body, method="POST"
+    )
+    complete_data = json.loads(complete_response)
+    new_session_id = complete_data["session_id"]
+
+    # Step 6: Backup and update .env
+    shutil.copy2(ENV_FILE, f"{ENV_FILE}.bak")
+
+    config["private_key"] = new_private_b64url
+    config["public_key"] = new_public_b64url
+    config["session_id"] = new_session_id
+    save_config(config)
+
+    print(f"Key rotation successful!")
+    print(f"New public key: {new_public_b64url[:32]}...")
+    print(f"Backup created at {ENV_FILE}.bak")
+
+    # Step 7: Print complete response
+    print_output(complete_response)
+    return 0
+
+
 def cmd_config(args) -> int:
     """Configure the agent demo or display current configuration."""
     try:
@@ -1175,6 +1250,12 @@ Examples:
         help="What to query: history (OAuth history) or overseers (overseer info)",
     )
 
+    # rotate-keys command
+    parser_rotate = subparsers.add_parser(
+        "rotate-keys",
+        help="Rotate agent Ed25519 keypair with dual-signature verification",
+    )
+
     # Parse arguments
     args = parser.parse_args()
 
@@ -1193,6 +1274,7 @@ Examples:
         "query": cmd_query,
         "claim": cmd_claim,
         "revoke-overseer": cmd_revoke_overseer,
+        "rotate-keys": cmd_rotate_keys,
     }
 
     handler = command_handlers.get(args.command)
