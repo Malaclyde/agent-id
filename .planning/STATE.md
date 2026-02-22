@@ -7,10 +7,10 @@
 
 ## Current Position
 - **Phase:** 34-agent-demo-extended (Agent Demo - Extended Operations)
-- **Plan:** 02 of 03
-- **Status:** In progress
-- **Last activity:** 2026-02-22 — Completed 34-02-PLAN.md (Claim challenges and overseer revocation)
-- **Progress:** [████████████████████░░░░░░░░░░] 67% (2 of 3 Phase 34 Plans Complete)
+- **Plan:** 03 of 03
+- **Status:** Phase complete
+- **Last activity:** 2026-02-22 — Completed 34-03-PLAN.md (Key rotation with dual-signature and .env backup)
+- **Progress:** [██████████████████████████████] 100% (3 of 3 Phase 34 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -29,17 +29,19 @@
 - Raw JSON output via print_output for all query results (no pagination or truncation).
 - Dual auth pattern: claim subcommand auto-selects Bearer (session) vs DPoP based on config state.
 - No confirmation prompts on destructive actions (revoke-overseer executes immediately).
+- Dual-signature key rotation: DPoP proof with old key + body signature with new key, no Bearer on complete step.
+- Atomic .env backup via shutil.copy2 before save_config for recoverability.
 
 **Active Blockers:**
 - None.
 
 **Next Steps:**
-- Continue with 34-03-PLAN.md (Key rotation with dual-signature and .env backup)
+- Proceed to Phase 35 (Agent Demo - OAuth Client) for client registration and authorization
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 34-02-PLAN.md
-**Resume file:** .planning/phases/34-agent-demo-extended/34-03-PLAN.md
+**Stopped at:** Completed 34-03-PLAN.md — Phase 34 complete
+**Resume file:** None
 
 
 ---
