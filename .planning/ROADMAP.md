@@ -46,9 +46,9 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 4. User can revoke overseer relationship.
 
 **Plan List:**
-- [ ] 34-01-PLAN.md — Query subcommand and fail-fast HTTP wrapper
-- [ ] 34-02-PLAN.md — Claim challenges and overseer revocation
-- [ ] 34-03-PLAN.md — Key rotation with dual-signature and .env backup
+- [x] 34-01-PLAN.md — Query subcommand and fail-fast HTTP wrapper
+- [x] 34-02-PLAN.md — Claim challenges and overseer revocation
+- [x] 34-03-PLAN.md — Key rotation with dual-signature and .env backup
 
 ---
 
@@ -95,7 +95,7 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 | Phase | Goal | Requirements | Status |
 |-------|------|--------------|--------|
 | 33 - Agent Demo Core | Agent demo script handles configuration, key generation, registration, and basic authentication. | ACONF-01, ACONF-02, ACONF-03, AAUTH-01, AAUTH-02, AAUTH-03, AAUTH-04 | Complete |
-| 34 - Agent Demo Extended | Agent demo script handles queries, claims, oversight, and key rotation. | AAUTH-05, AQUERY-01, AQUERY-02, ACLAIM-01, ACLAIM-02 | Pending |
+| 34 - Agent Demo Extended | Agent demo script handles queries, claims, oversight, and key rotation. | AAUTH-05, AQUERY-01, AQUERY-02, ACLAIM-01, ACLAIM-02 | Complete |
 | 35 - Agent Demo OAuth | Agent demo script handles OAuth client registration and authorization. | AOAUTH-01, AOAUTH-02 | Pending |
 | 36 - Client Demo Core | Client demo script handles configuration, PKCE, key generation, and token exchange. | CCONF-01, CCONF-02, CCONF-03, CTOKEN-01 | Pending |
 | 37 - Client Demo OAuth | Client demo script handles token refresh, userinfo, revocation, and introspection. | CTOKEN-02, CTOKEN-03, COAUTH-01, COAUTH-02, COAUTH-03 | Pending |

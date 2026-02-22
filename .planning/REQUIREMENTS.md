@@ -20,17 +20,17 @@
 - [ ] **AAUTH-02**: User can log in an agent using DPoP proof authentication.
 - [ ] **AAUTH-03**: User can log out an agent by revoking session.
 - [ ] **AAUTH-04**: User can query current agent info via /agents/me endpoint.
-- [ ] **AAUTH-05**: User can rotate agent keys with dual-signature verification.
+- [x] **AAUTH-05**: User can rotate agent keys with dual-signature verification.
 
 ### Agent Demo - Queries (AQUERY)
 
-- [ ] **AQUERY-01**: User can query agent's OAuth authorization history.
-- [ ] **AQUERY-02**: User can query agent's current overseer information.
+- [x] **AQUERY-01**: User can query agent's OAuth authorization history.
+- [x] **AQUERY-02**: User can query agent's current overseer information.
 
 ### Agent Demo - Claim & Oversight (ACLAIM)
 
-- [ ] **ACLAIM-01**: User can complete a claim challenge using session or DPoP auth.
-- [ ] **ACLAIM-02**: User can revoke current overseer relationship.
+- [x] **ACLAIM-01**: User can complete a claim challenge using session or DPoP auth.
+- [x] **ACLAIM-02**: User can revoke current overseer relationship.
 
 ### Agent Demo - OAuth Client (AOAUTH)
 
