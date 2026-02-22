@@ -1067,6 +1067,81 @@ def cmd_rotate_keys(args) -> int:
     return 0
 
 
+def cmd_register_client(args) -> int:
+    """Register a new OAuth client for the authenticated agent."""
+    config = load_config()
+
+    # Validate required config
+    if not config.get("backend_url"):
+        print("No backend_url configured.", file=sys.stderr)
+        return 1
+
+    if not config.get("session_id"):
+        print(
+            "No active session. Run 'python agent-demo.py login' first.",
+            file=sys.stderr,
+        )
+        return 1
+
+    # Handle key provision options
+    if args.generate:
+        # Option 1: Generate new keypair
+        private_b64url, public_b64url = generate_keypair()
+    elif args.private_key and args.public_key:
+        # Option 3: User provides keys explicitly
+        private_b64url = args.private_key
+        public_b64url = args.public_key
+        is_valid, msg = validate_keys_match(private_b64url, public_b64url)
+        if not is_valid:
+            print(f"Error: Invalid keys - {msg}", file=sys.stderr)
+            return 1
+    else:
+        # No key flags - not allowed for new registration
+        print(
+            "Error: Either --generate or both --private-key and --public-key required.",
+            file=sys.stderr,
+        )
+        return 1
+
+    # Build request body
+    body = {
+        "name": args.name,
+        "redirect_uris": [args.redirect_uri],
+        "public_key": public_b64url,
+    }
+    if args.scope:
+        body["scope"] = args.scope
+
+    # Call registration API
+    backend_url = config["backend_url"]
+    session_id = config["session_id"]
+    url = f"{backend_url}/v1/clients/register/agent"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {session_id}",
+    }
+    encoded_body = json.dumps(body).encode("utf-8")
+
+    response = make_request(url, headers, data=encoded_body, method="POST")
+    result = json.loads(response)
+
+    # Extract client_id from response
+    client_id = result.get("client", {}).get("id")
+    if not client_id:
+        print("Error: No client_id in response", file=sys.stderr)
+        return 1
+
+    # Save keys under CLIENT_<client-id>_* namespace in .env
+    set_key(ENV_FILE, f"CLIENT_{client_id}_PUBLIC_KEY", public_b64url)
+    set_key(ENV_FILE, f"CLIENT_{client_id}_PRIVATE_KEY", private_b64url)
+    set_key(ENV_FILE, f"CLIENT_{client_id}_ID", client_id)
+
+    print(f"Client registered successfully!")
+    print(f"Client ID: {client_id}")
+    print_output(response)
+    return 0
+
+
 def cmd_config(args) -> int:
     """Configure the agent demo or display current configuration."""
     try:
@@ -1256,6 +1331,26 @@ Examples:
         help="Rotate agent Ed25519 keypair with dual-signature verification",
     )
 
+    # register-client command
+    parser_register_client = subparsers.add_parser(
+        "register-client",
+        help="Register an OAuth client for the authenticated agent",
+    )
+    parser_register_client.add_argument("--name", required=True, help="Client name")
+    parser_register_client.add_argument(
+        "--redirect-uri", required=True, help="Redirect URI"
+    )
+    parser_register_client.add_argument("--scope", help="Space-separated scopes")
+    parser_register_client.add_argument(
+        "--generate", action="store_true", help="Generate new keypair"
+    )
+    parser_register_client.add_argument(
+        "--private-key", help="Base64url-encoded private key"
+    )
+    parser_register_client.add_argument(
+        "--public-key", help="Base64url-encoded public key"
+    )
+
     # Parse arguments
     args = parser.parse_args()
 
@@ -1275,6 +1370,7 @@ Examples:
         "claim": cmd_claim,
         "revoke-overseer": cmd_revoke_overseer,
         "rotate-keys": cmd_rotate_keys,
+        "register-client": cmd_register_client,
     }
 
     handler = command_handlers.get(args.command)
