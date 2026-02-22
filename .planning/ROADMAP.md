@@ -16,9 +16,9 @@ This roadmap details the path to delivering a comprehensive testing suite for th
 **Dependencies:** None
 **Requirements:** AUDIT-01, AUDIT-02, AUDIT-03
 **Plans:** 3 plans
-- [ ] 28-01-PLAN.md — Audit and Rewrite Cryptographic Auth Flows
-- [ ] 28-02-PLAN.md — Audit and Rewrite Subscription and Client Flows
-- [ ] 28-03-PLAN.md — Identify Coverage Gaps and Document Test Strategy & Scenarios
+- [x] 28-01-PLAN.md — Audit and Rewrite Cryptographic Auth Flows
+- [x] 28-02-PLAN.md — Audit and Rewrite Subscription and Client Flows
+- [x] 28-03-PLAN.md — Identify Coverage Gaps and Document Test Strategy & Scenarios
 
 **Success Criteria:**
 1. Developer can read documentation to understand all existing application flows and edge cases.
@@ -79,7 +79,7 @@ This roadmap details the path to delivering a comprehensive testing suite for th
 
 | Phase | Goal | Requirements | Status |
 |-------|------|--------------|--------|
-| 28 - Audit & Test Strategy | System documentation accurately reflects current application flows and outlines a complete testing strategy. | AUDIT-01, AUDIT-02, AUDIT-03 | Pending |
+| 28 - Audit & Test Strategy | System documentation accurately reflects current application flows and outlines a complete testing strategy. | AUDIT-01, AUDIT-02, AUDIT-03 | Complete |
 | 29 - Backend Test Implementation | Backend APIs and cryptographic utilities are fully verifiable in isolated, ephemeral environments. | BETEST-01, BETEST-02, BETEST-03 | Pending |
 | 30 - Frontend Test Implementation | Frontend React components and edge cases are verifiable without relying on a live backend. | FETEST-01, FETEST-02, FETEST-03 | Pending |
 | 31 - End-to-End Test Implementation | Full application workflows, including real third-party integrations, are automatically verifiable. | E2ETEST-01, E2ETEST-02, E2ETEST-03 | Pending |
