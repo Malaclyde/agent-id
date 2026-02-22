@@ -13,6 +13,8 @@ import os
 import time
 import uuid
 import hashlib
+import urllib.request
+import urllib.error
 from nacl.signing import SigningKey, VerifyKey
 from urllib.parse import urlparse
 from dotenv import load_dotenv, set_key
@@ -314,3 +316,170 @@ def validate_config(config: dict) -> tuple[bool, str]:
             return False, "public_key does not derive from private_key"
 
     return True, "OK"
+
+
+# =============================================================================
+# Agent Registration (Challenge-Response Flow)
+# =============================================================================
+
+
+class RegistrationError(Exception):
+    """Exception raised for registration failures."""
+
+    pass
+
+
+def register_agent_initiate(
+    backend_url: str, name: str, public_key: str, description: Optional[str] = None
+) -> dict:
+    """
+    Initiate agent registration with name and public key.
+
+    Sends a POST request to /api/agents/register/initiate with the agent's
+    name and Ed25519 public key. Returns challenge data that must be signed
+    to complete registration.
+
+    Args:
+        backend_url: Base URL of the backend API
+        name: Agent name
+        public_key: Base64url-encoded Ed25519 public key
+        description: Optional agent description
+
+    Returns:
+        Dict with keys:
+        - challenge_id: UUID string for the challenge
+        - expires_at: ISO timestamp when challenge expires
+        - challenge_data: Canonicalized JSON string to sign
+
+    Raises:
+        RegistrationError: If registration initiate fails
+    """
+    # Build request body
+    body = {"name": name, "public_key": public_key}
+    if description:
+        body["description"] = description
+
+    # Make POST request
+    url = f"{backend_url}/api/agents/register/initiate"
+    data = json.dumps(body).encode("utf-8")
+
+    req = urllib.request.Request(
+        url, data=data, headers={"Content-Type": "application/json"}, method="POST"
+    )
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+        return result
+    except urllib.error.HTTPError as e:
+        try:
+            error_body = json.loads(e.read().decode("utf-8"))
+            error_msg = error_body.get("error", str(e))
+        except (json.JSONDecodeError, Exception):
+            error_msg = str(e)
+        raise RegistrationError(f"Registration initiate failed: {error_msg}")
+    except urllib.error.URLError as e:
+        raise RegistrationError(f"Network error: {e.reason}")
+
+
+def register_agent_complete(
+    backend_url: str, challenge_id: str, private_key: SigningKey, challenge_data: str
+) -> dict:
+    """
+    Complete agent registration by signing challenge data.
+
+    Signs the challenge_data with the agent's Ed25519 private key and
+    sends it to the backend to complete registration.
+
+    Args:
+        backend_url: Base URL of the backend API
+        challenge_id: Challenge ID from initiate response
+        private_key: Ed25519 private key (SigningKey)
+        challenge_data: Challenge string from initiate response
+
+    Returns:
+        Dict with keys:
+        - agent: Agent object with id, name, public_key, etc.
+        - session_id: Session token for authenticated requests
+
+    Raises:
+        RegistrationError: If registration complete fails
+    """
+    # Sign challenge_data directly (already canonicalized by backend)
+    signed = private_key.sign(challenge_data.encode("utf-8"))
+    signature_b64url = base64url_encode(signed.signature)
+
+    # Make POST request
+    url = f"{backend_url}/api/agents/register/complete/{challenge_id}"
+    body = {"signature": signature_b64url}
+    data = json.dumps(body).encode("utf-8")
+
+    req = urllib.request.Request(
+        url, data=data, headers={"Content-Type": "application/json"}, method="POST"
+    )
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+        return result
+    except urllib.error.HTTPError as e:
+        try:
+            error_body = json.loads(e.read().decode("utf-8"))
+            error_msg = error_body.get("error", str(e))
+        except (json.JSONDecodeError, Exception):
+            error_msg = str(e)
+        raise RegistrationError(f"Registration complete failed: {error_msg}")
+    except urllib.error.URLError as e:
+        raise RegistrationError(f"Network error: {e.reason}")
+
+
+def register_agent(
+    backend_url: str,
+    name: str,
+    private_key: SigningKey,
+    description: Optional[str] = None,
+) -> dict:
+    """
+    Complete two-step agent registration in one call.
+
+    Convenience function that combines initiate and complete steps.
+    Generates public key from private key, initiates registration,
+    signs challenge, and completes registration.
+
+    Args:
+        backend_url: Base URL of the backend API
+        name: Agent name
+        private_key: Ed25519 private key (SigningKey)
+        description: Optional agent description
+
+    Returns:
+        Dict with keys:
+        - agent: Agent object with id, name, public_key, etc.
+        - session_id: Session token for authenticated requests
+
+    Raises:
+        RegistrationError: If registration fails at any step
+    """
+    # Derive public key from private key
+    public_key_b64url = base64url_encode(bytes(private_key.verify_key))
+
+    # Step 1: Initiate registration
+    initiate_result = register_agent_initiate(
+        backend_url=backend_url,
+        name=name,
+        public_key=public_key_b64url,
+        description=description,
+    )
+
+    challenge_id = initiate_result["challenge_id"]
+    challenge_data = initiate_result["challenge_data"]
+
+    # Step 2: Complete registration with signature
+    result = register_agent_complete(
+        backend_url=backend_url,
+        challenge_id=challenge_id,
+        private_key=private_key,
+        challenge_data=challenge_data,
+    )
+
+    return result
