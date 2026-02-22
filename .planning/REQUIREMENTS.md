@@ -71,29 +71,29 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ACONF-01 | Phase 33 | Pending |
-| ACONF-02 | Phase 33 | Pending |
-| ACONF-03 | Phase 33 | Pending |
-| AAUTH-01 | Phase 33 | Pending |
-| AAUTH-02 | Phase 33 | Pending |
-| AAUTH-03 | Phase 33 | Pending |
-| AAUTH-04 | Phase 33 | Pending |
-| AAUTH-05 | Phase 34 | Pending |
-| AQUERY-01 | Phase 34 | Pending |
-| AQUERY-02 | Phase 34 | Pending |
-| ACLAIM-01 | Phase 34 | Pending |
-| ACLAIM-02 | Phase 34 | Pending |
-| AOAUTH-01 | Phase 35 | Pending |
-| AOAUTH-02 | Phase 35 | Pending |
-| CCONF-01 | Phase 36 | Pending |
-| CCONF-02 | Phase 36 | Pending |
-| CCONF-03 | Phase 36 | Pending |
-| CTOKEN-01 | Phase 36 | Pending |
-| CTOKEN-02 | Phase 37 | Pending |
-| CTOKEN-03 | Phase 37 | Pending |
-| COAUTH-01 | Phase 37 | Pending |
-| COAUTH-02 | Phase 37 | Pending |
-| COAUTH-03 | Phase 37 | Pending |
+| ACONF-01 | Phase 33 | Complete |
+| ACONF-02 | Phase 33 | Complete |
+| ACONF-03 | Phase 33 | Complete |
+| AAUTH-01 | Phase 33 | Complete |
+| AAUTH-02 | Phase 33 | Complete |
+| AAUTH-03 | Phase 33 | Complete |
+| AAUTH-04 | Phase 33 | Complete |
+| AAUTH-05 | Phase 34 | Complete |
+| AQUERY-01 | Phase 34 | Complete |
+| AQUERY-02 | Phase 34 | Complete |
+| ACLAIM-01 | Phase 34 | Complete |
+| ACLAIM-02 | Phase 34 | Complete |
+| AOAUTH-01 | Phase 35 | Complete |
+| AOAUTH-02 | Phase 35 | Complete |
+| CCONF-01 | Phase 36 | Complete |
+| CCONF-02 | Phase 36 | Complete |
+| CCONF-03 | Phase 36 | Complete |
+| CTOKEN-01 | Phase 36 | Complete |
+| CTOKEN-02 | Phase 37 | Complete |
+| CTOKEN-03 | Phase 37 | Complete |
+| COAUTH-01 | Phase 37 | Complete |
+| COAUTH-02 | Phase 37 | Complete |
+| COAUTH-03 | Phase 37 | Complete |
 
 **Coverage:**
 - v2.2 requirements: 22 total

@@ -25,11 +25,11 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 5. User can log out and query agent info.
 
 **Plan List:**
-- [ ] 33-01-PLAN.md — Crypto utilities and Ed25519 key management
-- [ ] 33-02-PLAN.md — Configuration management with .env handling
-- [ ] 33-03-PLAN.md — Registration flow with challenge-response
-- [ ] 33-04-PLAN.md — Authentication operations (login, logout, info)
-- [ ] 33-05-PLAN.md — CLI implementation and end-to-end verification
+- [x] 33-01-PLAN.md — Crypto utilities and Ed25519 key management
+- [x] 33-02-PLAN.md — Configuration management with .env handling
+- [x] 33-03-PLAN.md — Registration flow with challenge-response
+- [x] 33-04-PLAN.md — Authentication operations (login, logout, info)
+- [x] 33-05-PLAN.md — CLI implementation and end-to-end verification
 
 ---
 
@@ -88,7 +88,7 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 
 | Phase | Goal | Requirements | Status |
 |-------|------|--------------|--------|
-| 33 - Agent Demo Core | Agent demo script handles configuration, key generation, registration, and basic authentication. | ACONF-01, ACONF-02, ACONF-03, AAUTH-01, AAUTH-02, AAUTH-03, AAUTH-04 | Pending |
+| 33 - Agent Demo Core | Agent demo script handles configuration, key generation, registration, and basic authentication. | ACONF-01, ACONF-02, ACONF-03, AAUTH-01, AAUTH-02, AAUTH-03, AAUTH-04 | Complete |
 | 34 - Agent Demo Extended | Agent demo script handles queries, claims, oversight, and key rotation. | AAUTH-05, AQUERY-01, AQUERY-02, ACLAIM-01, ACLAIM-02 | Pending |
 | 35 - Agent Demo OAuth | Agent demo script handles OAuth client registration and authorization. | AOAUTH-01, AOAUTH-02 | Pending |
 | 36 - Client Demo Core | Client demo script handles configuration, PKCE, key generation, and token exchange. | CCONF-01, CCONF-02, CCONF-03, CTOKEN-01 | Pending |
