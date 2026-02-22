@@ -31,6 +31,7 @@
 - **Plan:** 10
 - **Plan:** 11
 - **Plan:** 13
+- **Plan:** 12
 - **Status:** In progress
 - **Progress:** [████████████████████░                              ] 95% (20/21 Plans Complete)
 
@@ -83,6 +84,7 @@
 - **[30-09-D01]** OverseerDashboard tests use MSW for API mocking; window.location mock required origin property for React Router NavLink compatibility
 - **[30-10-D01]** AgentDashboard tests use vi.mock for AuthContext; MSW for API mocking via server.use()
 - **[30-11-D01]** SubscriptionManagement tests use MSW for API mocking; Paddle mock for checkout integration; modal testing with getByRole/getByHeading selectors
+- **[30-12-D01]** ShadowClaim page tests use MSW for API mocking; vi.useFakeTimers removed due to MSW compatibility; tests cover loading, polling, error states, countdown, manual check, cancel
 - **[30-13-D01]** ShadowClaimPayment tests use paddle-mock for Paddle.js integration; vi.useFakeTimers for timer behavior; test loading state, payment UI, checkout flow, and error handling
 
 **Active Blockers:**
@@ -110,7 +112,7 @@
 
 ## Session Continuity
 **Last session:** 2026-02-23
-**Stopped at:** Phase 30 Plan 13 Complete - ShadowClaimPayment page tests created
+**Stopped at:** Phase 30 Plan 12 Complete - ShadowClaim page tests created
 **Resume file:** None (plan complete)
 
 
