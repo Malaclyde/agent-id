@@ -246,7 +246,7 @@ def validate_keys_match(private_b64url: str, public_b64url: str) -> bool:
 # =============================================================================
 
 
-ENV_FILE = ".env.agent"
+ENV_FILE = ".env"
 
 # Mapping from internal config keys to environment variable names
 ENV_KEYS = {
@@ -263,7 +263,7 @@ def load_config(env_file: str = ENV_FILE) -> dict:
     Load configuration from .env file.
 
     Args:
-        env_file: Path to .env file (default: .env.agent)
+        env_file: Path to .env file (default: .env)
 
     Returns:
         Dict with keys: backend_url, private_key, public_key, agent_id, session_id
@@ -285,7 +285,7 @@ def save_config(config: dict, env_file: str = ENV_FILE) -> None:
 
     Args:
         config: Dict with internal config keys (not env var names)
-        env_file: Path to .env file (default: .env.agent)
+        env_file: Path to .env file (default: .env)
     """
     for internal_key, env_value in config.items():
         if env_value is not None and internal_key in ENV_KEYS:
@@ -349,7 +349,7 @@ def register_agent_initiate(
     """
     Initiate agent registration with name and public key.
 
-    Sends a POST request to /api/agents/register/initiate with the agent's
+    Sends a POST request to /v1/agents/register/initiate with the agent's
     name and Ed25519 public key. Returns challenge data that must be signed
     to complete registration.
 
@@ -374,7 +374,7 @@ def register_agent_initiate(
         body["description"] = description
 
     # Make POST request
-    url = f"{backend_url}/api/agents/register/initiate"
+    url = f"{backend_url}/v1/agents/register/initiate"
     data = json.dumps(body).encode("utf-8")
 
     req = urllib.request.Request(
@@ -424,7 +424,7 @@ def register_agent_complete(
     signature_b64url = base64url_encode(signed.signature)
 
     # Make POST request
-    url = f"{backend_url}/api/agents/register/complete/{challenge_id}"
+    url = f"{backend_url}/v1/agents/register/complete/{challenge_id}"
     body = {"signature": signature_b64url}
     data = json.dumps(body).encode("utf-8")
 
@@ -514,7 +514,7 @@ def login_agent(backend_url: str, agent_id: str, private_key: SigningKey) -> dic
     """
     Login with DPoP proof authentication.
 
-    Creates a DPoP proof JWT and POSTs to /api/agents/login to establish
+    Creates a DPoP proof JWT and POSTs to /v1/agents/login to establish
     a session. The DPoP proof binds the session to the agent's private key.
 
     Args:
@@ -531,7 +531,7 @@ def login_agent(backend_url: str, agent_id: str, private_key: SigningKey) -> dic
         AuthenticationError: If login fails
     """
     # Build login URL
-    login_url = f"{backend_url}/api/agents/login"
+    login_url = f"{backend_url}/v1/agents/login"
 
     # Normalize URL for DPoP HTU (no query params, no trailing slash)
     parsed = urlparse(login_url)
@@ -570,7 +570,7 @@ def logout_agent(backend_url: str, session_id: str) -> bool:
     """
     Logout and revoke session.
 
-    POSTs to /api/agents/logout with Bearer token authentication
+    POSTs to /v1/agents/logout with Bearer token authentication
     to revoke the session.
 
     Args:
@@ -583,7 +583,7 @@ def logout_agent(backend_url: str, session_id: str) -> bool:
     Raises:
         AuthenticationError: If logout request fails due to network error
     """
-    logout_url = f"{backend_url}/api/agents/logout"
+    logout_url = f"{backend_url}/v1/agents/logout"
 
     req = urllib.request.Request(
         logout_url,
@@ -610,7 +610,7 @@ def get_agent_info(backend_url: str, session_id: str) -> dict:
     """
     Get current agent information.
 
-    GETs /api/agents/me with Bearer token authentication to retrieve
+    GETs /v1/agents/me with Bearer token authentication to retrieve
     the authenticated agent's information.
 
     Args:
@@ -624,7 +624,7 @@ def get_agent_info(backend_url: str, session_id: str) -> dict:
     Raises:
         AuthenticationError: If request fails
     """
-    info_url = f"{backend_url}/api/agents/me"
+    info_url = f"{backend_url}/v1/agents/me"
 
     req = urllib.request.Request(
         info_url,
@@ -665,7 +665,7 @@ def cmd_generate_keys(args) -> int:
 
         print("Keys generated successfully!")
         print(f"Public key: {public_b64url}")
-        print(f"Private key: [saved to .env.agent]")
+        print(f"Private key: [saved to .env]")
         return 0
     except Exception as e:
         print(f"Error generating keys: {e}", file=sys.stderr)
@@ -900,7 +900,7 @@ Examples:
     # generate-keys command
     parser_generate = subparsers.add_parser(
         "generate-keys",
-        help="Generate new Ed25519 keypair and save to .env.agent",
+        help="Generate new Ed25519 keypair and save to .env",
     )
 
     # register command

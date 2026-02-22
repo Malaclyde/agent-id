@@ -15,6 +15,7 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 **Goal:** Agent demo script handles configuration, key generation, registration, and basic authentication.
 **Dependencies:** None
 **Requirements:** ACONF-01, ACONF-02, ACONF-03, AAUTH-01, AAUTH-02, AAUTH-03, AAUTH-04
+**Plans:** 5 plans
 
 **Success Criteria:**
 1. User can configure .env file with backend URL and keys via command line.
@@ -22,6 +23,13 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 3. User can register a new agent with two-step challenge flow.
 4. User can log in using DPoP proof and receive session.
 5. User can log out and query agent info.
+
+**Plan List:**
+- [ ] 33-01-PLAN.md — Crypto utilities and Ed25519 key management
+- [ ] 33-02-PLAN.md — Configuration management with .env handling
+- [ ] 33-03-PLAN.md — Registration flow with challenge-response
+- [ ] 33-04-PLAN.md — Authentication operations (login, logout, info)
+- [ ] 33-05-PLAN.md — CLI implementation and end-to-end verification
 
 ---
 
