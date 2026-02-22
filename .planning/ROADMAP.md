@@ -30,7 +30,7 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 **Goal:** Backend APIs and cryptographic utilities are fully verifiable in isolated, ephemeral environments.
 **Dependencies:** Phase 28
 **Requirements:** BETEST-01, BETEST-02, BETEST-03
-**Plans:** 10 plans
+**Plans:** 12 plans
 - [x] 29-01-PLAN.md — Test Infrastructure Setup & DB/KV Helpers
 - [x] 29-02-PLAN.md — Cryptographic & Data Builder Helpers
 - [x] 29-03-PLAN.md — Core API & Webhook Integration Tests
@@ -41,6 +41,8 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 - [x] 29-08-PLAN.md — Fix Failing Unit Tests (Gap Closure)
 - [x] 29-09-PLAN.md — Fix Overseer API Tests (Gap Closure)
 - [x] 29-10-PLAN.md — Fix Agent API Tests (Gap Closure)
+- [ ] 29-11-PLAN.md — Stability and Test Cleanup (Gap Closure)
+- [ ] 29-12-PLAN.md — Integration Fixes and Logic Regressions (Gap Closure)
 
 - [ ] Phase 38: Security Audit & Hardening
 - [ ] Phase 39: Drizzle ORM Migration
