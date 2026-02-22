@@ -6,11 +6,11 @@
 **Current Focus:** v2.2 Demo Scripts - Creating Python demo scripts for agent and client operations.
 
 ## Current Position
-- **Phase:** 34-agent-demo-extended (Agent Demo - Extended Operations)
-- **Plan:** 03 of 03
-- **Status:** Phase complete
-- **Last activity:** 2026-02-22 — Completed 34-03-PLAN.md (Key rotation with dual-signature and .env backup)
-- **Progress:** [██████████████████████████████] 100% (3 of 3 Phase 34 Plans Complete)
+- **Phase:** 35-agent-demo-oauth (Agent Demo - OAuth Client)
+- **Plan:** 01 of 02
+- **Status:** In progress
+- **Last activity:** 2026-02-22 — Completed 35-01-PLAN.md (register-client subcommand)
+- **Progress:** [████████████░░░░░░░░░░░░░] 50% (1 of 2 Phase 35 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
