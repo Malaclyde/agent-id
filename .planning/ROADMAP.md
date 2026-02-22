@@ -63,8 +63,8 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 2. User can initiate OAuth authorization and receive authorization code.
 
 **Plan List:**
-- [ ] 35-01-PLAN.md — register-client subcommand with key provision options
-- [ ] 35-02-PLAN.md — authorize subcommand with PKCE code challenge support
+- [x] 35-01-PLAN.md — register-client subcommand with key provision options
+- [x] 35-02-PLAN.md — authorize subcommand with PKCE code challenge support
 
 ---
 
@@ -101,6 +101,6 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 |-------|------|--------------|--------|
 | 33 - Agent Demo Core | Agent demo script handles configuration, key generation, registration, and basic authentication. | ACONF-01, ACONF-02, ACONF-03, AAUTH-01, AAUTH-02, AAUTH-03, AAUTH-04 | Complete |
 | 34 - Agent Demo Extended | Agent demo script handles queries, claims, oversight, and key rotation. | AAUTH-05, AQUERY-01, AQUERY-02, ACLAIM-01, ACLAIM-02 | Complete |
-| 35 - Agent Demo OAuth | Agent demo script handles OAuth client registration and authorization. | AOAUTH-01, AOAUTH-02 | Pending |
+| 35 - Agent Demo OAuth | Agent demo script handles OAuth client registration and authorization. | AOAUTH-01, AOAUTH-02 | Complete |
 | 36 - Client Demo Core | Client demo script handles configuration, PKCE, key generation, and token exchange. | CCONF-01, CCONF-02, CCONF-03, CTOKEN-01 | Pending |
 | 37 - Client Demo OAuth | Client demo script handles token refresh, userinfo, revocation, and introspection. | CTOKEN-02, CTOKEN-03, COAUTH-01, COAUTH-02, COAUTH-03 | Pending |
