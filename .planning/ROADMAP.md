@@ -56,10 +56,15 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 **Goal:** Agent demo script handles OAuth client registration and authorization.
 **Dependencies:** Phase 33
 **Requirements:** AOAUTH-01, AOAUTH-02
+**Plans:** 2 plans
 
 **Success Criteria:**
 1. User can register OAuth clients with three key provision options.
 2. User can initiate OAuth authorization and receive authorization code.
+
+**Plan List:**
+- [ ] 35-01-PLAN.md — register-client subcommand with key provision options
+- [ ] 35-02-PLAN.md — authorize subcommand with PKCE code challenge support
 
 ---
 
