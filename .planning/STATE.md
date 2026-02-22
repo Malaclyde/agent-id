@@ -14,9 +14,9 @@
 ## Progress
 [████████████████████████████████] 100% (v2.2 Complete)
 - **Phase:** Phase 29: Backend Test Implementation
-- **Plan:** 08
+- **Plan:** 09
 - **Status:** Plan complete
-- **Progress:** [███████                                     ] 48% (10/21 Plans Complete)
+- **Progress:** [██████████                                  ] 52% (11/21 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -54,6 +54,7 @@
 - **[29-07-D01]** Fixed pool configuration by using defineWorkersConfig from @cloudflare/vitest-pool-workers/config instead of vitest/config defineConfig.
 - **[29-08-D01]** Fixed unit tests: getSubscriptionTier and isSubscriptionActive expect customerId not subscriptionId, handleTierUpdate uses getSubscriptionByCustomer not getSubscriptionTier.
 - **[29-06-D01]** OAuth tests use placeholder DPoP tokens with mocked validation to work around Node.js WebCrypto Ed25519 limitations.
+- **[29-09-D01]** Overseer tests refactored to use ephemeral D1 via setupTestDB/teardownTestDB helpers; inline vi.mock for Drizzle removed.
 
 **Active Blockers:**
 - None.
@@ -72,11 +73,12 @@
 - Continue Phase 29: Backend Test Implementation (Plan 06: OAuth API Integration Tests)
 - Continue Phase 29: Backend Test Implementation (Plan 08: Fix Failing Unit Tests)
 - Continue Phase 29: Backend Test Implementation (Plan 09: Fix Overseer API Tests)
+- Continue Phase 29: Backend Test Implementation (Plan 10: Fix Agent API Tests)
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 29-08-PLAN.md (Fix Failing Unit Tests)
-**Resume file:** .planning/phases/29-backend-test-implementation/29-09-PLAN.md
+**Stopped at:** Completed 29-09-PLAN.md (Fix Overseer API Tests)
+**Resume file:** .planning/phases/29-backend-test-implementation/29-10-PLAN.md
 
 
 ---
