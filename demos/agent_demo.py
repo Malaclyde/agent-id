@@ -483,3 +483,151 @@ def register_agent(
     )
 
     return result
+
+
+# =============================================================================
+# Agent Authentication (Login, Logout, Info)
+# =============================================================================
+
+
+class AuthenticationError(Exception):
+    """Exception raised for authentication failures."""
+
+    pass
+
+
+def login_agent(backend_url: str, agent_id: str, private_key: SigningKey) -> dict:
+    """
+    Login with DPoP proof authentication.
+
+    Creates a DPoP proof JWT and POSTs to /api/agents/login to establish
+    a session. The DPoP proof binds the session to the agent's private key.
+
+    Args:
+        backend_url: Base URL of the backend API
+        agent_id: Agent ID to authenticate
+        private_key: Ed25519 private key (SigningKey)
+
+    Returns:
+        Dict with keys:
+        - session_id: Session token for authenticated requests
+        - expires_in: Session lifetime in seconds (typically 1800)
+
+    Raises:
+        AuthenticationError: If login fails
+    """
+    # Build login URL
+    login_url = f"{backend_url}/api/agents/login"
+
+    # Normalize URL for DPoP HTU (no query params, no trailing slash)
+    parsed = urlparse(login_url)
+    normalized_htu = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+
+    # Create DPoP proof
+    dpop_proof = create_dpop_proof(private_key, "POST", normalized_htu)
+
+    # Build request
+    body = {"agent_id": agent_id}
+    data = json.dumps(body).encode("utf-8")
+
+    req = urllib.request.Request(
+        login_url,
+        data=data,
+        headers={"Content-Type": "application/json", "DPoP": dpop_proof},
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+        return result
+    except urllib.error.HTTPError as e:
+        try:
+            error_body = json.loads(e.read().decode("utf-8"))
+            error_msg = error_body.get("error", str(e))
+        except (json.JSONDecodeError, Exception):
+            error_msg = str(e)
+        raise AuthenticationError(f"Login failed: {error_msg}")
+    except urllib.error.URLError as e:
+        raise AuthenticationError(f"Network error: {e.reason}")
+
+
+def logout_agent(backend_url: str, session_id: str) -> bool:
+    """
+    Logout and revoke session.
+
+    POSTs to /api/agents/logout with Bearer token authentication
+    to revoke the session.
+
+    Args:
+        backend_url: Base URL of the backend API
+        session_id: Session token to revoke
+
+    Returns:
+        True if logout successful, False otherwise
+
+    Raises:
+        AuthenticationError: If logout request fails due to network error
+    """
+    logout_url = f"{backend_url}/api/agents/logout"
+
+    req = urllib.request.Request(
+        logout_url,
+        headers={"Authorization": f"Bearer {session_id}"},
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+        return result.get("success", False)
+    except urllib.error.HTTPError as e:
+        try:
+            error_body = json.loads(e.read().decode("utf-8"))
+            error_msg = error_body.get("error", str(e))
+        except (json.JSONDecodeError, Exception):
+            error_msg = str(e)
+        raise AuthenticationError(f"Logout failed: {error_msg}")
+    except urllib.error.URLError as e:
+        raise AuthenticationError(f"Network error: {e.reason}")
+
+
+def get_agent_info(backend_url: str, session_id: str) -> dict:
+    """
+    Get current agent information.
+
+    GETs /api/agents/me with Bearer token authentication to retrieve
+    the authenticated agent's information.
+
+    Args:
+        backend_url: Base URL of the backend API
+        session_id: Session token for authentication
+
+    Returns:
+        Dict with keys:
+        - agent: Agent object with id, name, description, created_at, etc.
+
+    Raises:
+        AuthenticationError: If request fails
+    """
+    info_url = f"{backend_url}/api/agents/me"
+
+    req = urllib.request.Request(
+        info_url,
+        headers={"Authorization": f"Bearer {session_id}"},
+        method="GET",
+    )
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+        return result
+    except urllib.error.HTTPError as e:
+        try:
+            error_body = json.loads(e.read().decode("utf-8"))
+            error_msg = error_body.get("error", str(e))
+        except (json.JSONDecodeError, Exception):
+            error_msg = str(e)
+        raise AuthenticationError(f"Get agent info failed: {error_msg}")
+    except urllib.error.URLError as e:
+        raise AuthenticationError(f"Network error: {e.reason}")
