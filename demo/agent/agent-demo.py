@@ -222,23 +222,22 @@ def load_public_key(public_b64url: str) -> VerifyKey:
     return VerifyKey(public_bytes)
 
 
-def validate_keys_match(private_b64url: str, public_b64url: str) -> bool:
+def validate_keys_match(private_b64url: str, public_b64url: str) -> tuple[bool, str]:
     """
     Validate that public key derives from private key.
-
-    Args:
-        private_b64url: Base64url-encoded 32-byte private key
-        public_b64url: Base64url-encoded 32-byte public key
-
+    
     Returns:
-        True if public key derives from private key, False otherwise
+        tuple: (is_valid, error_message)
     """
     try:
         private_key = load_private_key(private_b64url)
         derived_public = base64url_encode(bytes(private_key.verify_key))
-        return derived_public == public_b64url
-    except (ValueError, Exception):
-        return False
+        if derived_public == public_b64url:
+            return True, "OK"
+        return False, "Public key does not match private key"
+    except Exception as e:
+        return False, f"Key validation failed: {str(e)}"
+
 
 
 # =============================================================================
@@ -250,7 +249,7 @@ ENV_FILE = ".env"
 
 # Mapping from internal config keys to environment variable names
 ENV_KEYS = {
-    "backend_url": "AGENT_BACKEND_URL",
+    "backend_url": "BACKEND_URL",
     "private_key": "AGENT_PRIVATE_KEY",
     "public_key": "AGENT_PUBLIC_KEY",
     "agent_id": "AGENT_ID",
@@ -271,7 +270,7 @@ def load_config(env_file: str = ENV_FILE) -> dict:
     """
     load_dotenv(env_file)
     return {
-        "backend_url": os.getenv("AGENT_BACKEND_URL"),
+        "backend_url": os.getenv("BACKEND_URL"),
         "private_key": os.getenv("AGENT_PRIVATE_KEY"),
         "public_key": os.getenv("AGENT_PUBLIC_KEY"),
         "agent_id": os.getenv("AGENT_ID"),
@@ -653,19 +652,23 @@ def get_agent_info(backend_url: str, session_id: str) -> dict:
 
 
 def cmd_generate_keys(args) -> int:
-    """Generate new Ed25519 keypair and save to config."""
+    """Generate new Ed25519 keypair and optionally save to config."""
     try:
         private_b64url, public_b64url = generate_keypair()
-
-        # Load existing config or create new
-        config = load_config()
-        config["private_key"] = private_b64url
-        config["public_key"] = public_b64url
-        save_config(config)
-
-        print("Keys generated successfully!")
-        print(f"Public key: {public_b64url}")
-        print(f"Private key: [saved to .env]")
+        
+        if getattr(args, 'save', False):
+            config = load_config()
+            config["private_key"] = private_b64url
+            config["public_key"] = public_b64url
+            save_config(config)
+            print("Keys generated and saved successfully!")
+            print(f"Public key: {public_b64url}")
+            print("Private key: [saved to .env]")
+        else:
+            print("Keys generated successfully!")
+            print(f"Public key: {public_b64url}")
+            print(f"Private key: {private_b64url}")
+            print("\nNote: Keys were NOT saved. Use --save to save them to .env")
         return 0
     except Exception as e:
         print(f"Error generating keys: {e}", file=sys.stderr)
@@ -841,9 +844,35 @@ def cmd_info(args) -> int:
 
 
 def cmd_config(args) -> int:
-    """Display current configuration."""
+    """Configure the agent demo or display current configuration."""
     try:
         config = load_config()
+        
+        # Check if we should update config
+        update_made = False
+        
+        if getattr(args, 'backend_url', None):
+            config['backend_url'] = args.backend_url
+            update_made = True
+            
+        if getattr(args, 'private_key', None) and getattr(args, 'public_key', None):
+            config['private_key'] = args.private_key
+            config['public_key'] = args.public_key
+            update_made = True
+        elif getattr(args, 'private_key', None) or getattr(args, 'public_key', None):
+            print("Error: Both --private-key and --public-key must be provided together.", file=sys.stderr)
+            return 1
+            
+        if update_made:
+            # Validate before saving if we have keys
+            if config.get('private_key') and config.get('public_key'):
+                is_valid, msg = validate_keys_match(config['private_key'], config['public_key'])
+                if not is_valid:
+                    print(f"Error: Invalid keys provided - {msg}", file=sys.stderr)
+                    return 1
+            
+            save_config(config)
+            print("Configuration updated successfully.\n")
 
         print("Current Configuration:")
         print(f"  Backend URL:  {config.get('backend_url') or '(not set)'}")
@@ -865,13 +894,13 @@ def cmd_config(args) -> int:
 
         # Validate and report status
         if private_key and public_key:
-            is_valid, msg = validate_config(config)
+            is_valid, msg = validate_keys_match(private_key, public_key)
             if is_valid:
-                print(f"\n  Status: VALID (keys match)")
+                print("\n  Status: VALID (keys match)")
             else:
                 print(f"\n  Status: INVALID - {msg}")
         else:
-            print(f"\n  Status: INCOMPLETE")
+            print("\n  Status: INCOMPLETE")
 
         return 0
     except Exception as e:
@@ -900,7 +929,12 @@ Examples:
     # generate-keys command
     parser_generate = subparsers.add_parser(
         "generate-keys",
-        help="Generate new Ed25519 keypair and save to .env",
+        help="Generate new Ed25519 keypair and optionally save to .env",
+    )
+    parser_generate.add_argument(
+        "--save",
+        action="store_true",
+        help="Save generated keys to .env file",
     )
 
     # register command
@@ -938,8 +972,20 @@ Examples:
 
     # config command
     parser_config = subparsers.add_parser(
-        "config",
-        help="Display current configuration",
+        "configure",
+        help="Configure the agent demo or display current configuration",
+    )
+    parser_config.add_argument(
+        "--backend-url",
+        help="The URL of the backend API",
+    )
+    parser_config.add_argument(
+        "--private-key",
+        help="The base64url-encoded Ed25519 private key",
+    )
+    parser_config.add_argument(
+        "--public-key",
+        help="The base64url-encoded Ed25519 public key",
     )
 
     # Parse arguments
@@ -956,7 +1002,7 @@ Examples:
         "login": cmd_login,
         "logout": cmd_logout,
         "info": cmd_info,
-        "config": cmd_config,
+        "configure": cmd_config,
     }
 
     handler = command_handlers.get(args.command)
