@@ -1142,6 +1142,66 @@ def cmd_register_client(args) -> int:
     return 0
 
 
+def cmd_authorize(args) -> int:
+    """Initiate OAuth authorization for a client."""
+    config = load_config()
+
+    # Validate required config
+    if not config.get("backend_url"):
+        print("No backend_url configured.", file=sys.stderr)
+        return 1
+
+    has_session = bool(config.get("session_id"))
+    has_keys = bool(config.get("private_key") and config.get("public_key"))
+
+    if not has_session and not has_keys:
+        print(
+            "Authentication required: set session_id or private_key + public_key in .env.",
+            file=sys.stderr,
+        )
+        return 1
+
+    backend_url = config["backend_url"]
+    url = f"{backend_url}/v1/oauth/authorize"
+
+    # Build request body
+    body = {
+        "client_id": args.client_id,
+        "redirect_uri": args.redirect_uri,
+        "code_challenge": args.code_challenge,
+        "code_challenge_method": "S256",  # Hardcoded per CONTEXT.md
+    }
+
+    scope = args.scope or "id name description subscription"
+    body["scope"] = scope
+
+    if args.state:
+        body["state"] = args.state
+
+    # Build headers with dual auth pattern
+    headers = {"Content-Type": "application/json"}
+
+    if has_session:
+        # Prefer Bearer session auth
+        headers["Authorization"] = f"Bearer {config['session_id']}"
+    else:
+        # Fall back to DPoP proof
+        private_key = load_private_key(config["private_key"])
+        dpop_proof = create_dpop_proof(private_key, "POST", url)
+        headers["DPoP"] = dpop_proof
+        # DPoP auth requires agent_id in body
+        if config.get("agent_id"):
+            body["agent_id"] = config["agent_id"]
+
+    encoded_body = json.dumps(body).encode("utf-8")
+
+    response = make_request(url, headers, data=encoded_body, method="POST")
+
+    # Output authorization code via print_output (per CONTEXT.md)
+    print_output(response)
+    return 0
+
+
 def cmd_config(args) -> int:
     """Configure the agent demo or display current configuration."""
     try:
@@ -1351,6 +1411,23 @@ Examples:
         "--public-key", help="Base64url-encoded public key"
     )
 
+    # authorize command
+    parser_authorize = subparsers.add_parser(
+        "authorize",
+        help="Initiate OAuth authorization for a client",
+    )
+    parser_authorize.add_argument(
+        "--client-id", required=True, help="OAuth client ID (UUID)"
+    )
+    parser_authorize.add_argument(
+        "--redirect-uri", required=True, help="Redirect URI registered with client"
+    )
+    parser_authorize.add_argument(
+        "--code-challenge", required=True, help="PKCE code challenge (S256)"
+    )
+    parser_authorize.add_argument("--scope", help="Space-separated scopes")
+    parser_authorize.add_argument("--state", help="State parameter for CSRF protection")
+
     # Parse arguments
     args = parser.parse_args()
 
@@ -1371,6 +1448,7 @@ Examples:
         "revoke-overseer": cmd_revoke_overseer,
         "rotate-keys": cmd_rotate_keys,
         "register-client": cmd_register_client,
+        "authorize": cmd_authorize,
     }
 
     handler = command_handlers.get(args.command)
