@@ -37,12 +37,18 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 **Goal:** Agent demo script handles queries, claims, oversight, and key rotation.
 **Dependencies:** Phase 33
 **Requirements:** AAUTH-05, AQUERY-01, AQUERY-02, ACLAIM-01, ACLAIM-02
+**Plans:** 3 plans
 
 **Success Criteria:**
 1. User can rotate agent keys with dual-signature verification.
 2. User can query OAuth history and overseer info.
 3. User can complete claim challenges with session or DPoP.
 4. User can revoke overseer relationship.
+
+**Plan List:**
+- [ ] 34-01-PLAN.md — Query subcommand and fail-fast HTTP wrapper
+- [ ] 34-02-PLAN.md — Claim challenges and overseer revocation
+- [ ] 34-03-PLAN.md — Key rotation with dual-signature and .env backup
 
 ---
 
