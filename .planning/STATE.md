@@ -14,9 +14,9 @@
 ## Progress
 [████████████████████████████████] 100% (v2.2 Complete)
 - **Phase:** Phase 29: Backend Test Implementation
-- **Plan:** 01
+- **Plan:** 02
 - **Status:** Plan complete
-- **Progress:** [███░                                    ] 19% (4/21 Plans Complete)
+- **Progress:** [████░                                   ] 24% (5/21 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -48,6 +48,8 @@
 - **[28-03-D02]** Adopted Playwright's `browser.newContext()` as the standard for testing multi-actor interactions (Overseer + Agent).
 - **[28-03-D03]** Standardized on direct webhook injection into `SELF.fetch()` for testing Paddle integration logic locally without network overhead.
 - **[29-01-D01]** Test infrastructure uses vitest-pool-workers@0.12.14 with vitest@3.2.x for Cloudflare Workers compatibility.
+- **[29-02-D01]** Dynamic Ed25519 keypairs and DPoP tokens generated per test using Web Crypto API for runtime parity.
+- **[29-02-D02]** TestDataBuilder provides fluent API for constructing Agent/Overseer relationships in ephemeral D1.
 
 **Active Blockers:**
 - None.
@@ -60,11 +62,12 @@
 **Stopped at:** Completed 36-04-PLAN.md — Phase 36 complete
 **Resume file:** None
 - Continue Phase 29: Backend Test Implementation (Plan 02: Cryptographic & Data Builder Helpers)
+- Continue Phase 29: Backend Test Implementation (Plan 03: Core API & Webhook Integration Tests)
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 29-01-PLAN.md (Test Infrastructure Setup)
-**Resume file:** .planning/phases/29-backend-test-implementation/29-02-PLAN.md
+**Stopped at:** Completed 29-02-PLAN.md (Cryptographic & Data Builder Helpers)
+**Resume file:** .planning/phases/29-backend-test-implementation/29-03-PLAN.md
 
 
 ---
