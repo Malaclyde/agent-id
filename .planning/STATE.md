@@ -6,11 +6,11 @@
 **Current Focus:** v2.2 Demo Scripts - Creating Python demo scripts for agent and client operations.
 
 ## Current Position
-- **Phase:** 35-agent-demo-oauth (Agent Demo - OAuth Client)
-- **Plan:** 02 of 02
-- **Status:** Phase complete
-- **Last activity:** 2026-02-22 — Completed 35-02-PLAN.md (authorize subcommand with PKCE)
-- **Progress:** [████████████████████████████████] 100% (2 of 2 Phase 35 Plans Complete)
+- **Phase:** 36-client-demo-core (Client Demo - Core)
+- **Plan:** 01 of 04
+- **Status:** In progress
+- **Last activity:** 2026-02-22 — Completed 36-01-PLAN.md (crypto utilities and key management)
+- **Progress:** [██████████████████░░░░░░░░░░░░░░] 58% (11 of 19 v2.2 Demo Script Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -43,7 +43,7 @@
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 35-02-PLAN.md — Phase 35 complete (Agent Demo - OAuth Client)
+**Stopped at:** Completed 36-01-PLAN.md — Phase 36 Plan 01 complete
 **Resume file:** None
 
 
