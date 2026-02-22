@@ -18,6 +18,7 @@ import base64
 import json
 import os
 import sys
+import argparse
 from nacl.signing import SigningKey, VerifyKey
 
 # =============================================================================
@@ -115,3 +116,43 @@ def validate_keys_match(private_b64url: str, public_b64url: str) -> tuple[bool, 
         return False, "Public key does not match private key"
     except Exception as e:
         return False, f"Key validation failed: {str(e)}"
+
+
+# =============================================================================
+# CLI Interface
+# =============================================================================
+
+
+def main():
+    """Main CLI entry point."""
+    parser = argparse.ArgumentParser(
+        description="Client Demo - CLI Interface for OAuth Client Operations",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+
+    # generate-verifier command (placeholder)
+    subparsers.add_parser(
+        "generate-verifier",
+        help="Generate PKCE verifier and challenge pair",
+    )
+
+    # generate-keys command (placeholder)
+    subparsers.add_parser(
+        "generate-keys",
+        help="Generate new Ed25519 keypair",
+    )
+
+    # Parse arguments
+    args = parser.parse_args()
+
+    if args.command is None:
+        parser.print_help()
+        return 0
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
