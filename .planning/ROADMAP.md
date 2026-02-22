@@ -37,10 +37,10 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 - [x] 29-04-PLAN.md — Overseers & Agents Integration Tests
 - [x] 29-05-PLAN.md — Clients & Subscriptions Integration Tests
 - [x] 29-06-PLAN.md — OAuth API Integration Tests
-- [ ] 29-07-PLAN.md — Fix Vitest Pool Configuration (Gap Closure)
-- [ ] 29-08-PLAN.md — Fix Failing Unit Tests (Gap Closure)
-- [ ] 29-09-PLAN.md — Fix Overseer API Tests (Gap Closure)
-- [ ] 29-10-PLAN.md — Fix Agent API Tests (Gap Closure)
+- [x] 29-07-PLAN.md — Fix Vitest Pool Configuration (Gap Closure)
+- [x] 29-08-PLAN.md — Fix Failing Unit Tests (Gap Closure)
+- [x] 29-09-PLAN.md — Fix Overseer API Tests (Gap Closure)
+- [x] 29-10-PLAN.md — Fix Agent API Tests (Gap Closure)
 
 - [ ] Phase 38: Security Audit & Hardening
 - [ ] Phase 39: Drizzle ORM Migration

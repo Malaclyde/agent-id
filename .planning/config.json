@@ -3,9 +3,9 @@
   "depth": "comprehensive",
   "parallelization": true,
   "commit_docs": true,
-  "model_profile": "quality",
+  "model_profile": "balanced",
   "profiles": {
-    "active_profile": "quality",
+    "active_profile": "balanced",
     "presets": {
       "quality": {
         "planning": "google/gemini-3.1-pro-preview",
