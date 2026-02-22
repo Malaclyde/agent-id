@@ -20,6 +20,8 @@ import os
 import sys
 import argparse
 from nacl.signing import SigningKey, VerifyKey
+from dotenv import load_dotenv, set_key
+
 
 # =============================================================================
 # Base64url Encoding/Decoding
@@ -116,6 +118,96 @@ def validate_keys_match(private_b64url: str, public_b64url: str) -> tuple[bool, 
         return False, "Public key does not match private key"
     except Exception as e:
         return False, f"Key validation failed: {str(e)}"
+
+
+# =============================================================================
+# Configuration Management (.env handling)
+# =============================================================================
+
+
+ENV_FILE = ".env"
+
+# Mapping from internal config keys to environment variable names
+ENV_KEYS = {
+    "backend_url": "BACKEND_URL",
+    "client_id": "CLIENT_ID",
+    "private_key": "CLIENT_PRIVATE_KEY",
+    "public_key": "CLIENT_PUBLIC_KEY",
+    "client_url": "CLIENT_URL",
+    "client_port": "CLIENT_PORT",
+}
+
+
+def load_config(env_file: str = ENV_FILE) -> dict:
+    """
+    Load configuration from .env file.
+
+    Args:
+        env_file: Path to .env file (default: .env)
+
+    Returns:
+        Dict with keys: backend_url, client_id, private_key, public_key, client_url, client_port
+        Values are None if not set in the file.
+    """
+    load_dotenv(env_file)
+    return {
+        "backend_url": os.getenv("BACKEND_URL"),
+        "client_id": os.getenv("CLIENT_ID"),
+        "private_key": os.getenv("CLIENT_PRIVATE_KEY"),
+        "public_key": os.getenv("CLIENT_PUBLIC_KEY"),
+        "client_url": os.getenv("CLIENT_URL", "localhost"),
+        "client_port": os.getenv("CLIENT_PORT", "8790"),
+    }
+
+
+def save_config(config: dict, env_file: str = ENV_FILE) -> None:
+    """
+    Save configuration to .env file.
+
+    Args:
+        config: Dict with internal config keys (not env var names)
+        env_file: Path to .env file (default: .env)
+    """
+    for internal_key, value in config.items():
+        if value is not None and internal_key in ENV_KEYS:
+            env_var = ENV_KEYS[internal_key]
+            set_key(env_file, env_var, str(value))
+
+
+def validate_config(config: dict) -> tuple[bool, str]:
+    """
+    Validate configuration dictionary.
+
+    Checks:
+    - backend_url is set
+    - client_id is set
+    - Check private_key and public_key are both set (or neither)
+    - If both keys present, validate they match using validate_keys_match
+
+    Args:
+        config: Configuration dict from load_config()
+
+    Returns:
+        Tuple of (is_valid, message)
+    """
+    if not config.get("backend_url"):
+        return False, "backend_url is required"
+
+    if not config.get("client_id"):
+        return False, "client_id is required"
+
+    private_key = config.get("private_key")
+    public_key = config.get("public_key")
+
+    if (private_key and not public_key) or (public_key and not private_key):
+        return False, "Both private_key and public_key must be set (or neither)"
+
+    if private_key and public_key:
+        is_valid, msg = validate_keys_match(private_key, public_key)
+        if not is_valid:
+            return False, f"Keys do not match: {msg}"
+
+    return True, "OK"
 
 
 # =============================================================================
