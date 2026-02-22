@@ -13,6 +13,10 @@
 
 ## Progress
 [████████████████████████████████] 100% (v2.2 Complete)
+- **Phase:** Phase 29: Backend Test Implementation
+- **Plan:** 01
+- **Status:** Plan complete
+- **Progress:** [███░                                    ] 19% (4/21 Plans Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A
@@ -36,6 +40,14 @@
 - OAuth client key storage: CLIENT_<client-id>_* namespace for multi-client support.
 - PKCE code challenge: Client app generates challenge, agent script receives via --code-challenge flag (S256 hardcoded).
 - Authorization code output: print to stdout only, no redirect/file save (user copies to client app).
+- **[28-01-D01]** Formalized DPoP and Ed25519 edge cases in documentation to guide test coverage.
+- **[28-02-D01]** Standardized flow documentation to include Mermaid diagrams and detailed API traces for better testability.
+- **[28-02-D02]** Explicitly mapped Paddle statuses (active, past_due, etc.) to application access levels.
+- **[28-02-D03]** Formalized documentation of client limit enforcement and ownership transfer logic.
+- **[28-03-D01]** Mandated `@cloudflare/vitest-pool-workers` for all cryptographic tests to ensure Web Crypto API parity with the Cloudflare runtime.
+- **[28-03-D02]** Adopted Playwright's `browser.newContext()` as the standard for testing multi-actor interactions (Overseer + Agent).
+- **[28-03-D03]** Standardized on direct webhook injection into `SELF.fetch()` for testing Paddle integration logic locally without network overhead.
+- **[29-01-D01]** Test infrastructure uses vitest-pool-workers@0.12.14 with vitest@3.2.x for Cloudflare Workers compatibility.
 
 **Active Blockers:**
 - None.
@@ -47,6 +59,12 @@
 **Last session:** 2026-02-22
 **Stopped at:** Completed 36-04-PLAN.md — Phase 36 complete
 **Resume file:** None
+- Continue Phase 29: Backend Test Implementation (Plan 02: Cryptographic & Data Builder Helpers)
+
+## Session Continuity
+**Last session:** 2026-02-22
+**Stopped at:** Completed 29-01-PLAN.md (Test Infrastructure Setup)
+**Resume file:** .planning/phases/29-backend-test-implementation/29-02-PLAN.md
 
 
 ---
