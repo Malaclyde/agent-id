@@ -7,13 +7,13 @@
 
 ## Current Position
 - **Phase:** Phase 28: Audit & Test Strategy
-- **Plan:** 02
-- **Status:** In progress
-- **Progress:** [██                                      ] 10% (2/21 Plans Complete)
+- **Plan:** 03
+- **Status:** Phase complete
+- **Progress:** [███                                     ] 14% (3/21 Plans Complete)
 
 ## Performance Metrics
-- **Velocity:** 2 plans/session
-- **Quality:** High (Strict documentation format adopted, Paddle edge cases mapped)
+- **Velocity:** 3 plans/session
+- **Quality:** High (Strict documentation format adopted, Paddle edge cases mapped, Test Strategy defined)
 
 ## Accumulated Context
 **Architecture Decisions:**
@@ -24,15 +24,18 @@
 - **[28-02-D01]** Standardized flow documentation to include Mermaid diagrams and detailed API traces for better testability.
 - **[28-02-D02]** Explicitly mapped Paddle statuses (active, past_due, etc.) to application access levels.
 - **[28-02-D03]** Formalized documentation of client limit enforcement and ownership transfer logic.
+- **[28-03-D01]** Mandated `@cloudflare/vitest-pool-workers` for all cryptographic tests to ensure Web Crypto API parity with the Cloudflare runtime.
+- **[28-03-D02]** Adopted Playwright's `browser.newContext()` as the standard for testing multi-actor interactions (Overseer + Agent).
+- **[28-03-D03]** Standardized on direct webhook injection into `SELF.fetch()` for testing Paddle integration logic locally without network overhead.
 
 **Active Blockers:**
 - None.
 
 **Next Steps:**
-- Execute 28-03-PLAN.md — Identify Coverage Gaps and Document Test Strategy & Scenarios.
+- Start Phase 29: Backend Test Implementation.
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed 28-02-PLAN.md
-**Resume file:** .planning/phases/28-audit-test-strategy/28-03-PLAN.md
+**Stopped at:** Completed Phase 28
+**Resume file:** .planning/ROADMAP.md
 
