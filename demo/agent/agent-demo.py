@@ -967,6 +967,31 @@ def cmd_claim(args) -> int:
     return 0
 
 
+def cmd_revoke_overseer(args) -> int:
+    """Revoke current overseer relationship immediately."""
+    config = load_config()
+
+    if not config.get("backend_url"):
+        print("No backend_url configured.", file=sys.stderr)
+        return 1
+
+    if not config.get("session_id"):
+        print(
+            "No active session. Run 'python agent-demo.py login' first.",
+            file=sys.stderr,
+        )
+        return 1
+
+    backend_url = config["backend_url"]
+    session_id = config["session_id"]
+    url = f"{backend_url}/v1/agents/revoke-overseer"
+    headers = {"Authorization": f"Bearer {session_id}"}
+
+    response = make_request(url, headers, method="POST")
+    print_output(response)
+    return 0
+
+
 def cmd_config(args) -> int:
     """Configure the agent demo or display current configuration."""
     try:
@@ -1133,6 +1158,12 @@ Examples:
         help="The overseer ID initiating the claim",
     )
 
+    # revoke-overseer command
+    parser_revoke = subparsers.add_parser(
+        "revoke-overseer",
+        help="Revoke current overseer relationship immediately",
+    )
+
     # query command
     parser_query = subparsers.add_parser(
         "query",
@@ -1161,6 +1192,7 @@ Examples:
         "configure": cmd_config,
         "query": cmd_query,
         "claim": cmd_claim,
+        "revoke-overseer": cmd_revoke_overseer,
     }
 
     handler = command_handlers.get(args.command)
