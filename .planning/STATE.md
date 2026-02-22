@@ -78,6 +78,7 @@
 - **[30-06-D01]** AuthContext tests use MSW handlers; error handling added to login/register to prevent unhandled rejections
 - **[30-07-D01]** OverseerAuth tests use getByRole selectors instead of getByLabelText due to missing htmlFor attributes on labels
 - **[30-08-D01]** RegisteredClients tests use vi.mock for API client mocking instead of MSW; use getByPlaceholderText for form fields
+- **[30-09-D01]** OverseerDashboard tests use MSW for API mocking; window.location mock required origin property for React Router NavLink compatibility
 - **[30-10-D01]** AgentDashboard tests use vi.mock for AuthContext; MSW for API mocking via server.use()
 
 **Active Blockers:**
