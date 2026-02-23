@@ -92,6 +92,7 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 **Goal:** Client demo script handles token refresh, userinfo, revocation, and introspection.
 **Dependencies:** Phase 36
 **Requirements:** CTOKEN-02, CTOKEN-03, COAUTH-01, COAUTH-02, COAUTH-03
+**Plans:** 2 plans
 
 **Success Criteria:**
 1. User can refresh access tokens with refresh token grant.
@@ -99,6 +100,10 @@ This roadmap details the implementation of Python demo scripts for the Agent-ID 
 3. User can query userinfo with DPoP-bound access token.
 4. User can introspect tokens for status and metadata.
 5. User can query OpenID discovery endpoint.
+
+**Plan List:**
+- [ ] 37-01-PLAN.md — Helper functions (hash_access_token, create_dpop_proof), refresh and discover subcommands
+- [ ] 37-02-PLAN.md — Userinfo (DPoP-bound), revoke, and introspect subcommands
 
 ---
 
