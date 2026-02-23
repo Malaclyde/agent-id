@@ -92,7 +92,7 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 - [x] 31-02-PLAN.md — Multi-Actor Flow & Registration Refactor
 - [x] 31-03-PLAN.md — Paddle Checkout Sandbox & Polling
 - [x] 31-04-PLAN.md — E2E Test Infrastructure Gap Closure
-- [ ] 31-05-PLAN.md — Gap Closure: Missing Event Types & Create-Agent Endpoint
+- [x] 31-05-PLAN.md — Gap Closure: Missing Event Types & Create-Agent Endpoint
 
 **Success Criteria:**
 1. Developer can run Playwright tests handling cross-origin iframes and multi-browser contexts.
@@ -130,4 +130,6 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 | 29 - Backend Test Implementation | Backend APIs and cryptographic utilities are fully verifiable in isolated, ephemeral environments. | BETEST-01, BETEST-02, BETEST-03 | Complete |
 | 30 - Frontend Test Implementation | Frontend React components and edge cases are verifiable without relying on a live backend. | FETEST-01, FETEST-02, FETEST-03 | Complete |
 | 31 - End-to-End Test Implementation | Full application workflows, including real third-party integrations, are automatically verifiable. | E2ETEST-01, E2ETEST-02, E2ETEST-03 | Pending |
+| 32 - Bug Discovery & Reporting | All application bugs are identified and documented for future resolution. | BUGS-01, BUGS-02 | Pending |
+| 31 - End-to-End Test Implementation | Full application workflows, including real third-party integrations, are automatically verifiable. | E2ETEST-01, E2ETEST-02, E2ETEST-03 | Complete |
 | 32 - Bug Discovery & Reporting | All application bugs are identified and documented for future resolution. | BUGS-01, BUGS-02 | Pending |

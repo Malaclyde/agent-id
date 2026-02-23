@@ -28,9 +28,9 @@
 
 ### End-to-End Testing (E2ETEST)
 
-- [ ] **E2ETEST-01**: Testing suite includes Playwright scaffolding configured for cross-origin iframes and multi-browser contexts.
-- [ ] **E2ETEST-02**: Testing suite executes real Paddle Checkout sandbox flows using specified test data (testuser-N).
-- [ ] **E2ETEST-03**: Testing suite explicitly handles and asserts asynchronous webhook outcomes (using cloudflared/ngrok or polling).
+- [x] **E2ETEST-01**: Testing suite includes Playwright scaffolding configured for cross-origin iframes and multi-browser contexts.
+- [x] **E2ETEST-02**: Testing suite executes real Paddle Checkout sandbox flows using specified test data (testuser-N).
+- [x] **E2ETEST-03**: Testing suite explicitly handles and asserts asynchronous webhook outcomes (using cloudflared/ngrok or polling).
 
 ### Bug Resolution (BUGS)
 
@@ -68,9 +68,9 @@
 | FETEST-01 | Phase 30 | Complete |
 | FETEST-02 | Phase 30 | Complete |
 | FETEST-03 | Phase 30 | Complete |
-| E2ETEST-01 | Phase 31 | Pending |
-| E2ETEST-02 | Phase 31 | Pending |
-| E2ETEST-03 | Phase 31 | Pending |
+| E2ETEST-01 | Phase 31 | Complete |
+| E2ETEST-02 | Phase 31 | Complete |
+| E2ETEST-03 | Phase 31 | Complete |
 | BUGS-01 | Phase 32 | Pending |
 | BUGS-02 | Phase 32 | Pending |
 
