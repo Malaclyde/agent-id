@@ -83,6 +83,10 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 **Goal:** Full application workflows, including real third-party integrations, are automatically verifiable.
 **Dependencies:** Phase 29, Phase 30
 **Requirements:** E2ETEST-01, E2ETEST-02, E2ETEST-03
+**Plans:** 3 plans
+- [ ] 31-01-PLAN.md — Playwright Infrastructure & Webhook Test Setup
+- [ ] 31-02-PLAN.md — Multi-Actor Flow & Registration Refactor
+- [ ] 31-03-PLAN.md — Paddle Checkout Sandbox & Polling
 
 **Success Criteria:**
 1. Developer can run Playwright tests handling cross-origin iframes and multi-browser contexts.
