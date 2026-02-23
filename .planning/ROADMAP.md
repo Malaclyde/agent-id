@@ -87,11 +87,12 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 **Success Criteria:**
 - E2E tests are added for Paddle workflows and multi-actor scenarios
 
-**Plans:** 4 plans
-- [ ] 31-01-PLAN.md — Playwright Infrastructure & Webhook Test Setup
-- [ ] 31-02-PLAN.md — Multi-Actor Flow & Registration Refactor
-- [ ] 31-03-PLAN.md — Paddle Checkout Sandbox & Polling
-- [ ] 31-04-PLAN.md — E2E Test Infrastructure Gap Closure
+**Plans:** 5 plans
+- [x] 31-01-PLAN.md — Playwright Infrastructure & Webhook Test Setup
+- [x] 31-02-PLAN.md — Multi-Actor Flow & Registration Refactor
+- [x] 31-03-PLAN.md — Paddle Checkout Sandbox & Polling
+- [x] 31-04-PLAN.md — E2E Test Infrastructure Gap Closure
+- [ ] 31-05-PLAN.md — Gap Closure: Missing Event Types & Create-Agent Endpoint
 
 **Success Criteria:**
 1. Developer can run Playwright tests handling cross-origin iframes and multi-browser contexts.
