@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev:backend": "cd backend && npm run dev",
+    "dev:backend": "cd backend && npm run dev:local",
+    "db:reset": "cd backend && npm run db:reset",
     "dev:frontend": "cd frontend && npm run dev",
     "db:migrate": "cd backend && npm run db:migrate",
+    "db:migrate:test": "cd backend && npm run db:migrate:test",
     "install:backend": "cd backend && npm install",
     "install:frontend": "cd frontend && npm install",
     "install:all": "npm install && npm run install:backend && npm run install:frontend",
