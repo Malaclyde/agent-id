@@ -1,1 +1,10 @@
-opencode.json
+node_modules/
+.wrangler/
+dist/
+coverage/
+.env
+.dev.vars
+test-results/
+playwright-report/
+blob-report/
+.wrangler-state/
