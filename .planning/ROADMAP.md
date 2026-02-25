@@ -105,6 +105,9 @@ This roadmap tracks the evolution of the Agent-ID identity platform.
 **Goal:** All application bugs are identified and documented for future resolution.
 **Dependencies:** Phase 29, Phase 30, Phase 31
 **Requirements:** BUGS-01, BUGS-02
+**Plans:** 2 plans
+- [ ] 32-01-PLAN.md — Execute all test suites and capture results
+- [ ] 32-02-PLAN.md — Analyze failures, produce bug report, discuss with user
 
 **Success Criteria:**
 1. Developer has executed all test suites (Backend, Frontend, E2E) across the full stack.
