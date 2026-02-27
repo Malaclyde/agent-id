@@ -3,14 +3,16 @@
 ## Project Reference
 **Project:** Agent-ID Identity Platform
 **Core Value:** Users can trust that the Agent-ID platform correctly handles authentication, authorization, and subscription management with accurate documentation and comprehensive test coverage.
-**Current Focus:** v2.2 Demo Scripts - Creating Python demo scripts for agent and client operations.
+**Current Focus:** Planning next milestone (v2.3)
 
 ## Current Position
-- **Phase:** 36-client-demo-core (Client Demo - Core)
-- **Plan:** 04 of 04
-- **Status:** Phase complete
-- **Last activity:** 2026-02-22 — Completed 36-04-PLAN.md (token exchange and CLI implementation)
-- **Progress:** [███████████████████████░░░░░░░░░] 74% (14 of 19 v2.2 Demo Script Plans Complete)
+- **Phase:** 37-client-demo-oauth
+- **Plan:** Not started
+- **Status:** Milestone v2.2 Complete
+- **Last activity:** 2026-02-27 — Milestone v2.2 archived
+
+## Progress
+[████████████████████████████████] 100% (v2.2 Complete)
 
 ## Performance Metrics
 - **Velocity:** N/A

@@ -10,18 +10,9 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 
 ---
 
-## Current Milestone: v2.2 Demo Scripts
+## Current Milestone: Planning Next Milestone (v2.3)
 
-**Goal:** Create runnable Python demo scripts that demonstrate all agent and client capabilities against the backend API.
-
-**Target features:**
-- Agent demo script with all agent-facing API operations
-- Client demo script with all OAuth client operations
-- Comprehensive error handling with clear error messages
-- Local .env configuration management
-- Cryptographic operations (Ed25519, DPoP, PKCE)
-
-**Previous Milestone:** v2.1 Comprehensive Testing (In Progress)
+**Goal:** Evolve the Agent-ID platform based on demo script feedback and security audit findings.
 
 ---
 
@@ -29,10 +20,10 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 
 ### Validated (Existing Capabilities)
 
-- ✓ OAuth2 Authorization Code Flow with PKCE and DPoP
-- ✓ Agent authentication via Ed25519 challenge-response
-- ✓ Agent claim procedure with cryptographic verification
-- ✓ Client registration and OAuth token management
+- ✓ OAuth2 Authorization Code Flow with PKCE and DPoP — v2.2
+- ✓ Agent authentication via Ed25519 challenge-response — v2.2
+- ✓ Agent claim procedure with cryptographic verification — v2.2
+- ✓ Client registration and OAuth token management — v2.2
 - ✓ Basic subscription tier structure (FREE, BASIC, PRO, etc.)
 - ✓ Overseer-agent oversight relationships
 - ✓ Paddle payment integration with webhook handling
@@ -44,34 +35,14 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 - ✓ Paddle `transaction.completed` webhook handling for one-time payments
 - ✓ Comprehensive test coverage for shadow claim flows
 - ✓ Comprehensive testing suite (backend, frontend, E2E)
+- ✓ Python Agent Demo CLI (Full API coverage) — v2.2
+- ✓ Python Client Demo CLI (Full OAuth coverage) — v2.2
 
-### Active (This Milestone)
+### Active
 
-#### Agent Demo Script
-- [ ] Configuration management (.env file)
-- [ ] Ed25519 key generation
-- [ ] Agent registration (two-step challenge flow)
-- [ ] Agent login (DPoP authentication)
-- [ ] Agent logout
-- [ ] Query agent info
-- [ ] OAuth history query
-- [ ] Overseer info query
-- [ ] Claim completion
-- [ ] Overseer revocation
-- [ ] Key rotation (dual-signature flow)
-- [ ] Client registration as agent
-- [ ] OAuth authorization
-
-#### Client Demo Script
-- [ ] Configuration management (.env file)
-- [ ] PKCE verifier/challenge generation
-- [ ] Ed25519 key generation
-- [ ] Token exchange (with HTTP callback server)
-- [ ] Token refresh
-- [ ] Userinfo query (DPoP-bound)
-- [ ] Token revocation
-- [ ] Token introspection
-- [ ] OpenID discovery
+- [ ] Security audit of DPoP and key rotation flows
+- [ ] Database migration to Drizzle ORM
+- [ ] Repository redesign (public/private split)
 
 ### Out of Scope
 
@@ -110,9 +81,12 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Python scripts | Widely used, good crypto library support | — Pending |
-| .env file config | Simple, standard configuration pattern | — Pending |
-| Print-only error handling | Demo scripts focus on clarity | — Pending |
+| Python scripts | Widely used, good crypto library support | ✓ Good (Milestone v2.2) |
+| .env file config | Simple, standard configuration pattern | ✓ Good (Milestone v2.2) |
+| Print-only error handling | Demo scripts focus on clarity | ✓ Good (Milestone v2.2) |
+| Dual-signature rotation | Enhanced security for key rotation | ✓ Good (Milestone v2.2) |
+| private_key_jwt | RFC 7523 compliant client auth | ✓ Good (Milestone v2.2) |
+| DPoP proof binding | RFC 9449 compliant token binding | ✓ Good (Milestone v2.2) |
 
 ---
-*Last updated: 2026-02-22 after milestone initialization*
+*Last updated: 2026-02-27 after v2.2 milestone*

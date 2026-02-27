@@ -1,118 +1,41 @@
 # Project Roadmap
 
 **Project:** Agent-ID Identity Platform
-**Current Milestone:** v2.2 Demo Scripts
-**Goal:** Create runnable Python demo scripts that demonstrate all agent and client capabilities against the backend API.
+**Current Milestone:** Planning Next Milestone
 
 ## Overview
-This roadmap details the implementation of Python demo scripts for the Agent-ID platform. The milestone consists of agent demo script with full API coverage and client demo script with OAuth flow support.
 
----
+This roadmap tracks the evolution of the Agent-ID identity platform.
+
+## Milestones
+
+- ✅ **v2.2 Demo Scripts** — Phases 33-37 (shipped 2026-02-27)
+- 📋 **v2.3 Platform Evolution** — Phases 38+ (planned)
 
 ## Phases
 
-### Phase 33: Agent Demo - Core
-**Goal:** Agent demo script handles configuration, key generation, registration, and basic authentication.
-**Dependencies:** None
-**Requirements:** ACONF-01, ACONF-02, ACONF-03, AAUTH-01, AAUTH-02, AAUTH-03, AAUTH-04
-**Plans:** 5 plans
+<details>
+<summary>✅ v2.2 Demo Scripts (Phases 33-37) — SHIPPED 2026-02-27</summary>
 
-**Success Criteria:**
-1. User can configure .env file with backend URL and keys via command line.
-2. User can generate Ed25519 keypairs and save to .env.
-3. User can register a new agent with two-step challenge flow.
-4. User can log in using DPoP proof and receive session.
-5. User can log out and query agent info.
+- [x] Phase 33: Agent Demo - Core (5/5 plans) — completed 2026-02-22
+- [x] Phase 34: Agent Demo - Extended Operations (3/3 plans) — completed 2026-02-22
+- [x] Phase 35: Agent Demo - OAuth Client (2/2 plans) — completed 2026-02-22
+- [x] Phase 36: Client Demo - Core (4/4 plans) — completed 2026-02-22
+- [x] Phase 37: Client Demo - OAuth Operations (2/2 plans) — completed 2026-02-27
 
-**Plan List:**
-- [x] 33-01-PLAN.md — Crypto utilities and Ed25519 key management
-- [x] 33-02-PLAN.md — Configuration management with .env handling
-- [x] 33-03-PLAN.md — Registration flow with challenge-response
-- [x] 33-04-PLAN.md — Authentication operations (login, logout, info)
-- [x] 33-05-PLAN.md — CLI implementation and end-to-end verification
+</details>
 
----
+### 📋 v2.3 Platform Evolution (Planned)
 
-### Phase 34: Agent Demo - Extended Operations
-**Goal:** Agent demo script handles queries, claims, oversight, and key rotation.
-**Dependencies:** Phase 33
-**Requirements:** AAUTH-05, AQUERY-01, AQUERY-02, ACLAIM-01, ACLAIM-02
-**Plans:** 3 plans
-
-**Success Criteria:**
-1. User can rotate agent keys with dual-signature verification.
-2. User can query OAuth history and overseer info.
-3. User can complete claim challenges with session or DPoP.
-4. User can revoke overseer relationship.
-
-**Plan List:**
-- [x] 34-01-PLAN.md — Query subcommand and fail-fast HTTP wrapper
-- [x] 34-02-PLAN.md — Claim challenges and overseer revocation
-- [x] 34-03-PLAN.md — Key rotation with dual-signature and .env backup
-
----
-
-### Phase 35: Agent Demo - OAuth Client
-**Goal:** Agent demo script handles OAuth client registration and authorization.
-**Dependencies:** Phase 33
-**Requirements:** AOAUTH-01, AOAUTH-02
-**Plans:** 2 plans
-
-**Success Criteria:**
-1. User can register OAuth clients with three key provision options.
-2. User can initiate OAuth authorization and receive authorization code.
-
-**Plan List:**
-- [x] 35-01-PLAN.md — register-client subcommand with key provision options
-- [x] 35-02-PLAN.md — authorize subcommand with PKCE code challenge support
-
----
-
-### Phase 36: Client Demo - Core
-**Goal:** Client demo script handles configuration, PKCE, key generation, and token exchange.
-**Dependencies:** None
-**Requirements:** CCONF-01, CCONF-02, CCONF-03, CTOKEN-01
-**Plans:** 4 plans
-
-**Success Criteria:**
-1. User can configure .env file with client credentials.
-2. User can generate PKCE verifier/challenge pairs.
-3. User can generate Ed25519 keypairs for client auth.
-4. User can perform token exchange with blocking HTTP callback server.
-
-**Plan List:**
-- [x] 36-01-PLAN.md — Core utilities and Ed25519 key management
-- [x] 36-02-PLAN.md — Configuration management and PKCE generation
-- [x] 36-03-PLAN.md — Client assertion JWT and HTTP callback server
-- [x] 36-04-PLAN.md — Token exchange and CLI implementation
-
----
-
-### Phase 37: Client Demo - OAuth Operations
-**Goal:** Client demo script handles token refresh, userinfo, revocation, and introspection.
-**Dependencies:** Phase 36
-**Requirements:** CTOKEN-02, CTOKEN-03, COAUTH-01, COAUTH-02, COAUTH-03
-**Plans:** 2 plans
-
-**Success Criteria:**
-1. User can refresh access tokens with refresh token grant.
-2. User can revoke access or refresh tokens.
-3. User can query userinfo with DPoP-bound access token.
-4. User can introspect tokens for status and metadata.
-5. User can query OpenID discovery endpoint.
-
-**Plan List:**
-- [ ] 37-01-PLAN.md — Helper functions (hash_access_token, create_dpop_proof), refresh and discover subcommands
-- [ ] 37-02-PLAN.md — Userinfo (DPoP-bound), revoke, and introspect subcommands
-
----
+- [ ] Phase 38: Security Audit & Hardening
+- [ ] Phase 39: Drizzle ORM Migration
 
 ## Progress
 
-| Phase | Goal | Requirements | Status |
-|-------|------|--------------|--------|
-| 33 - Agent Demo Core | Agent demo script handles configuration, key generation, registration, and basic authentication. | ACONF-01, ACONF-02, ACONF-03, AAUTH-01, AAUTH-02, AAUTH-03, AAUTH-04 | Complete |
-| 34 - Agent Demo Extended | Agent demo script handles queries, claims, oversight, and key rotation. | AAUTH-05, AQUERY-01, AQUERY-02, ACLAIM-01, ACLAIM-02 | Complete |
-| 35 - Agent Demo OAuth | Agent demo script handles OAuth client registration and authorization. | AOAUTH-01, AOAUTH-02 | Complete |
-| 36 - Client Demo Core | Client demo script handles configuration, PKCE, key generation, and token exchange. | CCONF-01, CCONF-02, CCONF-03, CTOKEN-01 | Complete |
-| 37 - Client Demo OAuth | Client demo script handles token refresh, userinfo, revocation, and introspection. | CTOKEN-02, CTOKEN-03, COAUTH-01, COAUTH-02, COAUTH-03 | In Progress |
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 33. Agent Demo Core | v2.2 | 5/5 | Complete | 2026-02-22 |
+| 34. Agent Demo Extended | v2.2 | 3/3 | Complete | 2026-02-22 |
+| 35. Agent Demo OAuth | v2.2 | 2/2 | Complete | 2026-02-22 |
+| 36. Client Demo Core | v2.2 | 4/4 | Complete | 2026-02-22 |
+| 37. Client Demo OAuth | v2.2 | 2/2 | Complete | 2026-02-27 |
