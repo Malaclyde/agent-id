@@ -22,9 +22,9 @@
 
 ### Frontend Testing (FETEST)
 
-- [ ] **FETEST-01**: Testing suite includes component-level tests for React UI states via Vitest and Testing Library.
-- [ ] **FETEST-02**: Testing suite includes MSW setup to mock backend API responses.
-- [ ] **FETEST-03**: Testing suite covers complex frontend edge cases including polling timeouts and expired tokens.
+- [x] **FETEST-01**: Testing suite includes component-level tests for React UI states via Vitest and Testing Library.
+- [x] **FETEST-02**: Testing suite includes MSW setup to mock backend API responses.
+- [x] **FETEST-03**: Testing suite covers complex frontend edge cases including polling timeouts and expired tokens.
 
 ### End-to-End Testing (E2ETEST)
 
@@ -34,8 +34,8 @@
 
 ### Bug Resolution (BUGS)
 
-- [ ] **BUGS-01**: Developer executes test suites across full stack to identify application bugs.
-- [ ] **BUGS-02**: Developer reports and discusses identified bugs with the user prior to implementing any code fixes.
+- [x] **BUGS-01**: Developer executes test suites across full stack to identify application bugs.
+- [x] **BUGS-02**: Developer reports and discusses identified bugs with the user prior to implementing any code fixes.
 
 ---
 
