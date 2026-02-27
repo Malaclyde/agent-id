@@ -295,6 +295,70 @@ def create_client_assertion(
 
 
 # =============================================================================
+# DPoP Proof Construction
+# =============================================================================
+
+
+def hash_access_token(access_token: str) -> str:
+    """
+    Compute SHA-256 hash of access token, base64url encoded (no padding).
+    Used for DPoP 'ath' claim per RFC 9449.
+    """
+    digest = hashlib.sha256(access_token.encode("utf-8")).digest()
+    return base64url_encode(digest)
+
+
+def create_dpop_proof(
+    private_key: SigningKey,
+    method: str,
+    uri: str,
+    access_token: Optional[str] = None,
+) -> str:
+    """
+    Create DPoP proof JWT for resource access (userinfo endpoint).
+
+    Different from create_client_assertion:
+    - Header: typ='dpop+jwt' (not 'JWT'), NO jwk field
+    - Payload: htm, htu, jti, iat (no iss/sub/aud/exp)
+    - Optional ath claim (SHA-256 hash of access token)
+
+    Args:
+        private_key: Client's Ed25519 signing key
+        method: HTTP method (e.g. 'GET')
+        uri: Full request URI (e.g. 'https://api.example.com/v1/oauth/userinfo')
+        access_token: Access token to bind via ath claim
+
+    Returns:
+        DPoP proof JWT string
+    """
+    header = {
+        "typ": "dpop+jwt",
+        "alg": "EdDSA",
+        # NO jwk - validateDPoPProof gets key from client record
+    }
+
+    now = int(time.time())
+    payload = {
+        "jti": str(uuid.uuid4()),
+        "htm": method,
+        "htu": uri,
+        "iat": now,
+    }
+
+    if access_token:
+        payload["ath"] = hash_access_token(access_token)
+
+    encoded_header = base64url_encode_json(header)
+    encoded_payload = base64url_encode_json(payload)
+    signing_input = f"{encoded_header}.{encoded_payload}".encode("utf-8")
+
+    signed = private_key.sign(signing_input)
+    encoded_signature = base64url_encode(signed.signature)
+
+    return f"{encoded_header}.{encoded_payload}.{encoded_signature}"
+
+
+# =============================================================================
 # HTTP Callback Server
 # =============================================================================
 
@@ -619,6 +683,269 @@ def cmd_config(args) -> int:
         return 1
 
 
+def cmd_refresh(args) -> int:
+    """Refresh access token using refresh token grant."""
+    try:
+        config = load_config()
+        if not config.get("backend_url"):
+            print("Error: backend_url not configured", file=sys.stderr)
+            return 1
+        if not config.get("client_id"):
+            print("Error: client_id not configured", file=sys.stderr)
+            return 1
+        if not config.get("private_key"):
+            print("Error: client private_key not configured", file=sys.stderr)
+            return 1
+
+        # Build token endpoint (MUST use /v1/ prefix — NOT from well-known)
+        backend_url = config["backend_url"]
+        client_id = config["client_id"]
+        token_endpoint = f"{backend_url}/v1/oauth/token"
+
+        # Load stored refresh token
+        load_dotenv(ENV_FILE)
+        refresh_token = os.getenv(f"AGENT_{args.agent_id}_REFRESH_TOKEN")
+        if not refresh_token:
+            print(
+                f"Error: No refresh token found for agent {args.agent_id}",
+                file=sys.stderr,
+            )
+            return 1
+
+        # Create client assertion (aud = token endpoint)
+        private_key = load_private_key(config["private_key"])
+        client_assertion = create_client_assertion(
+            private_key, client_id, token_endpoint
+        )
+
+        body_fields = {
+            "grant_type": "refresh_token",
+            "refresh_token": refresh_token,
+            "client_id": client_id,
+            "client_assertion": client_assertion,
+            "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+        }
+        body_bytes = urllib.parse.urlencode(body_fields).encode("utf-8")
+
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        response_string = make_request(token_endpoint, headers, data=body_bytes)
+
+        # Print full token JSON to stdout
+        print_output(response_string)
+
+        # Save new tokens (rotation: always overwrite both)
+        result = json.loads(response_string)
+        if result.get("access_token"):
+            set_key(
+                ENV_FILE,
+                f"AGENT_{args.agent_id}_ACCESS_TOKEN",
+                result["access_token"],
+            )
+        if result.get("refresh_token"):
+            set_key(
+                ENV_FILE,
+                f"AGENT_{args.agent_id}_REFRESH_TOKEN",
+                result["refresh_token"],
+            )
+
+        return 0
+    except Exception as e:
+        print(f"Error during token refresh: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_discover(args) -> int:
+    """Fetch and display OpenID discovery document."""
+    try:
+        config = load_config()
+        if not config.get("backend_url"):
+            print("Error: backend_url not configured", file=sys.stderr)
+            return 1
+
+        backend_url = config["backend_url"]
+
+        # Well-known URL DOES need /v1/ prefix (route mounted at /v1/oauth)
+        well_known_url = f"{backend_url}/v1/oauth/.well-known/openid-configuration"
+
+        # Simple GET, no auth required
+        headers = {}
+        response_string = make_request(well_known_url, headers)
+        # Note: URLs in response lack /v1/ prefix (known backend bug) — display as-is
+        print_output(response_string)
+        return 0
+    except Exception as e:
+        print(f"Error during discovery: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_userinfo(args) -> int:
+    """Query userinfo endpoint with DPoP-bound access token."""
+    try:
+        config = load_config()
+        if not config.get("backend_url"):
+            print("Error: backend_url not configured", file=sys.stderr)
+            return 1
+        if not config.get("client_id"):
+            print("Error: client_id not configured", file=sys.stderr)
+            return 1
+        if not config.get("private_key"):
+            print("Error: client private_key not configured", file=sys.stderr)
+            return 1
+
+        backend_url = config["backend_url"]
+
+        # Load stored access token
+        load_dotenv(ENV_FILE)
+        access_token = os.getenv(f"AGENT_{args.agent_id}_ACCESS_TOKEN")
+        if not access_token:
+            print(
+                f"Error: No access token found for agent {args.agent_id}",
+                file=sys.stderr,
+            )
+            return 1
+
+        # Build userinfo endpoint (MUST use /v1/ prefix)
+        userinfo_endpoint = f"{backend_url}/v1/oauth/userinfo"
+
+        # Generate DPoP proof (signed with CLIENT key, includes ath)
+        private_key = load_private_key(config["private_key"])
+        dpop_proof = create_dpop_proof(
+            private_key, "GET", userinfo_endpoint, access_token
+        )
+
+        headers = {
+            "Authorization": f"DPoP {access_token}",
+            "DPoP": dpop_proof,
+        }
+        response_string = make_request(userinfo_endpoint, headers, method="GET")
+        print_output(response_string)
+        return 0
+    except Exception as e:
+        print(f"Error querying userinfo: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_revoke(args) -> int:
+    """Revoke access or refresh token."""
+    try:
+        config = load_config()
+        if not config.get("backend_url"):
+            print("Error: backend_url not configured", file=sys.stderr)
+            return 1
+        if not config.get("client_id"):
+            print("Error: client_id not configured", file=sys.stderr)
+            return 1
+        if not config.get("private_key"):
+            print("Error: client private_key not configured", file=sys.stderr)
+            return 1
+
+        backend_url = config["backend_url"]
+        client_id = config["client_id"]
+
+        # Determine token to revoke from --access or --refresh flag
+        load_dotenv(ENV_FILE)
+        if args.access:
+            token = os.getenv(f"AGENT_{args.agent_id}_ACCESS_TOKEN")
+            token_type_hint = "access_token"
+        else:
+            token = os.getenv(f"AGENT_{args.agent_id}_REFRESH_TOKEN")
+            token_type_hint = "refresh_token"
+
+        if not token:
+            print(
+                f"Error: No {token_type_hint} found for agent {args.agent_id}",
+                file=sys.stderr,
+            )
+            return 1
+
+        # Build revoke endpoint (MUST use /v1/ prefix)
+        revoke_endpoint = f"{backend_url}/v1/oauth/revoke"
+
+        # Client assertion aud must match the revoke endpoint (NOT well-known URL)
+        private_key = load_private_key(config["private_key"])
+        client_assertion = create_client_assertion(
+            private_key, client_id, revoke_endpoint
+        )
+
+        body_fields = {
+            "token": token,
+            "client_id": client_id,
+            "client_assertion": client_assertion,
+            "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+            "token_type_hint": token_type_hint,  # Cosmetic: backend accepts but ignores
+        }
+        body_bytes = urllib.parse.urlencode(body_fields).encode("utf-8")
+
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        response_string = make_request(revoke_endpoint, headers, data=body_bytes)
+        # No .env cleanup after revocation (per CONTEXT.md decision)
+        print_output(response_string)
+        return 0
+    except Exception as e:
+        print(f"Error during revocation: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_introspect(args) -> int:
+    """Introspect token for status and metadata."""
+    try:
+        config = load_config()
+        if not config.get("backend_url"):
+            print("Error: backend_url not configured", file=sys.stderr)
+            return 1
+        if not config.get("client_id"):
+            print("Error: client_id not configured", file=sys.stderr)
+            return 1
+        if not config.get("private_key"):
+            print("Error: client private_key not configured", file=sys.stderr)
+            return 1
+
+        backend_url = config["backend_url"]
+        client_id = config["client_id"]
+
+        # Determine token to introspect from --access or --refresh flag
+        load_dotenv(ENV_FILE)
+        if args.access:
+            token = os.getenv(f"AGENT_{args.agent_id}_ACCESS_TOKEN")
+            token_type_hint = "access_token"
+        else:
+            token = os.getenv(f"AGENT_{args.agent_id}_REFRESH_TOKEN")
+            token_type_hint = "refresh_token"
+
+        if not token:
+            print(
+                f"Error: No {token_type_hint} found for agent {args.agent_id}",
+                file=sys.stderr,
+            )
+            return 1
+
+        # Build introspect endpoint (MUST use /v1/ prefix)
+        introspect_endpoint = f"{backend_url}/v1/oauth/introspect"
+
+        # Client assertion aud must match introspect endpoint
+        private_key = load_private_key(config["private_key"])
+        client_assertion = create_client_assertion(
+            private_key, client_id, introspect_endpoint
+        )
+
+        body_fields = {
+            "token": token,
+            "client_id": client_id,
+            "client_assertion": client_assertion,
+            "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+            "token_type_hint": token_type_hint,  # Cosmetic: backend accepts but ignores
+        }
+        body_bytes = urllib.parse.urlencode(body_fields).encode("utf-8")
+
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        response_string = make_request(introspect_endpoint, headers, data=body_bytes)
+        print_output(response_string)
+        return 0
+    except Exception as e:
+        print(f"Error during introspection: {e}", file=sys.stderr)
+        return 1
+
+
 # =============================================================================
 # CLI Interface
 # =============================================================================
@@ -679,6 +1006,64 @@ def main():
     )
     parser_config.add_argument("--client-port", help="Callback server port (e.g. 8790)")
 
+    # refresh command
+    parser_refresh = subparsers.add_parser(
+        "refresh",
+        help="Refresh access token using refresh token grant",
+    )
+    parser_refresh.add_argument(
+        "--agent-id", required=True, help="Agent ID for token lookup/storage"
+    )
+
+    # discover command
+    subparsers.add_parser(
+        "discover",
+        help="Query OpenID Connect discovery endpoint",
+    )
+
+    # userinfo command
+    parser_userinfo = subparsers.add_parser(
+        "userinfo",
+        help="Query userinfo endpoint with DPoP-bound access token",
+    )
+    parser_userinfo.add_argument(
+        "--agent-id", required=True, help="Agent ID for token lookup"
+    )
+
+    # revoke command
+    parser_revoke = subparsers.add_parser(
+        "revoke",
+        help="Revoke an access or refresh token",
+    )
+    parser_revoke.add_argument(
+        "--agent-id", required=True, help="Agent ID for token lookup"
+    )
+    revoke_token_type = parser_revoke.add_mutually_exclusive_group(required=True)
+    revoke_token_type.add_argument(
+        "--access", action="store_true", help="Revoke access token"
+    )
+    revoke_token_type.add_argument(
+        "--refresh", action="store_true", help="Revoke refresh token"
+    )
+
+    # introspect command
+    parser_introspect = subparsers.add_parser(
+        "introspect",
+        help="Introspect a token for status and metadata",
+    )
+    parser_introspect.add_argument(
+        "--agent-id", required=True, help="Agent ID for token lookup"
+    )
+    introspect_token_type = parser_introspect.add_mutually_exclusive_group(
+        required=True
+    )
+    introspect_token_type.add_argument(
+        "--access", action="store_true", help="Introspect access token"
+    )
+    introspect_token_type.add_argument(
+        "--refresh", action="store_true", help="Introspect refresh token"
+    )
+
     # Parse arguments
     args = parser.parse_args()
 
@@ -692,6 +1077,11 @@ def main():
         "generate-verifier": cmd_generate_verifier,
         "token-exchange": cmd_token_exchange,
         "config": cmd_config,
+        "refresh": cmd_refresh,
+        "discover": cmd_discover,
+        "userinfo": cmd_userinfo,
+        "revoke": cmd_revoke,
+        "introspect": cmd_introspect,
     }
 
     handler = command_handlers.get(args.command)
