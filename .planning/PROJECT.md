@@ -10,18 +10,9 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 
 ---
 
-## Current Milestone: v2.1 Comprehensive Testing
+## Current Milestone: Planning Next Milestone (v2.3)
 
-**Goal:** Audit, expand, and formalize test suites across the full stack to cover all flows and edge cases, including real Paddle E2E tests, and identify/discuss bugs before fixing.
-
-**Target features:**
-- Codebase and documentation scan for full flow understanding
-- Audit of existing test suites and documentation
-- Research and addition of new test scenarios (unit, integration, E2E)
-- Implementation of comprehensive testing suites (backend, frontend, E2E with real Paddle test connection)
-- Bug identification via test execution and discussion of solutions prior to fixing
-
-**Previous Milestone:** v2.0 Shadow Claim Implementation (Complete)
+**Goal:** Evolve the Agent-ID platform based on demo script feedback and security audit findings.
 
 ---
 
@@ -29,10 +20,10 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 
 ### Validated (Existing Capabilities)
 
-- ✓ OAuth2 Authorization Code Flow with PKCE and DPoP
-- ✓ Agent authentication via Ed25519 challenge-response
-- ✓ Agent claim procedure with cryptographic verification
-- ✓ Client registration and OAuth token management
+- ✓ OAuth2 Authorization Code Flow with PKCE and DPoP — v2.2
+- ✓ Agent authentication via Ed25519 challenge-response — v2.2
+- ✓ Agent claim procedure with cryptographic verification — v2.2
+- ✓ Client registration and OAuth token management — v2.2
 - ✓ Basic subscription tier structure (FREE, BASIC, PRO, etc.)
 - ✓ Overseer-agent oversight relationships
 - ✓ Paddle payment integration with webhook handling
@@ -43,28 +34,21 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 - ✓ Proper state management (initiated → awaiting-payment → completed)
 - ✓ Paddle `transaction.completed` webhook handling for one-time payments
 - ✓ Comprehensive test coverage for shadow claim flows
+- ✓ Comprehensive testing suite (backend, frontend, E2E)
+- ✓ Python Agent Demo CLI (Full API coverage) — v2.2
+- ✓ Python Client Demo CLI (Full OAuth coverage) — v2.2
 
-### Active (This Milestone)
+### Active
 
-#### Research & Audit
-- [ ] Scan codebase and documentation for flow understanding
-- [ ] Audit existing test suites and test cases in docs
-- [ ] Identify and research missing flows and edge cases
-
-#### Documentation Updates
-- [ ] Document new test scenarios for unit, integration, and E2E
-
-#### Test Implementation
-- [ ] Implement backend unit and integration tests
-- [ ] Implement frontend unit and integration tests
-- [ ] Implement E2E tests with real Paddle connection using testuser-N data
-
-#### Bug Identification & Resolution
-- [ ] Execute tests to find bugs
-- [ ] Report and discuss bugs with user before attempting fixes
+- [ ] Security audit of DPoP and key rotation flows
+- [ ] Database migration to Drizzle ORM
+- [ ] Repository redesign (public/private split)
 
 ### Out of Scope
 
+- Security hardening (demo scripts only)
+- Production deployment of scripts
+- Automated testing of demo scripts
 - Database migration to Drizzle ORM (deferred to future milestone)
 - Repository redesign (public/private split) (deferred)
 - Admin features and company registration (deferred)
@@ -72,8 +56,6 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 - OpenAPI/Swagger documentation (deferred)
 - Real-time chat or video features (never)
 - Mobile native apps (never for v1)
-- Subscription caching optimization (deferred)
-- TypeScript `any` type cleanup (deferred to dedicated refactoring milestone)
 
 ## Context
 
@@ -83,13 +65,6 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 - Payment: Paddle Billing integration (working)
 - Documentation: Complete and accurate
 - Testing: Comprehensive test suite in place
-- **Shadow Claim:** Partially implemented but diverges from spec
-
-**Known Issues with Current Shadow Claim:**
-- Uses separate payment challenge system (not unified with standard claims)
-- No agent confirmation step (security risk)
-- No `awaiting-payment` state management
-- Webhook handling needs updating for `transaction.completed` event
 
 **Technical Debt:**
 - Large route files (agents.ts: 876 lines)
@@ -99,19 +74,19 @@ Users can trust that the Agent-ID platform correctly handles authentication, aut
 ## Constraints
 
 - **Compatibility:** Cannot break existing OAuth/agent flows
-- **Security:** Agents must explicitly confirm shadow claims
-- **Testing:** Use Paddle sandbox for testing, minimize API calls
-- **Timeline:** Complete within 5 phases
+- **Python Version:** Python 3.x with standard library preferred
+- **Dependencies:** Minimize external dependencies
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Unify with claim challenges | Consistent architecture, matches spec | — Pending |
-| Require agent confirmation | Security - agents control who oversees them | — Pending |
-| Use transaction.completed webhook | Correct Paddle event for one-time payments | — Pending |
-| Keep /agents/ prefix in API | Consistent with existing endpoints | — Pending |
-| Deprecate payment challenge system | Single system reduces complexity | — Pending |
+| Python scripts | Widely used, good crypto library support | ✓ Good (Milestone v2.2) |
+| .env file config | Simple, standard configuration pattern | ✓ Good (Milestone v2.2) |
+| Print-only error handling | Demo scripts focus on clarity | ✓ Good (Milestone v2.2) |
+| Dual-signature rotation | Enhanced security for key rotation | ✓ Good (Milestone v2.2) |
+| private_key_jwt | RFC 7523 compliant client auth | ✓ Good (Milestone v2.2) |
+| DPoP proof binding | RFC 9449 compliant token binding | ✓ Good (Milestone v2.2) |
 
 ---
-*Last updated: 2026-02-21 after milestone initialization*
+*Last updated: 2026-02-27 after v2.2 milestone*

@@ -3,39 +3,51 @@
 ## Project Reference
 **Project:** Agent-ID Identity Platform
 **Core Value:** Users can trust that the Agent-ID platform correctly handles authentication, authorization, and subscription management with accurate documentation and comprehensive test coverage.
-**Current Focus:** v2.1 Comprehensive Testing - Auditing existing suites, implementing robust full-stack testing (unit, integration, and Paddle E2E), and uncovering/documenting bugs.
+**Current Focus:** Planning next milestone (v2.3)
 
 ## Current Position
-- **Phase:** Phase 28: Audit & Test Strategy
-- **Plan:** 03
-- **Status:** Phase complete
-- **Progress:** [███                                     ] 14% (3/21 Plans Complete)
+- **Phase:** 37-client-demo-oauth
+- **Plan:** Not started
+- **Status:** Milestone v2.2 Complete
+- **Last activity:** 2026-02-27 — Milestone v2.2 archived
+
+## Progress
+[████████████████████████████████] 100% (v2.2 Complete)
 
 ## Performance Metrics
-- **Velocity:** 3 plans/session
-- **Quality:** High (Strict documentation format adopted, Paddle edge cases mapped, Test Strategy defined)
+- **Velocity:** N/A
+- **Quality:** N/A
 
 ## Accumulated Context
 **Architecture Decisions:**
 - Prioritizing `@cloudflare/vitest-pool-workers` for exact Web Crypto API parity.
 - Utilizing ephemeral D1 instances for backend testing to simulate production.
 - `@playwright/test` selected over Cypress for native multi-context and iframe support.
-- **[28-01-D01]** Formalized DPoP and Ed25519 edge cases in documentation to guide test coverage.
-- **[28-02-D01]** Standardized flow documentation to include Mermaid diagrams and detailed API traces for better testability.
-- **[28-02-D02]** Explicitly mapped Paddle statuses (active, past_due, etc.) to application access levels.
-- **[28-02-D03]** Formalized documentation of client limit enforcement and ownership transfer logic.
-- **[28-03-D01]** Mandated `@cloudflare/vitest-pool-workers` for all cryptographic tests to ensure Web Crypto API parity with the Cloudflare runtime.
-- **[28-03-D02]** Adopted Playwright's `browser.newContext()` as the standard for testing multi-actor interactions (Overseer + Agent).
-- **[28-03-D03]** Standardized on direct webhook injection into `SELF.fetch()` for testing Paddle integration logic locally without network overhead.
+- Using PyNaCl for Ed25519 (matches backend @noble/ed25519).
+- Using python-dotenv for configuration management.
+- Using urllib.request for HTTP requests (standard library).
+- Using argparse for CLI to minimize external dependencies.
+- Fail-fast HTTP wrapper (make_request) exits via sys.exit(1) on HTTPError, printing raw response body to stderr.
+- Raw JSON output via print_output for all query results (no pagination or truncation).
+- Dual auth pattern: claim subcommand auto-selects Bearer (session) vs DPoP based on config state.
+- No confirmation prompts on destructive actions (revoke-overseer executes immediately).
+- Dual-signature key rotation: DPoP proof with old key + body signature with new key, no Bearer on complete step.
+- Atomic .env backup via shutil.copy2 before save_config for recoverability.
+- OAuth client key storage: CLIENT_<client-id>_* namespace for multi-client support.
+- PKCE code challenge: Client app generates challenge, agent script receives via --code-challenge flag (S256 hardcoded).
+- Authorization code output: print to stdout only, no redirect/file save (user copies to client app).
 
 **Active Blockers:**
 - None.
 
 **Next Steps:**
-- Start Phase 29: Backend Test Implementation.
+- Proceed to Phase 37 (Client Demo - OAuth Operations) for token refresh, userinfo, and revocation
 
 ## Session Continuity
 **Last session:** 2026-02-22
-**Stopped at:** Completed Phase 28
-**Resume file:** .planning/ROADMAP.md
+**Stopped at:** Completed 36-04-PLAN.md — Phase 36 complete
+**Resume file:** None
 
+
+---
+*Updated: 2026-02-22*
